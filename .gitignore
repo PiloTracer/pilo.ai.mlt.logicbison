@@ -1,7 +1,10 @@
 # .gitignore
 
-# Training memory (learner-specific, often private)
-.training.mlt/
+# Training memory skeleton is TRACKED in this framework repo (see .training.mlt/).
+# Learner content under it may be committed deliberately (START_HERE.md §5) —
+# but never commit secrets, large weights, or datasets. Lab virtualenvs are ignored:
+.training.mlt/**/.venv/
+.training.mlt/drills/.venv-*/
 
 # Python
 __pycache__/
@@ -50,10 +53,10 @@ datasets/
 .DS_Store
 Thumbs.db
 
-# Environment
+# Environment (templates like .env.example stay tracked)
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
 
 # Logs
 logs/

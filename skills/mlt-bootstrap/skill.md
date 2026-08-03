@@ -31,10 +31,13 @@ description: "Scaffold .training.mlt/ directories and drive PROFILE intake inter
    - `.training.mlt/programs/`
    - `.training.mlt/sessions/`
    - `.training.mlt/sources/`
-3. Create `PROFILE.md` in `.training.mlt/context/` if not present
-4. Create `HANDOFF.md` in `.training.mlt/context/` with empty template
-5. Create `NEXT.md` in `.training.mlt/plans/` with placeholder
-6. Create `UNKNOWNS.md` in `.training.mlt/plans/` with empty list
+   - `.training.mlt/labs/`
+   - `.training.mlt/tutorials/`
+   - `.training.mlt/drills/`
+3. Create `PROFILE.md` in `.training.mlt/context/` from `templates/training/PROFILE.md` if not present
+4. Create `HANDOFF.md` in `.training.mlt/context/` from `templates/training/HANDOFF.md`
+5. Create `NEXT.md` in `.training.mlt/plans/` from `templates/training/NEXT.md`
+6. Create `UNKNOWNS.md` in `.training.mlt/plans/` from `templates/training/UNKNOWNS.md`
 7. Drive the PROFILE intake interview by asking the learner:
    - Programming experience (years, languages, projects)
    - Python level (syntax, OOP, libraries, advanced patterns)

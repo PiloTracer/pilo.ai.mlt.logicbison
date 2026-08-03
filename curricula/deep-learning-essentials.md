@@ -51,7 +51,7 @@ Learners comfortable with Python and basic ML. Ready to build neural networks. C
 **Objectives:** Master optimization, scheduling, regularization, batch norm.
 **Content:** Optimizers (SGD, Adam, AdamW). Schedulers (cosine, warmup, OneCycleLR). Regularization (dropout, weight decay, label smoothing). Normalization (BatchNorm, LayerNorm). Mixed precision (FP16, BF16).
 **Lab:** Systematic ablation on a CNN: compare optimizers, schedulers, regularization. Document best combo.
-**Sources:** [PyTorch Optimizers](https://pytorch.org/docs/stable/optim.html) · [Raschka — DL Fundamentals](https://sebastianraschka.com/blog/2023/dlfundamentals.html)
+**Sources:** [PyTorch Optimizers](https://pytorch.org/docs/stable/optim.html) · [Raschka — DL Fundamentals (2023 — foundational, flagged for currency review per citation.md)](https://sebastianraschka.com/blog/2023/dlfundamentals.html)
 **Exit check:** Justify optimizer/scheduler choices; demonstrate mixed precision training.
 
 ## Assessment

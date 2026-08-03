@@ -31,7 +31,7 @@ Learners who can build ML systems and want to productionize them. Common misconc
 **Objectives:** Deploy models as reliable, scalable services.
 **Content:** FastAPI (async, Pydantic validation, streaming, background tasks). Docker (multi-stage builds, GPU containers). Serving (TorchServe, vLLM, Triton). API design (REST, batching, rate limiting). Scaling (horizontal, load balancing, autoscaling).
 **Lab:** FastAPI + vLLM service for fine-tuned LLM. Request validation, streaming tokens, health checks, Prometheus metrics. Dockerize and load test.
-**Sources:** [FastAPI](https://fastapi.tiangolo.com/) · [vLLM Docker](https://docs.vllm.ai/en/latest/serving/deploying_with_docker.html) · [Full Stack DL](https://fullstackdeeplearning.com/course/2022/)
+**Sources:** [FastAPI](https://fastapi.tiangolo.com/) · [vLLM Docker](https://docs.vllm.ai/en/latest/serving/deploying_with_docker.html) · [Full Stack DL (2022 — foundational, flagged for currency review per citation.md)](https://fullstackdeeplearning.com/course/2022/)
 **Exit check:** Containerized service handling 10+ concurrent requests with <2s p95.
 
 ### Module 3: Monitoring (Week 3-4)
@@ -45,14 +45,14 @@ Learners who can build ML systems and want to productionize them. Common misconc
 **Objectives:** Automate testing and deployment of ML systems.
 **Content:** ML testing (data unit tests, model behavior tests, integration tests). CI (GitHub Actions, linting, type checking). Validation gates (perf thresholds, fairness, size limits). Deployment (blue-green, canary, shadow, rollback).
 **Lab:** GitHub Actions pipeline: data validation, train, evaluate against quality gates, deploy to staging if gates pass. Rollback on failure.
-**Sources:** [Made With ML — CI/CD](https://madewithml.com/#cicd) · [Full Stack DL](https://fullstackdeeplearning.com/course/2022/) · [GitHub Actions](https://docs.github.com/en/actions) · [Great Expectations](https://docs.greatexpectations.io/)
+**Sources:** [Made With ML — CI/CD](https://madewithml.com/#cicd) · [Full Stack DL (2022 — foundational, flagged for currency review per citation.md)](https://fullstackdeeplearning.com/course/2022/) · [GitHub Actions](https://docs.github.com/en/actions) · [Great Expectations](https://docs.greatexpectations.io/)
 **Exit check:** Pipeline auto-validates, trains, gates, and deploys on push.
 
 ### Module 5: Production Patterns (Week 5-6)
 **Objectives:** Design robust production architectures.
 **Content:** Batch inference (scheduled jobs, large-scale, cost optimization). Streaming (real-time, Kafka, backpressure). Edge (ONNX Runtime, mobile, compression). Cost (spot instances, autoscaling, caching, distillation). Reliability (circuit breakers, fallbacks, disaster recovery).
 **Lab:** Implement: (1) nightly batch inference pipeline, (2) streaming endpoint with backpressure and fallback to smaller model under load.
-**Sources:** [Google MLOps](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines) · [AWS ML Best Practices](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/) · [Full Stack DL](https://fullstackdeeplearning.com/course/2022/)
+**Sources:** [Google MLOps](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines) · [AWS ML Best Practices](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/) · [Full Stack DL (2022 — foundational, flagged for currency review per citation.md)](https://fullstackdeeplearning.com/course/2022/)
 **Exit check:** Both patterns handle failure scenarios with documented fallbacks.
 
 ## Assessment

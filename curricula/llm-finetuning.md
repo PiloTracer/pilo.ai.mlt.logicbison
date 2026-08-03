@@ -12,7 +12,7 @@ Learners who can fine-tune BERT-class models and want to specialize in 7B+ LLMs.
 6-8 weeks, 3-4 sessions/week. Sessions: 90 min (technique + hands-on). Async: fine-tuning runs, eval experiments.
 
 ## Outcomes
-1. Fine-tune a 7B+ LLM with LoRA/QLoRA using Unsloth on a single GPU
+1. Fine-tune an LLM with LoRA/QLoRA using Unsloth on a single GPU (7B+ on ≥16GB VRAM; 1-3B models like Qwen2.5-1.5B or Llama-3.2-1B on smaller cards)
 2. Apply DPO and GRPO for preference alignment
 3. Merge fine-tuned models with mergekit
 4. Evaluate with benchmarks, human eval, and LLM-as-judge
@@ -30,9 +30,9 @@ Learners who can fine-tune BERT-class models and want to specialize in 7B+ LLMs.
 ### Module 2: Supervised Fine-tuning (Week 2-4)
 **Objectives:** Master SFT with LoRA/QLoRA on consumer hardware.
 **Content:** Full vs parameter-efficient fine-tuning tradeoffs. LoRA (rank, target modules, merging). QLoRA (4-bit, NF4, double quant, paged optimizers). Unsloth (2x speed, memory optimization). TRL `SFTTrainer` (packing, max seq length). Axolotl (YAML config, multi-model).
-**Lab:** Fine-tune Llama 3.1 8B with Unsloth QLoRA on single GPU. Compare Unsloth vs standard HF training speed/memory.
+**Lab:** Fine-tune Llama 3.1 8B with Unsloth QLoRA on a single GPU (or Qwen2.5-1.5B / Llama-3.2-1B on ≤8GB VRAM). Compare Unsloth vs standard HF training speed/memory.
 **Sources:** [Unsloth](https://docs.unsloth.ai/) · [TRL SFTTrainer](https://huggingface.co/docs/trl/sft_trainer) · [Axolotl](https://axolotl-ai-cloud.github.io/axolotl/) · [Raschka](https://magazine.sebastianraschka.com/)
-**Exit check:** QLoRA fine-tune of 7B model showing measurable task improvement.
+**Exit check:** QLoRA fine-tune of a 1.5B-8B model (scaled to available VRAM) showing measurable task improvement.
 
 ### Module 3: Preference Alignment (Week 4-6)
 **Objectives:** Align LLMs with DPO, GRPO, and PPO.
@@ -52,7 +52,7 @@ Learners who can fine-tune BERT-class models and want to specialize in 7B+ LLMs.
 **Objectives:** Rigorously evaluate fine-tuned models.
 **Content:** Benchmarks (MMLU, HellaSwag, ARC, TruthfulQA, GSM8K). Frameworks (lighteval, lm-evaluation-harness). Human evaluation (rating scales, pairwise, agreement). LLM-as-judge (prompt design, limitations). Task-specific (HumanEval, GSM8K, ROUGE, IFEval).
 **Lab:** Evaluate fine-tuned model with lighteval. Design custom eval suite. Run LLM-as-judge comparison (base vs SFT vs DPO).
-**Sources:** [lighteval](https://github.com/huggingface/lighteval) · [lm-eval-harness](https://github.com/EleutherAI/lm-evaluation-harness) · [Open LLM Leaderboard](https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard)
+**Sources:** [lighteval](https://github.com/huggingface/lighteval) · [lm-eval-harness](https://github.com/EleutherAI/lm-evaluation-harness) · [HF Evaluate](https://huggingface.co/docs/evaluate/index)
 **Exit check:** Comprehensive eval report comparing base, SFT, and DPO models.
 
 ## Assessment
@@ -60,7 +60,7 @@ Learners who can fine-tune BERT-class models and want to specialize in 7B+ LLMs.
 | Criterion | Pass condition |
 |-----------|----------------|
 | Data curation | Validated dataset with quality metrics |
-| SFT mastery | 7B+ QLoRA fine-tune showing task improvement |
+| SFT mastery | QLoRA fine-tune (1.5B-8B, scaled to hardware) showing task improvement |
 | Alignment | DPO/GRPO with measurable preference gains |
 | Merging | Merged model retains both source capabilities |
 | Evaluation | Report with benchmarks + human/LLM-judge results |

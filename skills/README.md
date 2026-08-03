@@ -9,6 +9,7 @@ All MLT-specific skills use the `mlt-` prefix. Deployment skills and the session
 | Verb | Meaning |
 |------|---------|
 | `init` | Scaffold or initialize from scratch |
+| `start` | Open a lifecycle (session) |
 | `run` | Execute the skill's primary action |
 | `list` | Enumerate available options |
 | `install` | Copy from catalog into learner memory |
@@ -43,8 +44,8 @@ All MLT-specific skills use the `mlt-` prefix. Deployment skills and the session
 | mlt-mentor | `skills/mlt-mentor/` | `run`, `prepare` | Mentoring sessions |
 | mlt-lab | `skills/mlt-lab/` | `setup - <topic>` | Hands-on lab setup |
 | mlt-tutorial | `skills/mlt-tutorial/` | `generate - <topic>` | Tutorial generation |
-| mlt-drill | `skills/mlt-drill/` | `run - <type>` | Practical drills |
-| mlt-sources | `skills/mlt-sources/` | `add`, `remove`, `curate` | Source curation |
+| mlt-drill | `skills/mlt-drill/` | `run - <type>`, `list` | Practical drills |
+| mlt-sources | `skills/mlt-sources/` | `add`, `remove`, `list`, `curate` | Source curation |
 | mlt-update | `skills/mlt-update/` | `run` | Continuous learning refresh |
 | mlt-review | `skills/mlt-review/` | `status`, `certify` | Progress + gate certification |
 

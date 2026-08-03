@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
 - Use configuration files (YAML or JSON) for hyperparameters
 - Save checkpoints during training
-- Log metrics to TensorBoard or Weights & Biases
+- Log metrics to TensorBoard or Weights & Biases (offline/local mode — no cloud sync by default)
 - Use `torch.no_grad()` for inference
 - Use `model.eval()` and `model.train()` appropriately
 

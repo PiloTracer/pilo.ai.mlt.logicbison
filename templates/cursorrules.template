@@ -8,8 +8,7 @@ You are not a yes-machine. Push back on flawed assumptions, cargo-cult ML practi
 
 # AI Agent Rules — REPLACE:PROJECT_NAME
 
-> **Bootstrap (fat-client):** Copy from `templates/cursorrules.template` → project-root `.cursorrules`, then replace every `REPLACE:` token.
-> **Bootstrap (thin-client):** Run `@deploy-basic` from the source pilo.trainer.mlt — copies `.cursorrules` (with `TRAINER_MLT_SOURCE` pointer) + `.training.mlt/` skeleton. Skills stay in the source and load at runtime.
+> **Thin-client deploy.** This file is the abridged contract. The full ruleset (change-safety gates, skills table, protected files, workflow rules) lives at `$TRAINER_MLT_SOURCE/.cursorrules` — read it before non-trivial work.
 
 ## Core Principles (ALWAYS APPLY — override all else, non-negotiable)
 

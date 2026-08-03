@@ -13,7 +13,7 @@ Every program in `curricula/` must include:
 
 **Slug:** `program-slug`
 **Duration:** X weeks · Y sessions/week
-**Level:** Beginner / Intermediate / Advanced
+**Level:** Beginner / Intermediate / Advanced (bridging labels like "Intermediate-Advanced" are allowed)
 **Prerequisites:** (list or "none")
 ```
 
@@ -66,8 +66,7 @@ All module exit checks met; artifacts stored under `.training.mlt/` and linked f
 
 If a program has prerequisites, specify:
 - Required program slug(s)
-- Minimum competency level from prerequisite
-- Specific modules that must be completed
+- Required scope of the prerequisite (e.g. "all modules") and whether certification (`@mlt-review certify`) is required
 
 ## Customization
 

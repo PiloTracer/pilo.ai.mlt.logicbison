@@ -37,7 +37,7 @@ Learners who understand transformers and want to train LLMs from scratch. Comfor
 ### Module 3: Pre-training (Week 4-7)
 **Objectives:** Train a language model with distributed techniques.
 **Content:** Causal LM objective, next-token prediction. Distributed (data/tensor/pipeline parallelism, ZeRO). DeepSpeed (ZeRO 1-3, offloading). FSDP (native sharding, wrapping). Mixed precision (FP16/BF16, loss scaling). LR scheduling (warmup, cosine, WSD).
-**Lab:** Set up distributed training with DeepSpeed/FSDP. Pre-train ~100M GPT on curated data. Monitor loss, gradients, throughput.
+**Lab:** Set up sharded training with DeepSpeed/FSDP (a single-GPU ZeRO/FSDP run is acceptable when multi-GPU is unavailable). Pre-train ~100M GPT on curated data. Monitor loss, gradients, throughput.
 **Sources:** [DeepSpeed](https://www.deepspeed.ai/) · [PyTorch FSDP](https://pytorch.org/tutorials/intermediate/FSDP_tutorial.html) · [nanotron](https://github.com/huggingface/nanotron) · [LLM360 Amber](https://github.com/LLM360/amber)
 **Exit check:** Complete pre-training run with documented hyperparams and loss curves.
 
@@ -61,7 +61,7 @@ Learners who understand transformers and want to train LLMs from scratch. Comfor
 |-----------|----------------|
 | Architecture | Implement modern GPT (RoPE, SwiGLU, RMSNorm) from scratch |
 | Data curation | Cleaned dataset with provenance docs and quality metrics |
-| Distributed training | Multi-GPU training with DeepSpeed or FSDP |
+| Distributed training | Sharded training run with DeepSpeed or FSDP (single- or multi-GPU) |
 | Technical report | Reproducible report covering full pre-training pipeline |
 
 ## Exit Criteria

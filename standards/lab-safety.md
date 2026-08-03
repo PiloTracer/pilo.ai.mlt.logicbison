@@ -13,11 +13,11 @@ Binding for `@mlt-lab` and any hands-on exercise.
 
 ### Virtual environments (mandatory)
 
-Every lab must run in an isolated environment:
+Every lab must run in an isolated environment, created inside the lab directory under `.training.mlt/labs/` (keeps learner artifacts inside the memory boundary):
 
 ```bash
-python -m venv .mlt-lab-<topic>
-source .mlt-lab-<topic>/bin/activate
+python -m venv .training.mlt/labs/<topic>/.venv
+source .training.mlt/labs/<topic>/.venv/bin/activate
 ```
 
 Or with conda:
@@ -28,8 +28,8 @@ conda activate mlt-<topic>
 
 Or with uv (preferred for speed):
 ```bash
-uv venv .mlt-lab-<topic>
-source .mlt-lab-<topic>/bin/activate
+uv venv .training.mlt/labs/<topic>/.venv
+source .training.mlt/labs/<topic>/.venv/bin/activate
 ```
 
 ## Resource limits
@@ -42,7 +42,7 @@ source .mlt-lab-<topic>/bin/activate
 | 4-6 GB | 1-3B params | 4-bit quantization (QLoRA) |
 | 8-12 GB | 7-13B params | 4-bit quantization |
 | 16-24 GB | 13-30B params | 4-8 bit quantization |
-| 24+ GB | 30B+ params | Full precision or 8-bit |
+| 24+ GB | 30B+ params (4-bit); ≤13B full precision | 4-8 bit quantization; full precision only ≤13B |
 
 ### Memory management
 
@@ -56,7 +56,7 @@ source .mlt-lab-<topic>/bin/activate
 
 - Warn before downloading models > 1GB
 - Use Hugging Face cache: `~/.cache/huggingface/`
-- Clean up unused models: `huggingface-cli cache-info` and `huggingface-cli delete-cache`
+- Clean up unused models: `hf cache ls` and `hf cache rm` (legacy: `huggingface-cli scan-cache`)
 - Prefer quantized versions (GGUF, AWQ, GPTQ) for storage efficiency
 
 ## Safety rules

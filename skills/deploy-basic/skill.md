@@ -35,12 +35,15 @@ description: "Thin-client bootstrap — copies .cursorrules and .training.mlt/ s
 7. Replace `REPLACE:PROJECT_NAME` with the target directory name
 8. Replace `REPLACE:LEARNER_LEVEL` with `beginner` (default)
 9. Replace `REPLACE:PRIMARY_GOAL` with placeholder text
-10. Scaffold `.training.mlt/` directory structure in target:
-    - `.training.mlt/context/` (empty PROFILE.md, HANDOFF.md templates)
-    - `.training.mlt/plans/` (empty NEXT.md, UNKNOWNS.md templates)
+10. Scaffold `.training.mlt/` directory structure in target (templates copied from `templates/training/`):
+    - `.training.mlt/context/` (PROFILE.md, HANDOFF.md)
+    - `.training.mlt/plans/` (NEXT.md, UNKNOWNS.md)
     - `.training.mlt/programs/`
     - `.training.mlt/sessions/`
     - `.training.mlt/sources/`
+    - `.training.mlt/labs/`
+    - `.training.mlt/tutorials/`
+    - `.training.mlt/drills/`
 11. Skip existing files in `.training.mlt/` unless `--force`
 12. Verify `TRAINER_MLT_SOURCE` in target `.cursorrules` points to a readable path
 13. Report what was created and what was skipped

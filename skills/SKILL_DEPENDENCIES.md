@@ -2,27 +2,27 @@
 
 ## Prerequisites
 
-Skills may require prior state before they can execute. The gate graph below defines which skills block others.
+Skills may require prior state before they can execute. The gate graph below defines which skills block others. It mirrors the gate table exactly — the table is authoritative.
 
 ```text
-deploy-basic ─────────────────────────────────┐
-deploy-files ─┐                               │
-deploy-repo  ─┤                               │
-              ▼                               ▼
-         mlt-bootstrap ──► mlt-assess ──► mlt-program-standard
-                                │          mlt-program-custom
-                                ▼               │
-                          session-mlt ◄─────────┘
-                                │
-                    ┌───────────┼───────────┐
-                    ▼           ▼           ▼
-                mlt-mentor   mlt-lab    mlt-drill
-                    │           │           │
-                    ▼           ▼           ▼
-                mlt-tutorial  mlt-curriculum
-                    │
-                    ▼
-                mlt-review ──► certify
+deploy-basic / deploy-files / deploy-repo
+                │
+                ▼
+          mlt-bootstrap
+                │
+                ├──► mlt-assess ──► mlt-review
+                │       │
+                │       └──► mlt-program-custom ──┐
+                ├──► mlt-program-standard ────────┤
+                │                                 ▼
+                │                         (active program) ──► mlt-curriculum
+                │                                 │
+                ├──► session-mlt ─────────────────┴──► mlt-mentor
+                │       (mlt-mentor needs BOTH an open session and an active program)
+                ├──► mlt-lab
+                ├──► mlt-drill
+                ├──► mlt-tutorial
+                └──► mlt-sources ──► mlt-update
 ```
 
 ## Gate table
@@ -39,6 +39,7 @@ deploy-repo  ─┤                               │
 | mlt-lab | mlt-bootstrap | `.training.mlt/` scaffolded |
 | mlt-drill | mlt-bootstrap | `.training.mlt/` scaffolded |
 | mlt-tutorial | mlt-bootstrap | `.training.mlt/` scaffolded |
+| mlt-sources | mlt-bootstrap | `.training.mlt/sources/` directory exists |
 | mlt-review | mlt-assess (scorecard exists) | Assessment completed at least once |
 | mlt-update | mlt-sources | Source list exists in `.training.mlt/sources/` |
 

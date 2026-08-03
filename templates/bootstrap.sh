@@ -8,9 +8,12 @@ PLANS_DIR="$MEMORY_DIR/plans"
 PROGRAMS_DIR="$MEMORY_DIR/programs"
 SESSIONS_DIR="$MEMORY_DIR/sessions"
 SOURCES_DIR="$MEMORY_DIR/sources"
+LABS_DIR="$MEMORY_DIR/labs"
+TUTORIALS_DIR="$MEMORY_DIR/tutorials"
+DRILLS_DIR="$MEMORY_DIR/drills"
 QUICK_DIR="$REPO_ROOT/.quick"
 
-mkdir -p "$CONTEXT_DIR" "$PLANS_DIR" "$PROGRAMS_DIR" "$SESSIONS_DIR" "$SOURCES_DIR" "$QUICK_DIR"
+mkdir -p "$CONTEXT_DIR" "$PLANS_DIR" "$PROGRAMS_DIR" "$SESSIONS_DIR" "$SOURCES_DIR" "$LABS_DIR" "$TUTORIALS_DIR" "$DRILLS_DIR" "$QUICK_DIR"
 
 TEMPLATE_DIR="$(cd "$(dirname "$0")/.." && pwd)/templates/training"
 
@@ -36,16 +39,22 @@ write_if_missing "$CONTEXT_DIR/HANDOFF.md" "$TEMPLATE_DIR/HANDOFF.md"
 write_if_missing "$PLANS_DIR/NEXT.md" "$TEMPLATE_DIR/NEXT.md"
 write_if_missing "$PLANS_DIR/UNKNOWNS.md" "$TEMPLATE_DIR/UNKNOWNS.md"
 
+# Operator cheat sheets (learner-facing starters shipped with the framework)
+FRAMEWORK_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+write_if_missing "$QUICK_DIR/gates.md" "$FRAMEWORK_ROOT/.quick/gates.md"
+write_if_missing "$QUICK_DIR/progress.md" "$FRAMEWORK_ROOT/.quick/progress.md"
+
 CURSORRULES="$REPO_ROOT/.cursorrules"
 if [ ! -f "$CURSORRULES" ]; then
-    SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-    FRAMEWORK_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-    if [ -f "$FRAMEWORK_ROOT/templates/cursorrules.template" ]; then
-        cp "$FRAMEWORK_ROOT/templates/cursorrules.template" "$CURSORRULES"
-    elif [ -f "$FRAMEWORK_ROOT/.cursorrules" ]; then
-        cp "$FRAMEWORK_ROOT/.cursorrules" "$CURSORRULES"
+    TEMPLATE="$FRAMEWORK_ROOT/templates/cursorrules.template"
+    if [ ! -f "$TEMPLATE" ]; then
+        echo "ERROR: template not found: $TEMPLATE" >&2
+        echo "       Cannot create .cursorrules — deploy from a complete pilo.trainer.mlt checkout." >&2
+        exit 1
     fi
-    echo "  created: $CURSORRULES"
+    cp "$TEMPLATE" "$CURSORRULES"
+    sed -i "s|REPLACE_BASICSOURCE|$FRAMEWORK_ROOT|g" "$CURSORRULES"
+    echo "  created: $CURSORRULES (TRAINER_MLT_SOURCE=$FRAMEWORK_ROOT)"
 else
     echo "  exists (skipped): $CURSORRULES"
 fi

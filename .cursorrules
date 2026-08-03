@@ -8,8 +8,8 @@ You are not a yes-machine. Push back on flawed assumptions, cargo-cult ML practi
 
 # AI Agent Rules — pilo.trainer.mlt
 
-> **Bootstrap (fat-client):** Copy from `templates/cursorrules.template` → project-root `.cursorrules`, then replace every `REPLACE:` token.
-> **Bootstrap (thin-client):** Run `@deploy-basic` from the source pilo.trainer.mlt — copies `.cursorrules` (with `TRAINER_MLT_SOURCE` pointer) + `.training.mlt/` skeleton. Skills stay in the source and load at runtime.
+> **Bootstrap (fat-client):** Run `@deploy-files copy - <path>` — vendors the framework as `.ai.mlt/` and copies this full `.cursorrules`, rewritten to resolve framework paths from `.ai.mlt/`.
+> **Bootstrap (thin-client):** Run `@deploy-basic - <path>` from the source pilo.trainer.mlt — copies the abridged `.cursorrules` (with `TRAINER_MLT_SOURCE` pointer) + `.training.mlt/` skeleton. Skills stay in the source and load at runtime; the full ruleset lives at `$TRAINER_MLT_SOURCE/.cursorrules`.
 
 ## Core Principles (ALWAYS APPLY — override all else, non-negotiable)
 
@@ -27,7 +27,7 @@ You are not a yes-machine. Push back on flawed assumptions, cargo-cult ML practi
 
 **Lost?** Read [`START_HERE.md`](START_HERE.md) first.
 
-**Free-text:** `@mlt-director - <what you want>`. Cross-framework: `@x-director - <what you want>`.
+**Free-text:** `@mlt-director - <what you want>`.
 
 | File | Purpose |
 |------|---------|
@@ -54,6 +54,9 @@ You are not a yes-machine. Push back on flawed assumptions, cargo-cult ML practi
 | `REPLACE:PROJECT_NAME` | Project or learner label |
 | `REPLACE:LEARNER_LEVEL` | e.g. beginner / intermediate / advanced / practitioner |
 | `REPLACE:PRIMARY_GOAL` | 1–2 sentence training goal |
+| `REPLACE:LEARNER_NAME` | Learner's name or alias (PROFILE) |
+| `REPLACE:LEARNER_ROLE` | e.g. engineer / data scientist / student (PROFILE) |
+| `REPLACE_BASICSOURCE` | Thin-client only: absolute path of the source pilo.trainer.mlt repo |
 
 ---
 
@@ -77,7 +80,7 @@ Default to **minimal diffs**. Prefer append/merge over overwrite.
 
 ## Source resolution — fat-client vs thin-client (MANDATORY)
 
-**MLT Professor OS source (thin-client only — set by `@deploy-basic`):**
+**pilo.trainer.mlt framework source (thin-client only — set by `@deploy-basic`):**
 
 TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 
@@ -93,8 +96,8 @@ TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 
 1. `.cursorrules` + `.training.mlt/**` — always local.
 2. **Thin-client** (pointer set + readable): read every other framework path from `$TRAINER_MLT_SOURCE/<path>`.
-3. **Fat-client / self-hosted:** read `skills/`, `curricula/`, `standards/`, `scripts/`, `templates/` locally.
-4. **Thin-client + unreachable source:** stop — report `mlt-professor-os source unreachable: $TRAINER_MLT_SOURCE`.
+3. **Fat-client:** read `skills/`, `curricula/`, `standards/`, `scripts/`, `templates/` from `.ai.mlt/<path>`. **Self-hosted:** read them locally at the repo root.
+4. **Thin-client + unreachable source:** stop — report `pilo.trainer.mlt source unreachable: $TRAINER_MLT_SOURCE`.
 
 ---
 

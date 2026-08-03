@@ -23,7 +23,7 @@ Learners who can fine-tune LLMs and want to build production systems. Common mis
 ### Module 1: Running LLMs Locally (Week 1-2)
 **Objectives:** Master local inference with llama.cpp, ollama, LM Studio.
 **Content:** llama.cpp (GGUF format, quant types Q4_K_M/Q5_K_M/Q8_0, perf tuning). ollama (model management, Modelfiles, API). LM Studio (GUI, local server). Hardware (CPU/GPU offloading, RAM, KV cache sizing).
-**Lab:** Install ollama, pull Llama 3.1 8B and Mistral 7B. Benchmark speed across quants. Set up llama.cpp OpenAI-compatible server. Compare GGUF quality via perplexity.
+**Lab:** Install ollama, pull Llama 3.1 8B and Mistral 7B (scale down to 1-3B GGUF models such as Llama-3.2-1B or Qwen2.5-1.5B on machines with <16GB RAM). Benchmark speed across quants. Set up llama.cpp OpenAI-compatible server. Compare GGUF quality via perplexity.
 **Sources:** [llama.cpp](https://github.com/ggerganov/llama.cpp) · [ollama](https://ollama.com/) · [LM Studio](https://lmstudio.ai/)
 **Exit check:** Running local server with benchmarked throughput; explain quantization tradeoffs.
 
@@ -31,7 +31,7 @@ Learners who can fine-tune LLMs and want to build production systems. Common mis
 **Objectives:** Design systematic, reliable prompts.
 **Content:** Zero-shot and few-shot (instruction clarity, example selection). CoT (step-by-step, self-consistency). ReAct (reasoning + acting loops). Structured output (JSON mode, XML, schema enforcement, grammar-constrained decoding). Prompt optimization (testing, versioning, failure analysis).
 **Lab:** Build prompt library for 5 tasks (summarize, extract, classify, QA, code gen). Benchmark across 3 models. Implement ReAct for multi-step research.
-**Sources:** [Prompt Engineering Guide](https://www.promptingguide.ai/) · [Anthropic Prompt Docs](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering) · [OpenAI Best Practices](https://platform.openai.com/docs/guides/prompt-engineering)
+**Sources:** [Prompt Engineering Guide](https://www.promptingguide.ai/) · [Anthropic Prompt Docs](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview) · [OpenAI Best Practices](https://platform.openai.com/docs/guides/prompt-engineering)
 **Exit check:** Benchmarked prompt library >80% accuracy on target tasks.
 
 ### Module 3: RAG (Week 3-5)
@@ -51,7 +51,7 @@ Learners who can fine-tune LLMs and want to build production systems. Common mis
 ### Module 5: Inference Optimization (Week 7-8)
 **Objectives:** Optimize inference for speed and memory.
 **Content:** Quantization (GPTQ, AWQ, GGUF, bitsandbytes). vLLM (PagedAttention, continuous batching, tensor parallel). SGLang (RadixAttention, prefix caching). Speculative decoding (draft models, Medusa). KV cache optimization (sliding window, eviction).
-**Lab:** Quantize Llama 3.1 8B with AWQ and GPTQ. Benchmark vs FP16. Deploy with vLLM, measure concurrent throughput.
+**Lab:** Quantize Llama 3.1 8B with AWQ and GPTQ (or a 1-3B model on smaller GPUs). Benchmark vs FP16. Deploy with vLLM, measure concurrent throughput.
 **Sources:** [vLLM](https://docs.vllm.ai/) · [SGLang](https://sgl-project.github.io/) · [AutoGPTQ](https://github.com/AutoGPTQ/AutoGPTQ) · [AutoAWQ](https://github.com/casper-hansen/AutoAWQ)
 **Exit check:** Benchmark comparing FP16/AWQ/GPTQ on latency, throughput, quality.
 

@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .mlt-lab-ml-foundations
-source .mlt-lab-ml-foundations/bin/activate
+python -m venv .training.mlt/labs/linear-regression/.venv
+source .training.mlt/labs/linear-regression/.venv/bin/activate
 pip install numpy matplotlib
 ```
 
@@ -84,5 +84,5 @@ plt.show()
 ## Cleanup
 ```bash
 deactivate
-rm -rf .mlt-lab-ml-foundations
+rm -rf .training.mlt/labs/linear-regression/.venv
 ```

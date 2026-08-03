@@ -40,7 +40,7 @@ Follow `standards/lab-safety.md` for environment setup, resource limits, and saf
 5. Generate the lab structure under `.training.mlt/labs/<topic>/`:
    - `README.md` with prerequisites, setup steps, learning objectives
    - `setup.sh` with environment creation commands:
-     - `python -m venv .mlt-lab-<topic>` (or conda/uv equivalent)
+     - `python -m venv .training.mlt/labs/<topic>/.venv` (or conda/uv equivalent, per lab-safety.md)
      - Package installation commands with pinned versions
    - `lab.py` or `lab.ipynb` with the guided exercise:
      - Numbered steps with clear instructions

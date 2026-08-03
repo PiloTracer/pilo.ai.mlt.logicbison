@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .mlt-lab-lora
-source .mlt-lab-lora/bin/activate
+python -m venv .training.mlt/labs/lora-finetuning/.venv
+source .training.mlt/labs/lora-finetuning/.venv/bin/activate
 pip install torch transformers peft trl datasets accelerate bitsandbytes
 ```
 
@@ -101,5 +101,5 @@ print("Training complete! Model saved to ./lora-output/final")
 ```bash
 rm -rf ./lora-output
 deactivate
-rm -rf .mlt-lab-lora
+rm -rf .training.mlt/labs/lora-finetuning/.venv
 ```

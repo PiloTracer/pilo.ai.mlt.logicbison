@@ -36,7 +36,7 @@ Follow `standards/assessment.md` for drill rubric and `standards/lab-safety.md` 
    - Ensure it is runnable on learner's hardware
    - If from case library, adapt the case to a timed exercise
 4. Set up the drill environment:
-   - Create isolated venv: `.mlt-lab-drill-<type>`
+   - Create isolated venv: `.training.mlt/drills/.venv-<type>` (per lab-safety.md)
    - Install required packages
    - Provide starter code template if appropriate
 5. Present the drill to the learner:

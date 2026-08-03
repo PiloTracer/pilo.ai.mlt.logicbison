@@ -52,7 +52,7 @@ Follow `standards/assessment.md` for scoring anchors, dimensions, and rubric.
 5. Recommend a program based on the weakest dimensions:
    - Score 1-2 average → `ml-foundations`
    - Score 2-3 average → `deep-learning-essentials` or `nlp-and-transformers`
-   - Score 3-4 average → `llm-finetuning` or `llm-engineering`
+   - Score 3-4 average → `llm-finetuning`, `llm-engineering`, or `ai-agents-and-apps`
    - Score 4-5 average → `llm-training` or `mlops-and-deployment`
 6. Challenge any anti-patterns found (per `standards/assessment.md`)
 7. Write the scorecard to `.training.mlt/context/SCORECARD.md`
