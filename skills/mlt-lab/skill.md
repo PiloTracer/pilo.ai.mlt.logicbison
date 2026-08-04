@@ -53,6 +53,9 @@ Follow `standards/lab-safety.md` for environment setup, resource limits, and saf
 7. Verify model names reference verified publishers on Hugging Face
 8. Run a dry-check: confirm all imports resolve, no hardcoded paths, no API keys in code
 9. Present the lab to the learner with setup instructions
+10. When the learner completes the lab and the output matches `expected_output.md`, record the result:
+   - If the lab maps to a module of an active program, tick that module's **Lab** cell in `.training.mlt/programs/<slug>/progress.md` (with date and pass/notes)
+   - Standalone labs (no program mapping) are still recorded by their artifact directory under `.training.mlt/labs/<topic>/`
 
 ## Completion criteria
 
@@ -62,3 +65,4 @@ Follow `standards/lab-safety.md` for environment setup, resource limits, and saf
 - Environment setup script uses isolated virtual environment
 - All model downloads are <10GB or approved by user
 - Troubleshooting guide covers at least 3 common errors
+- Completed labs tick the matching module's Lab cell in the active program's `progress.md`
