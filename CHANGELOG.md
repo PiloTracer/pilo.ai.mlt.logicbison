@@ -16,11 +16,16 @@
 - `program-spec.md`: Level enum allows bridging labels; prerequisite section matches actual program files
 - `.gitignore`: `.training.mlt/` skeleton now tracked (it silently vanished on fresh clones); `.env.*` covered with `!.env.example`; lab venvs ignored
 - `framework-verify.sh`: now checks skills↔registry↔contract sync, curricula↔README catalog, template/skeleton parity, script syntax, docs content, and broken relative links
+- `deploy-basic` invocation: `-` separator and dashed flags are now optional — `@deploy-basic - /path --update` and `@deploy-basic /path update` are equivalent (skill parse + script arg handling)
+- `mlt-review status` now includes the next action (from NEXT.md) in every report, refreshes `.quick/progress.md` and `.quick/gates.md` on each run (they were static placeholders no skill ever updated), and emits a BLOCKED report when no program is installed; `.quick/` files marked as generated views
 
 ### Added
 - 30 drill lab templates (`drills/lab-templates/`) — every case in `drills/case-library.md` now has a full lab; all local-first (CPU or consumer GPU, <3B models), with setup, runnable code, expected output, troubleshooting, cleanup
 - `docs/README.md` (docs/ was empty and failed verification on fresh clones)
 - Thin-client `cursorrules.template` now points to the full ruleset at `$TRAINER_MLT_SOURCE/.cursorrules`
+- `templates/thin-client-section.md` + additive `--update` merge in `deploy-basic.sh` (idempotent append into existing target contracts; learned from the future-strategy deploy)
+- Merge procedure in `skills/deploy-basic/skill.md`: subsection integration, alias namespacing (`{MLT_HANDOFF}`/`{MLT_NEXT}`) on placeholder collision, skill-routing registration, separation note
+- Target-repo coexistence rules in `.cursorrules` and multi-framework guidance in `cursorrules.template`
 
 ## [0.1.0] - 2026-08-03
 

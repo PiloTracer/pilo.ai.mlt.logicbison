@@ -1,13 +1,13 @@
 # Session Handoff
 
-**Last session:** 2026-08-03
+**Last session:** 2026-08-03 (2)
 **Last skill used:** session-mlt (close)
 **Active program:** none (framework-maintenance session)
 
 ## Context for next session
 
-- **What we covered:** Full audit of the framework against the original generation prompt; ~35 defects found and fixed across deploy scripts, `.cursorrules`, skills, standards, curricula, and repo hygiene; 30 missing drill lab templates generated (33/33 coverage); verification gate strengthened. Details in `.training.mlt/sessions/2026-08-03-1633.md` and `CHANGELOG.md` [Unreleased].
-- **Key decisions made:** thin-client template points to full ruleset at `$TRAINER_MLT_SOURCE/.cursorrules`; `.training.mlt/` skeleton is git-tracked; Level enum allows bridging labels; lab venvs live inside `.training.mlt/`.
+- **What we covered:** Deployed MLT thin-client into future-strategy and verified it; fixed target-side integration gaps (alias collision, skill routing); hardened the framework against recurrence (thin-client-section template, idempotent `--update` merge, Merge procedure, coexistence rules); made deploy invocation forms equivalent; completed the status-reporting chain (`mlt-review status` now reports Next + refreshes `.quick/` views). Details: `.training.mlt/sessions/2026-08-03-1850.md` and `CHANGELOG.md` [Unreleased].
+- **Key decisions made:** `.quick/` files are generated views refreshed by `@mlt-review status`; script does mechanical merges, agent does structured merges; `{MLT_*}` namespaced aliases on placeholder collision.
 - **Open questions:** none
 - **Blockers:** none
 
@@ -19,4 +19,4 @@
 
 ## Notes
 
-Working tree contains all fixes uncommitted until the user explicitly requests a commit. Verify state any time with `bash scripts/framework-verify.sh`.
+MLT is live in future-strategy (uncommitted there — target-side commit is the user's call). Framework state verified: `bash scripts/framework-verify.sh` → 0 errors.

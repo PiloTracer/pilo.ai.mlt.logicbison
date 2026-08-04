@@ -28,16 +28,18 @@ Follow `standards/assessment.md` for gate criteria and scoring.
 
 ## Steps — status mode
 
-1. Read `.training.mlt/programs/<slug>/progress.md` for task ledger
-2. Read `.training.mlt/programs/<slug>/PROGRAM.md` for exit criteria
-3. Read `.training.mlt/drills/` for drill scores
-4. Read `.training.mlt/context/SCORECARD.md` for assessment scores
-5. Compute progress:
+1. If no program exists under `.training.mlt/programs/`, emit a BLOCKED report (per `skills/SKILL_DEPENDENCIES.md`) with `unlock: @mlt-program-standard install - <slug>` or `@mlt-program-custom - <request>` and stop
+2. Read `.training.mlt/programs/<slug>/progress.md` for task ledger
+3. Read `.training.mlt/programs/<slug>/PROGRAM.md` for exit criteria
+4. Read `.training.mlt/drills/` for drill scores
+5. Read `.training.mlt/context/SCORECARD.md` for assessment scores
+6. Read `.training.mlt/plans/NEXT.md` for the planned next action
+7. Compute progress:
    - Modules completed / total modules
    - Labs completed / total labs
    - Average drill score
    - Exit criteria met / total criteria
-6. For short status, render:
+8. For short status, render:
 
 ```text
 Program: <name>
@@ -46,12 +48,16 @@ Labs: <X>/<Y> complete
 Avg drill score: <score>/4
 Exit criteria: <X>/<Y> met
 Gate: <OPEN|CLOSED> — <reason if closed>
+Next: <next action from NEXT.md>
 ```
 
-7. For `--full`, add per-module detail:
+9. For `--full`, add per-module detail:
    - Each module: status, lab result, drill score, exit check pass/fail
    - Strongest and weakest areas
    - Time spent (if session logs available)
+10. Refresh the operator views so they never go stale:
+   - Rewrite `.quick/progress.md` from the computed data (active programs, completed sessions from `.training.mlt/sessions/`, drill scores, totals)
+   - Update the "Current Gate Status" table in `.quick/gates.md` from the current gate states (keep the gate definitions and BLOCKED format sections intact)
 
 ## Steps — certify mode
 
@@ -73,7 +79,7 @@ Gate: <OPEN|CLOSED> — <reason if closed>
 
 ## Completion criteria
 
-- status: progress report rendered with gate state
+- status: progress report rendered with gate state and next action; `.quick/progress.md` and `.quick/gates.md` refreshed from current data
 - certify: all gates evaluated with PASS/FAIL and evidence
 - If certified: CERTIFICATE.md written, next program recommended, NEXT.md updated
 - If blocked: BLOCKED report with remediation steps

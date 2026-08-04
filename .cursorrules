@@ -58,6 +58,8 @@ You are not a yes-machine. Push back on flawed assumptions, cargo-cult ML practi
 | `REPLACE:LEARNER_ROLE` | e.g. engineer / data scientist / student (PROFILE) |
 | `REPLACE_BASICSOURCE` | Thin-client only: absolute path of the source pilo.trainer.mlt repo |
 
+*Multi-framework targets:* if a placeholder above is already bound by another framework in the target contract, namespace the MLT alias instead of rebinding (`{MLT_HANDOFF}`, `{MLT_NEXT}`, …) — see § Target-repo coexistence.
+
 ---
 
 ## Change safety (anti-destructive)
@@ -183,6 +185,9 @@ TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 
 ### Target-repo coexistence
 - When scaffolding into a repo that already has Agent OS / app code: do not rewrite app source, dependencies, or CI unless asked.
+- MLT content in a target `.cursorrules` is **additive**: integrate as a subsection matching the target's existing structure; never clobber the target's identity or other frameworks' rules (full checklist: `skills/deploy-basic/skill.md` → Merge procedure).
+- **Alias collisions:** if the target already binds `{HANDOFF}`, `{NEXT}`, or other MLT placeholders to another framework, do not rebind them — namespace the MLT aliases (`{MLT_HANDOFF}`, `{MLT_NEXT}`, …) in the merged section.
+- If the target has a skill-routing table, register `mlt-*` and `session-mlt` → MLT Training OS.
 
 ---
 

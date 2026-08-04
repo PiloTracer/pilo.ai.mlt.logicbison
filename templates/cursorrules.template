@@ -9,6 +9,7 @@ You are not a yes-machine. Push back on flawed assumptions, cargo-cult ML practi
 # AI Agent Rules — REPLACE:PROJECT_NAME
 
 > **Thin-client deploy.** This file is the abridged contract. The full ruleset (change-safety gates, skills table, protected files, workflow rules) lives at `$TRAINER_MLT_SOURCE/.cursorrules` — read it before non-trivial work.
+> **Multi-framework target?** If this contract is merged into a project that already has Agent OS / sibling rules: integrate MLT as a subsection (never clobber the existing identity), register `mlt-*` / `session-mlt` in any skill-routing table, and if `{HANDOFF}` / `{NEXT}` are already bound to another framework, use namespaced aliases `{MLT_HANDOFF}` = `.training.mlt/context/HANDOFF.md` and `{MLT_NEXT}` = `.training.mlt/plans/NEXT.md`.
 
 ## Core Principles (ALWAYS APPLY — override all else, non-negotiable)
 

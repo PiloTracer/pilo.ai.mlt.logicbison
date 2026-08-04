@@ -8,6 +8,7 @@ Reusable templates for bootstrapping and deployment.
 |------|---------|
 | `bootstrap.sh` | Scaffolds `.training.mlt/` directories and learner memory |
 | `cursorrules.template` | `.cursorrules` template with `REPLACE:` tokens for thin-client deploy |
+| `thin-client-section.md` | Additive MLT section merged into a target's existing `.cursorrules` on `--update` |
 | `training/` | Learner memory templates (PROFILE, HANDOFF, NEXT, UNKNOWNS) |
 
 ## Usage

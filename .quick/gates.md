@@ -1,5 +1,7 @@
 # Gates and Readiness
 
+> Gate definitions are static; the "Current Gate Status" table is refreshed by `@mlt-review status`.
+
 ## Gate Definitions
 
 | Gate | Requirement | Unlock |
