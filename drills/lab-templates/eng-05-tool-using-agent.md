@@ -9,8 +9,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/tool-using-agent/.venv
-source .training.mlt/labs/tool-using-agent/.venv/bin/activate
+python -m venv .work.mlt/labs/tool-using-agent/.venv
+source .work.mlt/labs/tool-using-agent/.venv/bin/activate
 pip install requests
 ollama pull llama3.2:1b
 ```
@@ -212,6 +212,6 @@ if __name__ == "__main__":
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/tool-using-agent/.venv
+rm -rf .work.mlt/labs/tool-using-agent/.venv
 rm -rf fixtures agent.py
 ```

@@ -26,8 +26,8 @@ Follow `standards/citation.md` for source verification.
 
 ## Steps
 
-1. Read `.training.mlt/context/PROFILE.md` for learner interests and goals
-2. Read `.training.mlt/sources/sources.md` for currently tracked sources
+1. Read `.work.mlt/context/PROFILE.md` for learner interests and goals
+2. Read `.work.mlt/sources/sources.md` for currently tracked sources
 3. Read `references/core-library.md` for the canonical knowledge base
 4. For each active topic area (or `--topic` if specified):
    - Identify key developments since `--since` date:
@@ -39,7 +39,7 @@ Follow `standards/citation.md` for source verification.
      - Verify with a real, accessible source
      - Classify: new tool, paper, technique, deprecation, update
      - Assess relevance to the learner's profile and program
-5. Generate an update report under `.training.mlt/sources/UPDATE-<date>.md`:
+5. Generate an update report under `.work.mlt/sources/UPDATE-<date>.md`:
 
 ### Update report format
 
@@ -67,12 +67,12 @@ Follow `standards/citation.md` for source verification.
 ```
 
 6. Present the report to the learner
-7. On learner approval, apply changes to `.training.mlt/sources/sources.md`
+7. On learner approval, apply changes to `.work.mlt/sources/sources.md`
 8. If the learner has an active program, flag any modules that should be updated
 
 ## Completion criteria
 
-- Update report written to `.training.mlt/sources/UPDATE-<date>.md`
+- Update report written to `.work.mlt/sources/UPDATE-<date>.md`
 - Each development has a real, verified source
 - Report includes additions, deprecations, and retirement recommendations
 - sources.md updated on learner approval

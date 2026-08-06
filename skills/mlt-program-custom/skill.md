@@ -27,8 +27,8 @@ Follow `standards/program-spec.md` for structure and `standards/citation.md` for
 
 ## Steps
 
-1. Read `.training.mlt/context/PROFILE.md` for learner background
-2. Read `.training.mlt/context/SCORECARD.md` if available for dimension scores
+1. Read `.work.mlt/context/PROFILE.md` for learner background
+2. Read `.work.mlt/context/SCORECARD.md` if available for dimension scores
 3. Parse the learner's request into:
    - Primary topic or goal
    - Implied level (beginner, intermediate, advanced)
@@ -50,11 +50,11 @@ Follow `standards/program-spec.md` for structure and `standards/citation.md` for
 6. Order modules by dependency (prerequisites before dependents)
 7. Verify all cited sources exist and are accessible
 8. Present the proposed program to the learner for approval
-9. On approval, write to `.training.mlt/programs/<slug>/`:
+9. On approval, write to `.work.mlt/programs/<slug>/`:
    - `PROGRAM.md` — full program specification
    - `progress.md` — task ledger with all modules
    - `notes.md` — retrieval queue (empty)
-10. Update `.training.mlt/plans/NEXT.md` with the first module
+10. Update `.work.mlt/plans/NEXT.md` with the first module
 
 ## Completion criteria
 

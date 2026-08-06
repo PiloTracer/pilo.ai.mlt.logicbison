@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/sft-trl/.venv
-source .training.mlt/labs/sft-trl/.venv/bin/activate
+python -m venv .work.mlt/labs/sft-trl/.venv
+source .work.mlt/labs/sft-trl/.venv/bin/activate
 pip install torch transformers trl datasets accelerate
 ```
 
@@ -77,7 +77,7 @@ dataset = load_dataset(DATASET, split="train").select(range(1000))
 
 # --- SFT training ---
 config = SFTConfig(
-    output_dir=".training.mlt/labs/sft-trl/checkpoints",
+    output_dir=".work.mlt/labs/sft-trl/checkpoints",
     per_device_train_batch_size=4,
     num_train_epochs=1,
     learning_rate=2e-5,
@@ -120,7 +120,7 @@ Expected runtime: ~10-20 minutes on CPU, a few minutes on a small GPU.
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/sft-trl/.venv
-rm -rf .training.mlt/labs/sft-trl/checkpoints
+rm -rf .work.mlt/labs/sft-trl/.venv
+rm -rf .work.mlt/labs/sft-trl/checkpoints
 ```
 The model and dataset stay in the HF cache (`~/.cache/huggingface/`); remove them with `hf cache rm` if you want the disk back.

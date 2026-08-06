@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/model-merging/.venv
-source .training.mlt/labs/model-merging/.venv/bin/activate
+python -m venv .work.mlt/labs/model-merging/.venv
+source .work.mlt/labs/model-merging/.venv/bin/activate
 pip install mergekit transformers torch
 ```
 
@@ -118,5 +118,5 @@ python compare.py
 ```bash
 rm -rf ./merged-linear ./merged-slerp
 deactivate
-rm -rf .training.mlt/labs/model-merging/.venv
+rm -rf .work.mlt/labs/model-merging/.venv
 ```

@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/loss-analysis/.venv
-source .training.mlt/labs/loss-analysis/.venv/bin/activate
+python -m venv .work.mlt/labs/loss-analysis/.venv
+source .work.mlt/labs/loss-analysis/.venv/bin/activate
 pip install numpy matplotlib
 ```
 
@@ -153,6 +153,6 @@ print(f"curve_E: {diagnose(train_d, val_d)}")
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/loss-analysis/.venv
+rm -rf .work.mlt/labs/loss-analysis/.venv
 rm -f loss_curves.png spike_detection.png
 ```

@@ -96,10 +96,10 @@ echo ""
 
 echo "--- Template/skeleton parity ---"
 for pair in \
-    "templates/training/PROFILE.md:.training.mlt/context/PROFILE.md" \
-    "templates/training/HANDOFF.md:.training.mlt/context/HANDOFF.md" \
-    "templates/training/NEXT.md:.training.mlt/plans/NEXT.md" \
-    "templates/training/UNKNOWNS.md:.training.mlt/plans/UNKNOWNS.md"; do
+    "templates/training/PROFILE.md:.work.mlt/context/PROFILE.md" \
+    "templates/training/HANDOFF.md:.work.mlt/context/HANDOFF.md" \
+    "templates/training/NEXT.md:.work.mlt/plans/NEXT.md" \
+    "templates/training/UNKNOWNS.md:.work.mlt/plans/UNKNOWNS.md"; do
     src="${pair%%:*}"
     dst="${pair##*:}"
     if [ ! -f "$dst" ]; then
@@ -114,12 +114,12 @@ for pair in \
 done
 echo ""
 
-echo "--- Memory layout (.training.mlt skeleton) ---"
+echo "--- Memory layout (.work.mlt skeleton) ---"
 for d in context plans programs sessions sources labs tutorials drills exports; do
-    if [ -d ".training.mlt/$d" ]; then
-        echo "  [OK] .training.mlt/$d/"
+    if [ -d ".work.mlt/$d" ]; then
+        echo "  [OK] .work.mlt/$d/"
     else
-        echo "  [MISSING] .training.mlt/$d/ (fresh clones lose empty dirs — add a .gitkeep)"
+        echo "  [MISSING] .work.mlt/$d/ (fresh clones lose empty dirs — add a .gitkeep)"
         ERRORS=$((ERRORS + 1))
     fi
 done

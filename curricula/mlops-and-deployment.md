@@ -66,4 +66,4 @@ Learners who can build ML systems and want to productionize them. Common misconc
 | Production patterns | Batch + streaming handle failures gracefully |
 
 ## Exit Criteria
-All exit checks met. Artifacts in `.training.mlt/`: MLflow config, FastAPI service, Grafana dashboard, CI/CD pipeline, architecture docs.
+All exit checks met. Artifacts in `.work.mlt/`: MLflow config, FastAPI service, Grafana dashboard, CI/CD pipeline, architecture docs.

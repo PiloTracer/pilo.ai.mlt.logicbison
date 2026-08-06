@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/rnn-sequence-model/.venv
-source .training.mlt/labs/rnn-sequence-model/.venv/bin/activate
+python -m venv .work.mlt/labs/rnn-sequence-model/.venv
+source .work.mlt/labs/rnn-sequence-model/.venv/bin/activate
 pip install torch numpy matplotlib
 ```
 
@@ -126,5 +126,5 @@ plt.show()
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/rnn-sequence-model/.venv
+rm -rf .work.mlt/labs/rnn-sequence-model/.venv
 ```

@@ -1,6 +1,6 @@
 # Lab — Gradient Descent for Linear Regression (Pure NumPy)
 
-> **Example lab.** Shows the artifact layout every `@mlt-lab setup - <topic>` produces under `.training.mlt/labs/<topic>/`. This lab maps to Module 1 of the `ml-foundations` program; its completion is recorded in the program's `progress.md` (Lab cell) and in the session log.
+> **Example lab.** Shows the artifact layout every `@mlt-lab setup - <topic>` produces under `.work.mlt/labs/<topic>/`. This lab maps to Module 1 of the `ml-foundations` program; its completion is recorded in the program's `progress.md` (Lab cell) and in the session log.
 
 ## Learning objectives
 
@@ -27,7 +27,7 @@ Or run `bash setup.sh` from the project root.
 ## Run
 
 ```bash
-python .training.mlt/labs/grad-descent/gd_linreg.py
+python .work.mlt/labs/grad-descent/gd_linreg.py
 ```
 
 Success looks like `expected_output.md`. If it fails, see `troubleshooting.md` patterns below.
@@ -51,7 +51,7 @@ Success looks like `expected_output.md`. If it fails, see `troubleshooting.md` p
 ## Cleanup
 
 ```bash
-rm -rf .training.mlt/labs/grad-descent/.venv   # keeps code + artifacts, frees disk
+rm -rf .work.mlt/labs/grad-descent/.venv   # keeps code + artifacts, frees disk
 ```
 
 ## Troubleshooting

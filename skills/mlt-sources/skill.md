@@ -32,13 +32,13 @@ Follow `standards/citation.md` for source verification and format.
 1. Verify the source exists and is accessible:
    - If URL provided, confirm it resolves
    - Confirm author/organization is credible
-   - Check it is not already in `.training.mlt/sources/sources.md`
+   - Check it is not already in `.work.mlt/sources/sources.md`
 2. Classify the source:
    - Type: book, course, paper, tutorial, video, repo
    - Topic: which dimension(s) it covers (Math, Python, ML, DL, LLMs, Tools, Deployment)
    - Level: beginner, intermediate, advanced
    - Quality rating: acceptable, good, excellent
-3. Append to `.training.mlt/sources/sources.md` with:
+3. Append to `.work.mlt/sources/sources.md` with:
    - ID (auto-incrementing)
    - Title, author, URL, date accessed
    - Type, topic, level, quality rating
@@ -47,13 +47,13 @@ Follow `standards/citation.md` for source verification and format.
 
 ## Steps — remove mode
 
-1. Find the source by ID in `.training.mlt/sources/sources.md`
+1. Find the source by ID in `.work.mlt/sources/sources.md`
 2. Confirm with user before removing
 3. Remove the entry, preserve numbering for other entries
 
 ## Steps — curate mode
 
-1. Read `.training.mlt/sources/sources.md`
+1. Read `.work.mlt/sources/sources.md`
 2. Read `references/core-library.md` for the canonical library
 3. For each tracked source:
    - Check if URL still resolves
@@ -67,7 +67,7 @@ Follow `standards/citation.md` for source verification and format.
 
 ## Steps — list mode
 
-1. Read `.training.mlt/sources/sources.md`
+1. Read `.work.mlt/sources/sources.md`
 2. Render table filtered by `--topic` if specified
 
 ## Completion criteria

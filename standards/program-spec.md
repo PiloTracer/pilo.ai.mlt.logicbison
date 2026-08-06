@@ -54,7 +54,7 @@ Each module includes:
 
 ### Exit criteria
 
-All module exit checks met; artifacts stored under `.training.mlt/` and linked from the task ledger.
+All module exit checks met; artifacts stored under `.work.mlt/` and linked from the task ledger.
 
 ## Naming conventions
 
@@ -70,7 +70,7 @@ If a program has prerequisites, specify:
 
 ## Customization
 
-When installing a program to `.training.mlt/programs/<slug>/`:
+When installing a program to `.work.mlt/programs/<slug>/`:
 1. Copy the curriculum file
 2. Create `PROGRAM.md` with learner-specific notes
 3. Create `progress.md` with task ledger

@@ -15,9 +15,9 @@ Two layers, never mixed:
 | Layer | Where | What lives there |
 |-------|-------|------------------|
 | **Framework** | this repo (`skills/`, `curricula/`, `standards/`, `references/`, `drills/`, `templates/`, `scripts/`) | Skills, program catalog, binding standards, knowledge base — shared, read-only |
-| **Learner memory** | `.training.mlt/` inside *your target project* | Your profile, programs, sessions, labs, tutorials, drills, progress — yours forever |
+| **Learner memory** | `.work.mlt/` inside *your target project* | Your profile, programs, sessions, labs, tutorials, drills, progress — yours forever |
 
-The agent reads the framework's rules and writes only into your target project's `.training.mlt/`. That boundary is enforced by the contract.
+The agent reads the framework's rules and writes only into your target project's `.work.mlt/`. That boundary is enforced by the contract.
 
 ---
 
@@ -64,13 +64,13 @@ bash scripts/install.sh deploy /path/to/my-learning-project
 This (thin-client deploy):
 
 1. Writes `/path/to/my-learning-project/.cursorrules` — the agent contract, pointing back at this framework via `TRAINER_MLT_SOURCE`
-2. Scaffolds `.training.mlt/` (context, plans, programs, sessions, sources, labs, tutorials, drills, exports) and `.quick/` cheat sheets
+2. Scaffolds `.work.mlt/` (context, plans, programs, sessions, sources, labs, tutorials, drills, exports) and `.quick/` cheat sheets
 3. Never overwrites existing files without `--force` / `--update`
 
 Deploying into a repo that already has code or another `.cursorrules`? Use `--update` — MLT merges additively and never clobbers:
 
 ```bash
-bash scripts/deploy-basic.sh /path/to/existing-repo --update
+bash scripts/mlt-deploy-basic.sh /path/to/existing-repo --update
 ```
 
 > Keep the `pilo.trainer.mlt` checkout on disk: the target's `.cursorrules` points at it (`TRAINER_MLT_SOURCE`). Do not move or delete it.
@@ -100,7 +100,7 @@ Tell the agent:
 @mlt-bootstrap init
 ```
 
-The agent scaffolds anything missing and interviews you (8 dimensions: programming, Python, ML/DL/LLM experience, math, hardware, preferences, goal, time budget), then writes your answers into `.training.mlt/context/PROFILE.md`. Answer honestly — the whole system calibrates to this, and it corrects you later if reality disagrees.
+The agent scaffolds anything missing and interviews you (8 dimensions: programming, Python, ML/DL/LLM experience, math, hardware, preferences, goal, time budget), then writes your answers into `.work.mlt/context/PROFILE.md`. Answer honestly — the whole system calibrates to this, and it corrects you later if reality disagrees.
 
 ---
 
@@ -110,7 +110,7 @@ The agent scaffolds anything missing and interviews you (8 dimensions: programmi
 @mlt-assess run
 ```
 
-A diagnostic across 7 dimensions (math, Python, ML theory, DL, LLMs, tools, deployment), scored 1–5 with evidence. Output: `.training.mlt/context/SCORECARD.md` plus recommended programs. This is not a personality quiz — claims without demonstrated evidence score low.
+A diagnostic across 7 dimensions (math, Python, ML theory, DL, LLMs, tools, deployment), scored 1–5 with evidence. Output: `.work.mlt/context/SCORECARD.md` plus recommended programs. This is not a personality quiz — claims without demonstrated evidence score low.
 
 ---
 
@@ -131,27 +131,27 @@ Typical starting points:
 | Want to fine-tune LLMs now | `@mlt-program-standard install - llm-finetuning` |
 | Something bespoke | `@mlt-program-custom - "6 weeks, evenings only, goal: fine-tune a 1B model on my domain data"` |
 
-Install copies the curriculum into `.training.mlt/programs/<slug>/` as three files: `PROGRAM.md` (the program, annotated with your profile), `progress.md` (the task ledger — the system's ledger of record), `notes.md` (retrieval queue). Prerequisites are validated at install; the agent warns before letting you skip one.
+Install copies the curriculum into `.work.mlt/programs/<slug>/` as three files: `PROGRAM.md` (the program, annotated with your profile), `progress.md` (the task ledger — the system's ledger of record), `notes.md` (retrieval queue). Prerequisites are validated at install; the agent warns before letting you skip one.
 
 ---
 
 ## 8. Your first training session
 
 ```text
-@session-mlt start
+@mlt-session start
 @mlt-mentor run
 ```
 
-- `start` loads your profile, last handoff, and planned next action, sets the agenda, and opens the session log: `.training.mlt/sessions/YYYY-MM-DD_<topic-slug>.md`
+- `start` loads your profile, last handoff, and planned next action, sets the agenda, and opens the session log: `.work.mlt/sessions/YYYY-MM-DD_<topic-slug>.md`
 - `run` executes the session per the mentoring standard: **retrieve** (closed-book recall first), orient, diagnose, teach code-first, practice (lab or drill), commit to one action, log
 
-Everything produced is written into `.training.mlt/` — labs under `labs/<topic>/`, drill scores under `drills/`, ledger ticks in `progress.md`. When done:
+Everything produced is written into `.work.mlt/` — labs under `labs/<topic>/`, drill scores under `drills/`, ledger ticks in `progress.md`. When done:
 
 ```text
-@session-mlt close
+@mlt-session close
 ```
 
-Close refreshes `HANDOFF.md` (what happened, decisions, open questions) and `NEXT.md` (the single concrete next action). Next time you sit down, those two files are your resume point — `@session-mlt status` or `@mlt-review status` re-orients you in under a minute.
+Close refreshes `HANDOFF.md` (what happened, decisions, open questions) and `NEXT.md` (the single concrete next action). Next time you sit down, those two files are your resume point — `@mlt-session status` or `@mlt-review status` re-orients you in under a minute.
 
 ---
 
@@ -202,7 +202,7 @@ The director maps intent → skill, checks prerequisites, and dispatches.
 my-learning-project/
 ├── .cursorrules                     # agent contract (points at the framework)
 ├── .quick/                          # operator cheat sheets (generated views)
-└── .training.mlt/                   # ALL learner memory
+└── .work.mlt/                   # ALL learner memory
     ├── context/                     # PROFILE.md, HANDOFF.md, SCORECARD.md
     ├── plans/                       # NEXT.md, UNKNOWNS.md
     ├── programs/<slug>/             # PROGRAM.md, progress.md, notes.md, CERTIFICATE.md
@@ -214,7 +214,7 @@ my-learning-project/
     └── exports/                     # exports you choose to keep
 ```
 
-Worked examples of every one of these ship with the framework itself — see `.training.mlt/programs/ml-foundations/`, `.training.mlt/labs/grad-descent/`, `.training.mlt/tutorials/20260804-learn-today/`, and `.training.mlt/sessions/` in the `pilo.trainer.mlt` repo.
+Worked examples of every one of these ship with the framework itself — see `.work.mlt/programs/ml-foundations/`, `.work.mlt/labs/grad-descent/`, `.work.mlt/tutorials/20260804-learn-today/`, and `.work.mlt/sessions/` in the `pilo.trainer.mlt` repo.
 
 ---
 
@@ -223,7 +223,7 @@ Worked examples of every one of these ship with the framework itself — see `.t
 | Symptom | Fix |
 |---------|-----|
 | `BLOCKED: ...` report | Read `reason`/`missing`, run the `unlock` command, retry |
-| `pilo.trainer.mlt source unreachable: <path>` | The framework checkout moved or was deleted — restore it or re-deploy with `bash scripts/deploy-basic.sh <target> --update` |
+| `pilo.trainer.mlt source unreachable: <path>` | The framework checkout moved or was deleted — restore it or re-deploy with `bash scripts/mlt-deploy-basic.sh <target> --update` |
 | Agent doesn't know MLT skills | Make sure it read `.cursorrules` (Cursor: automatic; otherwise paste the instruction from §4) |
 | `install.sh` fails on `python3` | Python is only needed for labs; setup itself still works — install Python ≥ 3.9 before your first lab |
 | Windows | Use WSL2 or Git Bash — see [README.md § Windows compatibility](../README.md#windows-compatibility) |

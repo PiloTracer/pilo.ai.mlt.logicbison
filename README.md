@@ -27,7 +27,7 @@ The agent reads `.cursorrules` automatically. From here, everything happens insi
 @mlt-bootstrap init                                        # scaffold memory + profile interview
 @mlt-assess run                                            # diagnostic assessment
 @mlt-program-standard install - ml-foundations              # install a program
-@session-mlt start && @mlt-mentor run                      # first training session
+@mlt-session start && @mlt-mentor run                      # first training session
 ```
 
 Or with free-text:
@@ -46,7 +46,7 @@ Or with free-text:
 |--------------|-----|
 | Install a standard program | `@mlt-program-standard install - <slug>` |
 | Design a custom program | `@mlt-program-custom - <your request>` |
-| Start a training session | `@session-mlt start` → `@mlt-mentor run` |
+| Start a training session | `@mlt-session start` → `@mlt-mentor run` |
 | Hands-on lab | `@mlt-lab setup - <topic>` |
 | Written or video tutorial | `@mlt-tutorial generate - <topic>` |
 | Timed, scored drill | `@mlt-drill run - <type>` |
@@ -77,19 +77,19 @@ Two layers, never mixed:
 | Layer | Location | What |
 |-------|----------|------|
 | **Framework** | this repo (`skills/`, `curricula/`, `standards/`, etc.) | 18 skills, 8 programs, 6 binding standards, 33 lab templates — shared, read-only |
-| **Learner memory** | `.training.mlt/` inside your target project | Your profile, programs, sessions, labs, tutorials, drills, progress — yours forever |
+| **Learner memory** | `.work.mlt/` inside your target project | Your profile, programs, sessions, labs, tutorials, drills, progress — yours forever |
 
-The agent reads the framework's rules and writes only into `.training.mlt/`. That boundary is enforced by the contract.
+The agent reads the framework's rules and writes only into `.work.mlt/`. That boundary is enforced by the contract.
 
 ## Or pick a program and go
 
 You can also just look at the self-contained working examples that ship with the framework:
 
 ```text
-.training.mlt/programs/ml-foundations/     # an installed program (PROGRAM.md + progress.md + notes.md)
-.training.mlt/labs/grad-descent/            # a completed lab with heavily commented code
-.training.mlt/tutorials/20260804-learn-today/  # written + video tutorial pair
-.training.mlt/sessions/                     # an example session log
+.work.mlt/programs/ml-foundations/     # an installed program (PROGRAM.md + progress.md + notes.md)
+.work.mlt/labs/grad-descent/            # a completed lab with heavily commented code
+.work.mlt/tutorials/20260804-learn-today/  # written + video tutorial pair
+.work.mlt/sessions/                     # an example session log
 ```
 
 ---
@@ -112,7 +112,7 @@ You can also just look at the self-contained working examples that ship with the
 ```
 pilo.trainer.mlt/
 ├── .cursorrules              # Agent contract (the professor's rules)
-├── .training.mlt/            # Example learner memory (self-hosted skeleton)
+├── .work.mlt/              # Example learner memory (self-hosted skeleton)
 ├── curricula/                # 8 training programs catalog
 ├── standards/                # 6 binding standards (mentoring, assessment, lab safety, ...)
 ├── references/               # Knowledge base and source library
@@ -120,7 +120,7 @@ pilo.trainer.mlt/
 ├── skills/                   # 18 agent skills (orchestration)
 ├── templates/                # Bootstrap and deployment templates
 ├── docs/                     # Tutorial + quick-reference recipes
-├── scripts/                  # install.sh, deploy-basic.sh, framework-verify.sh
+├── scripts/                  # install.sh, mlt-deploy-basic.sh, framework-verify.sh
 ├── .quick/                   # Operator cheat sheets (generated views)
 ├── START_HERE.md             # Decision tree
 ├── PROCESS_ROUTER.md         # How-to → skill mapping
@@ -134,7 +134,7 @@ pilo.trainer.mlt/
 MLT is built on Linux and uses bash scripts (`sed`, `find`, `grep`, `awk`). On Windows, use:
 
 - **WSL2** (recommended) — clone and run inside a WSL2 distribution. All scripts, venv activation (`source .venv/bin/activate`), and path separators work natively.
-- **Git Bash** — `scripts/install.sh` and `deploy-basic.sh` run under Git Bash. Venv activation differs: use `.venv\Scripts\activate` instead (the agent and lab code handle this).
+- **Git Bash** — `scripts/install.sh` and `mlt-deploy-basic.sh` run under Git Bash. Venv activation differs: use `.venv\Scripts\activate` instead (the agent and lab code handle this).
 
 The `.cursorrules` contract itself is OS-agnostic. Only the shell scripts and venv paths need a bash-compatible shell.
 

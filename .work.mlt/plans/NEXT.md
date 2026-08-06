@@ -8,4 +8,4 @@
 1. Complete bootstrap and fill PROFILE
 2. Run `@mlt-assess run` to diagnose level
 3. Install a program with `@mlt-program-standard install - <slug>`
-4. Start first session with `@session-mlt start`
+4. Start first session with `@mlt-session start`

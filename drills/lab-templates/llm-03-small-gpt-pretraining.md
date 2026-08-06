@@ -9,8 +9,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/small-gpt-pretraining/.venv
-source .training.mlt/labs/small-gpt-pretraining/.venv/bin/activate
+python -m venv .work.mlt/labs/small-gpt-pretraining/.venv
+source .work.mlt/labs/small-gpt-pretraining/.venv/bin/activate
 pip install torch matplotlib
 ```
 
@@ -253,6 +253,6 @@ print(sample)
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/small-gpt-pretraining/.venv
+rm -rf .work.mlt/labs/small-gpt-pretraining/.venv
 rm -f input.txt gpt_shakespeare.pt loss_curve.png train_gpt.py
 ```

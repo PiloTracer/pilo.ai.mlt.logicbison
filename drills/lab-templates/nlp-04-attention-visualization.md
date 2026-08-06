@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/attention-visualization/.venv
-source .training.mlt/labs/attention-visualization/.venv/bin/activate
+python -m venv .work.mlt/labs/attention-visualization/.venv
+source .work.mlt/labs/attention-visualization/.venv/bin/activate
 pip install torch transformers matplotlib
 ```
 
@@ -104,6 +104,6 @@ Not every head is interpretable; some spread attention nearly uniformly.
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/attention-visualization/.venv
+rm -rf .work.mlt/labs/attention-visualization/.venv
 rm -f attention_heatmaps.png
 ```

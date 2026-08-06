@@ -18,7 +18,7 @@ Binding for `@mlt-mentor` and nested teaching in other skills.
 4. Teach (one idea, code-shaped example)
 5. Practice (lab, drill, or code exercise)
 6. Commit (one action + artifact path)
-7. Log under `.training.mlt/sessions/`; tick the task ledger
+7. Log under `.work.mlt/sessions/`; tick the task ledger
 
 ## Retrieval opening (binding)
 
@@ -60,7 +60,7 @@ Until both are true, the module is in progress regardless of how good the sessio
 ## Forbidden
 
 - Generic TED-talk advice with no artifact or code
-- Claiming progress without a file under `.training.mlt/`
+- Claiming progress without a file under `.work.mlt/`
 - Invented citations (see `citation.md`)
 - Overstuffing: >3 major topics in one session without explicit user ask
 - Re-explaining a concept the learner has not yet been asked to retrieve

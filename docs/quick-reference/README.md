@@ -1,6 +1,6 @@
 # Quick reference — MLT recipes
 
-Copy-paste starting points for the three things people generate most: **programs**, **tutorials**, and **quick lessons** (labs/drills/sessions). Run these inside your *target project* (where `.training.mlt/` lives), talking to your AI agent.
+Copy-paste starting points for the three things people generate most: **programs**, **tutorials**, and **quick lessons** (labs/drills/sessions). Run these inside your *target project* (where `.work.mlt/` lives), talking to your AI agent.
 
 | File | Contents |
 |------|----------|
@@ -21,6 +21,6 @@ When in doubt, use `@mlt-director - <plain language>` — it picks the skill, ch
 
 ## Golden rules
 
-1. **One target project** — all artifacts land in that project's `.training.mlt/`; the agent never scatters them elsewhere
-2. **Open/close sessions** — `@session-mlt start` / `close` keep your history coherent (one log per session, `YYYY-MM-DD_<topic>.md`)
+1. **One target project** — all artifacts land in that project's `.work.mlt/`; the agent never scatters them elsewhere
+2. **Open/close sessions** — `@mlt-session start` / `close` keep your history coherent (one log per session, `YYYY-MM-DD_<topic>.md`)
 3. **Trust the gates** — a BLOCKED report is a checklist, not an error; run the `unlock` line and retry

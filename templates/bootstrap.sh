@@ -2,7 +2,7 @@
 set -euo pipefail
 
 REPO_ROOT="${1:-.}"
-MEMORY_DIR="$REPO_ROOT/.training.mlt"
+MEMORY_DIR="$REPO_ROOT/.work.mlt"
 CONTEXT_DIR="$MEMORY_DIR/context"
 PLANS_DIR="$MEMORY_DIR/plans"
 PROGRAMS_DIR="$MEMORY_DIR/programs"

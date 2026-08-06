@@ -66,4 +66,4 @@ Learners who can fine-tune LLMs and want to build production systems. Common mis
 | Optimization | Quantization benchmark with clear tradeoff analysis |
 
 ## Exit Criteria
-All exit checks met. Artifacts in `.training.mlt/`: server config, prompt library, RAG pipeline, agent, quant benchmark.
+All exit checks met. Artifacts in `.work.mlt/`: server config, prompt library, RAG pipeline, agent, quant benchmark.

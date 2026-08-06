@@ -9,8 +9,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/text-classification/.venv
-source .training.mlt/labs/text-classification/.venv/bin/activate
+python -m venv .work.mlt/labs/text-classification/.venv
+source .work.mlt/labs/text-classification/.venv/bin/activate
 pip install torch transformers datasets
 ```
 
@@ -96,6 +96,6 @@ print(f"Test accuracy: {metrics['eval_accuracy']:.4f}")
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/text-classification/.venv
+rm -rf .work.mlt/labs/text-classification/.venv
 rm -rf ./results
 ```

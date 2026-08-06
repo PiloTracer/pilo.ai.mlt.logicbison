@@ -65,4 +65,4 @@ Learners who understand transformers and want to train LLMs from scratch. Comfor
 | Technical report | Reproducible report covering full pre-training pipeline |
 
 ## Exit Criteria
-All exit checks met. Artifacts in `.training.mlt/`: dataset pipeline, training config, model checkpoint, report.
+All exit checks met. Artifacts in `.work.mlt/`: dataset pipeline, training config, model checkpoint, report.

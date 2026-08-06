@@ -66,4 +66,4 @@ Learners who can run and prompt LLMs and want to build full AI applications. Pro
 | Demo | Runs locally with streaming, examples, error handling |
 
 ## Exit Criteria
-All exit checks met. Artifacts in `.training.mlt/`: app codebase, tool definitions, multi-agent system, eval suite, demo link.
+All exit checks met. Artifacts in `.work.mlt/`: app codebase, tool definitions, multi-agent system, eval suite, demo link.

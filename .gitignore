@@ -1,10 +1,10 @@
 # .gitignore
 
-# Training memory skeleton is TRACKED in this framework repo (see .training.mlt/).
+# Training memory skeleton is TRACKED in this framework repo (see .work.mlt/).
 # Learner content under it may be committed deliberately (START_HERE.md §5) —
 # but never commit secrets, large weights, or datasets. Lab virtualenvs are ignored:
-.training.mlt/**/.venv/
-.training.mlt/drills/.venv-*/
+.work.mlt/**/.venv/
+.work.mlt/drills/.venv-*/
 
 # Python
 __pycache__/

@@ -64,4 +64,4 @@ Learners comfortable with Python and basic ML. Ready to build neural networks. C
 | Training mastery | Ablation shows clear hyperparameter understanding |
 
 ## Exit Criteria
-All exit checks met. Artifacts in `.training.mlt/`: MLP impl, transfer learning classifier, sequence model.
+All exit checks met. Artifacts in `.work.mlt/`: MLP impl, transfer learning classifier, sequence model.

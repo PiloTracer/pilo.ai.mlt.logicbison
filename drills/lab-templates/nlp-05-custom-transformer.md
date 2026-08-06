@@ -9,8 +9,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/custom-transformer/.venv
-source .training.mlt/labs/custom-transformer/.venv/bin/activate
+python -m venv .work.mlt/labs/custom-transformer/.venv
+source .work.mlt/labs/custom-transformer/.venv/bin/activate
 pip install torch
 ```
 
@@ -199,5 +199,5 @@ print(decode(out[0].tolist()))
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/custom-transformer/.venv
+rm -rf .work.mlt/labs/custom-transformer/.venv
 ```

@@ -10,8 +10,8 @@
 
 ```bash
 ollama pull llama3.2:1b
-python -m venv .training.mlt/labs/prompt-engineering/.venv
-source .training.mlt/labs/prompt-engineering/.venv/bin/activate
+python -m venv .work.mlt/labs/prompt-engineering/.venv
+source .work.mlt/labs/prompt-engineering/.venv/bin/activate
 pip install requests
 ```
 
@@ -192,7 +192,7 @@ if __name__ == "__main__":
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/prompt-engineering/.venv
+rm -rf .work.mlt/labs/prompt-engineering/.venv
 ```
 
 Optionally free the model (only if no later drill needs it):

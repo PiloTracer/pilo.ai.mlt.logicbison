@@ -19,13 +19,13 @@
 ## Setup (isolated venv, per lab-safety)
 
 ```bash
-mkdir -p .training.mlt/labs/grad-descent
-python3 -m venv .training.mlt/labs/grad-descent/.venv
-source .training.mlt/labs/grad-descent/.venv/bin/activate
+mkdir -p .work.mlt/labs/grad-descent
+python3 -m venv .work.mlt/labs/grad-descent/.venv
+source .work.mlt/labs/grad-descent/.venv/bin/activate
 pip install numpy matplotlib
 ```
 
-Save the script as `.training.mlt/labs/grad-descent/gd_linreg.py` and run it from that directory.
+Save the script as `.work.mlt/labs/grad-descent/gd_linreg.py` and run it from that directory.
 
 ---
 
@@ -102,7 +102,7 @@ That is the entire algorithm. Memorize these four lines; everything else in deep
 
 ## Part 4 — Implement it (ten lines)
 
-Save as `gd_linreg.py` (the shipped example at `.training.mlt/labs/grad-descent/gd_linreg.py` is the same code with detailed explanatory comments):
+Save as `gd_linreg.py` (the shipped example at `.work.mlt/labs/grad-descent/gd_linreg.py` is the same code with detailed explanatory comments):
 
 ```python
 import numpy as np

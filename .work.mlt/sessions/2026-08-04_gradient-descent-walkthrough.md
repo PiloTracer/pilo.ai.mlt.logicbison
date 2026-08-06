@@ -1,8 +1,8 @@
 # Session Log — 2026-08-04 — Gradient Descent Walkthrough
 
-> **Example session log.** Demonstrates the canonical naming convention (`YYYY-MM-DD_<topic-slug>.md`) and the one-log-per-session rule: `@session-mlt start` created this file, and `@mlt-mentor`, `@mlt-lab`, and `@session-mlt close` all wrote into this same file.
+> **Example session log.** Demonstrates the canonical naming convention (`YYYY-MM-DD_<topic-slug>.md`) and the one-log-per-session rule: `@mlt-session start` created this file, and `@mlt-mentor`, `@mlt-lab`, and `@mlt-session close` all wrote into this same file.
 
-**Program:** ml-foundations · **Module:** M1 Math for ML · **Opened by:** `@session-mlt start`
+**Program:** ml-foundations · **Module:** M1 Math for ML · **Opened by:** `@mlt-session start`
 
 ## Agenda
 
@@ -23,15 +23,15 @@ Derive gradient descent by hand and complete M1's first lab in pure NumPy.
 
 ## Artifacts
 
-- `.training.mlt/labs/grad-descent/gd_linreg.py` (+ `setup.sh`, `README.md`, `expected_output.md`, `loss_curve.png`)
-- `.training.mlt/tutorials/20260804-learn-today/gradient-descent-linear-regression.md` (written track)
-- `.training.mlt/tutorials/20260804-learn-today/gradient-descent-video-entry.md` (video track)
-- Ledger: M1 Lab cell ticked in `.training.mlt/programs/ml-foundations/progress.md`
+- `.work.mlt/labs/grad-descent/gd_linreg.py` (+ `setup.sh`, `README.md`, `expected_output.md`, `loss_curve.png`)
+- `.work.mlt/tutorials/20260804-learn-today/gradient-descent-linear-regression.md` (written track)
+- `.work.mlt/tutorials/20260804-learn-today/gradient-descent-video-entry.md` (video track)
+- Ledger: M1 Lab cell ticked in `.work.mlt/programs/ml-foundations/progress.md`
 
 ## Commitment (next session)
 
 Extend the script to a 2D loss-landscape contour plot with the parameter trajectory (`plt.contourf`) — the remaining clause of M1's exit lab.
 
-## Close (`@session-mlt close`)
+## Close (`@mlt-session close`)
 
 HANDOFF and NEXT refreshed; retrieval queue updated in `programs/ml-foundations/notes.md` (3 concepts enqueued).

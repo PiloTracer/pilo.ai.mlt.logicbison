@@ -9,8 +9,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/decision-tree/.venv
-source .training.mlt/labs/decision-tree/.venv/bin/activate
+python -m venv .work.mlt/labs/decision-tree/.venv
+source .work.mlt/labs/decision-tree/.venv/bin/activate
 pip install numpy scikit-learn
 ```
 
@@ -126,5 +126,5 @@ print_tree(tree, iris.feature_names)
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/decision-tree/.venv
+rm -rf .work.mlt/labs/decision-tree/.venv
 ```

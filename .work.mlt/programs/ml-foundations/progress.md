@@ -1,6 +1,6 @@
 # Progress — ml-foundations
 
-> **Example.** Shows a task ledger after one completed lab. The ledger is the task ledger of record: mentor, lab, drill, and session skills write back here; `@mlt-review` reads from here (and cross-verifies lab cells against `.training.mlt/labs/` artifacts).
+> **Example.** Shows a task ledger after one completed lab. The ledger is the task ledger of record: mentor, lab, drill, and session skills write back here; `@mlt-review` reads from here (and cross-verifies lab cells against `.work.mlt/labs/` artifacts).
 
 | Module | Status | Lab | Score | Notes |
 |--------|--------|-----|-------|-------|
@@ -17,4 +17,4 @@
 | Model building | Classifier >80% F1 with proper evaluation | [ ] |
 | Concepts | Explain bias-variance tradeoff with concrete example | [ ] |
 
-**Artifacts required at exit:** linear regression impl, scikit-learn pipeline, EDA notebook — all under `.training.mlt/`.
+**Artifacts required at exit:** linear regression impl, scikit-learn pipeline, EDA notebook — all under `.work.mlt/`.

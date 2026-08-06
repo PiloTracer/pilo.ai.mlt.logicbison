@@ -19,8 +19,8 @@ ollama pull llama3.2:1b
 # Start the ollama server in a separate terminal if it is not already running
 ollama serve
 
-python -m venv .training.mlt/labs/rag-system/.venv
-source .training.mlt/labs/rag-system/.venv/bin/activate
+python -m venv .work.mlt/labs/rag-system/.venv
+source .work.mlt/labs/rag-system/.venv/bin/activate
 pip install sentence-transformers chromadb ollama
 ```
 
@@ -165,7 +165,7 @@ for question, _ in QUESTIONS[:3]:
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/rag-system/.venv
+rm -rf .work.mlt/labs/rag-system/.venv
 ollama rm llama3.2:1b   # optional, frees ~1.3GB
 ```
 

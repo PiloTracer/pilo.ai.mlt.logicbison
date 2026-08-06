@@ -9,8 +9,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/cnn-image-classifier/.venv
-source .training.mlt/labs/cnn-image-classifier/.venv/bin/activate
+python -m venv .work.mlt/labs/cnn-image-classifier/.venv
+source .work.mlt/labs/cnn-image-classifier/.venv/bin/activate
 pip install torch torchvision matplotlib
 ```
 
@@ -150,6 +150,6 @@ plt.show()
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/cnn-image-classifier/.venv
+rm -rf .work.mlt/labs/cnn-image-classifier/.venv
 rm -rf ./data cnn_accuracy_curve.png
 ```

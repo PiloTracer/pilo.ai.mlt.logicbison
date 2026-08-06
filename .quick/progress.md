@@ -1,6 +1,6 @@
 # Progress Tracker
 
-> Generated view — refreshed by `@mlt-review status`. Do not edit by hand; the task ledger of record is `.training.mlt/programs/<slug>/progress.md`.
+> Generated view — refreshed by `@mlt-review status`. Do not edit by hand; the task ledger of record is `.work.mlt/programs/<slug>/progress.md`.
 
 ## Active Programs
 

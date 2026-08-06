@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/tokenizer-implementation/.venv
-source .training.mlt/labs/tokenizer-implementation/.venv/bin/activate
+python -m venv .work.mlt/labs/tokenizer-implementation/.venv
+source .work.mlt/labs/tokenizer-implementation/.venv/bin/activate
 ```
 
 ## Objectives
@@ -144,5 +144,5 @@ print("\nAll round-trips passed.")
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/tokenizer-implementation/.venv
+rm -rf .work.mlt/labs/tokenizer-implementation/.venv
 ```

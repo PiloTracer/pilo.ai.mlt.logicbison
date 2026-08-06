@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/logistic-regression/.venv
-source .training.mlt/labs/logistic-regression/.venv/bin/activate
+python -m venv .work.mlt/labs/logistic-regression/.venv
+source .work.mlt/labs/logistic-regression/.venv/bin/activate
 pip install numpy matplotlib
 ```
 
@@ -114,5 +114,5 @@ plt.show()
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/logistic-regression/.venv
+rm -rf .work.mlt/labs/logistic-regression/.venv
 ```

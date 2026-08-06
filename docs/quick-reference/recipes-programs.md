@@ -49,7 +49,7 @@ The director and program-custom accept plain language:
 
 ## What gets produced
 
-`@mlt-program-standard install - <slug>` writes three files under `.training.mlt/programs/<slug>/`:
+`@mlt-program-standard install - <slug>` writes three files under `.work.mlt/programs/<slug>/`:
 
 - `PROGRAM.md` — the program (audience, modules, labs, exit criteria), annotated with your profile (pacing, hardware, goal alignment)
 - `progress.md` — **the task ledger of record**: one row per module (Status, Lab, Score, Notes), plus an exit-criteria ledger. Mentor, lab, drill, and session skills all write back here

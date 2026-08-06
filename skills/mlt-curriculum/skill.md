@@ -31,7 +31,7 @@ Follow `standards/program-spec.md` for module structure and `standards/lab-safet
 
 ## Steps — design mode
 
-1. Read `.training.mlt/programs/<program-slug>/PROGRAM.md`
+1. Read `.work.mlt/programs/<program-slug>/PROGRAM.md`
 2. If `--from <source>` is specified, read the source material (URL, file, or description)
 3. Analyze the current module structure:
    - List all modules with their objectives and labs

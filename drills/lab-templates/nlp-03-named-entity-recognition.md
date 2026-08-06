@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/ner/.venv
-source .training.mlt/labs/ner/.venv/bin/activate
+python -m venv .work.mlt/labs/ner/.venv
+source .work.mlt/labs/ner/.venv/bin/activate
 pip install torch transformers datasets seqeval accelerate
 ```
 
@@ -168,5 +168,5 @@ for sentence in sentences:
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/ner/.venv ner-checkpoints
+rm -rf .work.mlt/labs/ner/.venv ner-checkpoints
 ```

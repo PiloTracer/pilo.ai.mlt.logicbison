@@ -9,13 +9,13 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/quantization/.venv
-source .training.mlt/labs/quantization/.venv/bin/activate
+python -m venv .work.mlt/labs/quantization/.venv
+source .work.mlt/labs/quantization/.venv/bin/activate
 pip install torch transformers sentencepiece gguf protobuf huggingface_hub
 
-git clone https://github.com/ggml-org/llama.cpp .training.mlt/labs/quantization/llama.cpp
-cmake -B .training.mlt/labs/quantization/llama.cpp/build -S .training.mlt/labs/quantization/llama.cpp
-cmake --build .training.mlt/labs/quantization/llama.cpp/build --config Release -j --target llama-cli llama-quantize
+git clone https://github.com/ggml-org/llama.cpp .work.mlt/labs/quantization/llama.cpp
+cmake -B .work.mlt/labs/quantization/llama.cpp/build -S .work.mlt/labs/quantization/llama.cpp
+cmake --build .work.mlt/labs/quantization/llama.cpp/build --config Release -j --target llama-cli llama-quantize
 ```
 
 ## Objectives
@@ -31,7 +31,7 @@ Pick path A (no GPU) or path B (GPU). Both use Qwen2.5-0.5B (~1GB one-time downl
 ### Path A: GGUF + llama.cpp (CPU)
 
 ```bash
-cd .training.mlt/labs/quantization
+cd .work.mlt/labs/quantization
 
 # Download the model (~1GB)
 hf download Qwen/Qwen2.5-0.5B --local-dir models/Qwen2.5-0.5B
@@ -138,8 +138,8 @@ measure(model_4bit, "4-bit NF4")
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/quantization/.venv
-rm -rf .training.mlt/labs/quantization/models
-rm -rf .training.mlt/labs/quantization/llama.cpp
-rm -f .training.mlt/labs/quantization/*.gguf
+rm -rf .work.mlt/labs/quantization/.venv
+rm -rf .work.mlt/labs/quantization/models
+rm -rf .work.mlt/labs/quantization/llama.cpp
+rm -f .work.mlt/labs/quantization/*.gguf
 ```

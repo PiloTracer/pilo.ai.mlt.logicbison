@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/transfer-learning/.venv
-source .training.mlt/labs/transfer-learning/.venv/bin/activate
+python -m venv .work.mlt/labs/transfer-learning/.venv
+source .work.mlt/labs/transfer-learning/.venv/bin/activate
 pip install torch torchvision
 ```
 
@@ -140,5 +140,5 @@ print(f"\nComparison: frozen={acc_frozen:.3f}  fine-tuned={acc_finetuned:.3f}")
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/transfer-learning/.venv ./data
+rm -rf .work.mlt/labs/transfer-learning/.venv ./data
 ```

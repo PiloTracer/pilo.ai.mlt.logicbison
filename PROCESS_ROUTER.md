@@ -5,7 +5,8 @@
 | You want to… | Run |
 |--------------|-----|
 | Scaffold learner memory | `@mlt-bootstrap init` |
-| Open / close a training day | `@session-mlt start` / `close` |
+| Open / close a training day | `@mlt-session start` / `close` |
+| Checkpoint / commit / push session work | `@mlt-session commit` / `commit push` / `close commit push` (scoped to `.work.mlt/`) |
 | Describe a goal in plain language | `@mlt-director - <text>` |
 | Diagnose level and gaps | `@mlt-assess run` |
 | List catalog programs | `@mlt-program-standard list` |
@@ -21,10 +22,10 @@
 | Add or curate sources | `@mlt-sources add` / `curate` — start from [`references/core-library.md`](references/core-library.md) |
 | Refresh continuous learning | `@mlt-update run` |
 | Check gates / progress | `@mlt-review status` / `certify` |
-| Deploy into another project | `@deploy-basic - /path` |
-| Re-sync an existing deploy | `@deploy-basic - /path --update` |
-| Vendor framework into project | `@deploy-files copy - /path` |
-| Standalone copy or backup of the framework | `@deploy-repo clone - <url> <target>` / `archive - <dir>` |
+| Deploy into another project | `@mlt-deploy-basic - /path` |
+| Re-sync an existing deploy | `@mlt-deploy-basic - /path --update` |
+| Vendor framework into project | `@mlt-deploy-files copy - /path` |
+| Standalone copy or backup of the framework | `@mlt-deploy-repo clone - <url> <target>` / `archive - <dir>` |
 
 **Blocked on a gate?** Read [`skills/SKILL_DEPENDENCIES.md`](skills/SKILL_DEPENDENCIES.md) and run the unlock command shown in the BLOCKED report.
 

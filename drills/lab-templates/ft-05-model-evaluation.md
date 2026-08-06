@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/model-evaluation/.venv
-source .training.mlt/labs/model-evaluation/.venv/bin/activate
+python -m venv .work.mlt/labs/model-evaluation/.venv
+source .work.mlt/labs/model-evaluation/.venv/bin/activate
 pip install lm-eval torch transformers accelerate
 ```
 
@@ -183,7 +183,7 @@ Exact match is strict (the normalized expected string must appear in the answer)
 ```bash
 rm -rf ./eval-results
 deactivate
-rm -rf .training.mlt/labs/model-evaluation/.venv
+rm -rf .work.mlt/labs/model-evaluation/.venv
 ```
 
 Models stay in the HF cache (`~/.cache/huggingface/`). To reclaim ~2GB, remove them with `hf cache ls` and `hf cache rm`.

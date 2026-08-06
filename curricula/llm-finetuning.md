@@ -66,4 +66,4 @@ Learners who can fine-tune BERT-class models and want to specialize in 7B+ LLMs.
 | Evaluation | Report with benchmarks + human/LLM-judge results |
 
 ## Exit Criteria
-All exit checks met. Artifacts in `.training.mlt/`: dataset, SFT checkpoint, DPO checkpoint, merge config, eval report.
+All exit checks met. Artifacts in `.work.mlt/`: dataset, SFT checkpoint, DPO checkpoint, merge config, eval report.

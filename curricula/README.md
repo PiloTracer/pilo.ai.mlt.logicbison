@@ -56,7 +56,7 @@ Programs at the same tier (4a/4b, 6a/6b) can be taken in parallel or in either o
 @mlt-program-standard install - <slug>
 ```
 
-This copies the curriculum to `.training.mlt/programs/<slug>/` and scaffolds `PROGRAM.md`, `progress.md`, and `notes.md`.
+This copies the curriculum to `.work.mlt/programs/<slug>/` and scaffolds `PROGRAM.md`, `progress.md`, and `notes.md`.
 
 ## Tools and Frameworks
 

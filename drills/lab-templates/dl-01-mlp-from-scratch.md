@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/mlp-from-scratch/.venv
-source .training.mlt/labs/mlp-from-scratch/.venv/bin/activate
+python -m venv .work.mlt/labs/mlp-from-scratch/.venv
+source .work.mlt/labs/mlp-from-scratch/.venv/bin/activate
 pip install numpy matplotlib scikit-learn torch
 ```
 
@@ -181,5 +181,5 @@ print(f"Final losses: NumPy={losses[-1]:.4f}  PyTorch={loss.item():.4f}")
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/mlp-from-scratch/.venv mlp_numpy_result.png
+rm -rf .work.mlt/labs/mlp-from-scratch/.venv mlp_numpy_result.png
 ```

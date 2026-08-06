@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/cross-validation/.venv
-source .training.mlt/labs/cross-validation/.venv/bin/activate
+python -m venv .work.mlt/labs/cross-validation/.venv
+source .work.mlt/labs/cross-validation/.venv/bin/activate
 pip install scikit-learn numpy
 ```
 
@@ -90,5 +90,5 @@ print("OK: manual splitter matches cross_val_score on identical splits")
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/cross-validation/.venv
+rm -rf .work.mlt/labs/cross-validation/.venv
 ```

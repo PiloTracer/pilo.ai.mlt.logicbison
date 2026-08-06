@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/data-augmentation/.venv
-source .training.mlt/labs/data-augmentation/.venv/bin/activate
+python -m venv .work.mlt/labs/data-augmentation/.venv
+source .work.mlt/labs/data-augmentation/.venv/bin/activate
 pip install torch torchvision matplotlib
 ```
 
@@ -197,6 +197,6 @@ plt.show()
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/data-augmentation/.venv
+rm -rf .work.mlt/labs/data-augmentation/.venv
 rm -rf ./data augmented_samples.png augmentation_benchmark.png
 ```

@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/training-optimization/.venv
-source .training.mlt/labs/training-optimization/.venv/bin/activate
+python -m venv .work.mlt/labs/training-optimization/.venv
+source .work.mlt/labs/training-optimization/.venv/bin/activate
 pip install torch scikit-learn matplotlib
 ```
 
@@ -148,6 +148,6 @@ for name, (_, acc, elapsed) in results.items():
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/training-optimization/.venv
+rm -rf .work.mlt/labs/training-optimization/.venv
 rm -f optimizer_comparison.png
 ```

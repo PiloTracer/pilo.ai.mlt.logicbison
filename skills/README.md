@@ -2,7 +2,7 @@
 
 ## Naming protocol
 
-All MLT-specific skills use the `mlt-` prefix. Deployment skills and the session skill use unprefixed names for cross-framework reuse.
+All MLT skills use the `mlt-` prefix. Deployment skills are `mlt-deploy-basic`, `mlt-deploy-files`, `mlt-deploy-repo`; the session lifecycle skill is `mlt-session`.
 
 ## Canonical verbs
 
@@ -30,11 +30,11 @@ All MLT-specific skills use the `mlt-` prefix. Deployment skills and the session
 
 | Skill | Folder | Verbs | Purpose |
 |-------|--------|-------|---------|
-| deploy-basic | `skills/deploy-basic/` | `- <path>`, `--update`, `--force` | Thin-client bootstrap |
-| deploy-files | `skills/deploy-files/` | `copy - <path>` | Fat-client vendor |
-| deploy-repo | `skills/deploy-repo/` | `clone`, `archive` | Full repo deploy |
-| mlt-bootstrap | `skills/mlt-bootstrap/` | `init`, `status` | Scaffold `.training.mlt/`, PROFILE |
-| session-mlt | `skills/session-mlt/` | `start`, `status`, `close` | Session lifecycle |
+| mlt-deploy-basic | `skills/mlt-deploy-basic/` | `- <path>`, `--update`, `--force` | Thin-client bootstrap |
+| mlt-deploy-files | `skills/mlt-deploy-files/` | `copy - <path>` | Fat-client vendor |
+| mlt-deploy-repo | `skills/mlt-deploy-repo/` | `clone`, `archive` | Full repo deploy |
+| mlt-bootstrap | `skills/mlt-bootstrap/` | `init`, `status` | Scaffold `.work.mlt/`, PROFILE |
+| mlt-session | `skills/mlt-session/` | `start`, `status`, `close`, `commit`, `push` | Session lifecycle + scoped commit/push |
 | mlt-director | `skills/mlt-director/` | `- <text>` | Free-text orchestrator |
 | mlt-process-router | `skills/mlt-process-router/` | `- <question>` | Read-only signpost |
 | mlt-assess | `skills/mlt-assess/` | `run` | Diagnostic assessment |
@@ -51,12 +51,12 @@ All MLT-specific skills use the `mlt-` prefix. Deployment skills and the session
 
 ## Typical greenfield sequence
 
-1. `@deploy-basic - /path/to/new-project` (from source repo)
+1. `@mlt-deploy-basic - /path/to/new-project` (from source repo)
 2. `@mlt-bootstrap init`
 3. `@mlt-assess run`
 4. `@mlt-program-standard install - <slug>` or `@mlt-program-custom - <request>`
-5. `@session-mlt start` then `@mlt-mentor run`
-6. `@session-mlt close`
+5. `@mlt-session start` then `@mlt-mentor run`
+6. `@mlt-session close`
 
 ## Framework assets table
 
@@ -69,5 +69,5 @@ All MLT-specific skills use the `mlt-` prefix. Deployment skills and the session
 | Drills | `drills/` | Framework |
 | Templates | `templates/` | Framework |
 | Scripts | `scripts/` | Framework |
-| Learner memory | `.training.mlt/` | Learner |
+| Learner memory | `.work.mlt/` | Learner |
 | Agent contract | `.cursorrules` | Local |

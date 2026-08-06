@@ -13,11 +13,11 @@ Binding for `@mlt-lab` and any hands-on exercise.
 
 ### Virtual environments (mandatory)
 
-Every lab must run in an isolated environment, created inside the lab directory under `.training.mlt/labs/` (keeps learner artifacts inside the memory boundary):
+Every lab must run in an isolated environment, created inside the lab directory under `.work.mlt/labs/` (keeps learner artifacts inside the memory boundary):
 
 ```bash
-python -m venv .training.mlt/labs/<topic>/.venv
-source .training.mlt/labs/<topic>/.venv/bin/activate
+python -m venv .work.mlt/labs/<topic>/.venv
+source .work.mlt/labs/<topic>/.venv/bin/activate
 ```
 
 Or with conda:
@@ -28,8 +28,8 @@ conda activate mlt-<topic>
 
 Or with uv (preferred for speed):
 ```bash
-uv venv .training.mlt/labs/<topic>/.venv
-source .training.mlt/labs/<topic>/.venv/bin/activate
+uv venv .work.mlt/labs/<topic>/.venv
+source .work.mlt/labs/<topic>/.venv/bin/activate
 ```
 
 ## Resource limits

@@ -27,15 +27,15 @@ Follow `standards/citation.md` for all references and `standards/code-quality.md
 
 ## Steps
 
-1. Read `.training.mlt/context/PROFILE.md` for learner level and hardware
-2. Read `.training.mlt/context/SCORECARD.md` if available
+1. Read `.work.mlt/context/PROFILE.md` for learner level and hardware
+2. Read `.work.mlt/context/SCORECARD.md` if available
 3. Determine tutorial scope based on `<topic>` and `--level`:
    - What prior knowledge is needed
    - What code will be demonstrated
    - What the learner will build by the end
 4. Choose the output layout:
-   - Single tutorial → `.training.mlt/tutorials/<topic-slug>.md`
-   - Multi-part bundle (e.g. written + video companion, or a "learn today" set) → `.training.mlt/tutorials/<YYYYMMDD>-<slug>/` with one file per part, named `<part-topic>.md` (e.g. `20260804-learn-today/gradient-descent-linear-regression.md` + `gradient-descent-video-entry.md`)
+   - Single tutorial → `.work.mlt/tutorials/<topic-slug>.md`
+   - Multi-part bundle (e.g. written + video companion, or a "learn today" set) → `.work.mlt/tutorials/<YYYYMMDD>-<slug>/` with one file per part, named `<part-topic>.md` (e.g. `20260804-learn-today/gradient-descent-linear-regression.md` + `gradient-descent-video-entry.md`)
 5. Generate each tutorial file with this structure:
 
 ### Tutorial structure
@@ -65,7 +65,7 @@ Video-entry variant: when the learner's PROFILE prefers video (or `--format vide
 
 ## Completion criteria
 
-- Tutorial written to `.training.mlt/tutorials/<topic-slug>.md` (or a `<YYYYMMDD>-<slug>/` bundle for multi-part sets)
+- Tutorial written to `.work.mlt/tutorials/<topic-slug>.md` (or a `<YYYYMMDD>-<slug>/` bundle for multi-part sets)
 - All code runs and produces documented output
 - All code carries detailed explanatory comments per code-quality.md § Learner-facing code
 - All sources cited are real and verifiable

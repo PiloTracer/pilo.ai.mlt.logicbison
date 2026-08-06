@@ -9,7 +9,7 @@
 | **profile-ready** | PROFILE.md filled with no REPLACE tokens | `@mlt-bootstrap init` |
 | **assessed** | Assessment scorecard exists | `@mlt-assess run` |
 | **program-active** | A program is installed and has progress | `@mlt-program-standard install - <slug>` or `@mlt-program-custom - <request>` |
-| **session-open** | A session is currently in progress | `@session-mlt start` |
+| **session-open** | A session is currently in progress | `@mlt-session start` |
 | **module-complete** | All exit checks for a module are met | Complete all deliverables |
 | **program-complete** | All modules complete + labs artifact-verified | `@mlt-review status` |
 | **certified** | program-complete + average drill score >= 3, no dimension at 1 | `@mlt-review certify` |
@@ -23,7 +23,7 @@
 | profile-ready | blocked | Run `@mlt-bootstrap init` |
 | assessed | blocked | profile-ready required |
 | program-active | blocked | assessed required |
-| session-open | blocked | run `@session-mlt start` |
+| session-open | blocked | run `@mlt-session start` |
 | module-complete | blocked | program-active required |
 | program-complete | blocked | all module-complete required |
 | certified | blocked | program-complete required |

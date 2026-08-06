@@ -29,7 +29,8 @@ Accepts any free-text description of what the learner wants to do. No strict syn
    - "custom program", "design a program for" → mlt-program-custom
    - "module order", "reorder modules", "refine the curriculum" → mlt-curriculum
    - "which skill", "how do I", "what should I run" → mlt-process-router
-   - "start session", "begin training" → session-mlt start
+   - "start session", "begin training" → mlt-session start
+   - "checkpoint", "commit session work", "push" → mlt-session commit / commit push
    - "teach me", "mentor", "learn about" → mlt-mentor
    - "tutorial", "explain how to" → mlt-tutorial
    - "lab", "hands-on", "build" → mlt-lab
@@ -37,9 +38,9 @@ Accepts any free-text description of what the learner wants to do. No strict syn
    - "progress", "how am I doing", "certify" → mlt-review
    - "sources", "references", "reading" → mlt-sources
    - "update", "new tools", "trends" → mlt-update
-   - "close session", "wrap up" → session-mlt close
-   - "deploy", "copy to project" → deploy-basic / deploy-files
-   - "clone the framework", "backup", "archive" → deploy-repo
+   - "close session", "wrap up" → mlt-session close
+   - "deploy", "copy to project" → mlt-deploy-basic / mlt-deploy-files
+   - "clone the framework", "backup", "archive" → mlt-deploy-repo
 3. If intent is ambiguous, list the top 2-3 candidate skills and ask the user to clarify
 4. Check prerequisites using the gate graph in `skills/SKILL_DEPENDENCIES.md`
 5. If a prerequisite is missing, emit a BLOCKED report with the unlock command

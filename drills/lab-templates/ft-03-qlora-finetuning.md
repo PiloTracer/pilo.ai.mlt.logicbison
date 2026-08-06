@@ -9,8 +9,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/qlora-finetuning/.venv
-source .training.mlt/labs/qlora-finetuning/.venv/bin/activate
+python -m venv .work.mlt/labs/qlora-finetuning/.venv
+source .work.mlt/labs/qlora-finetuning/.venv/bin/activate
 pip install torch transformers peft trl datasets accelerate bitsandbytes
 ```
 
@@ -165,5 +165,5 @@ If VRAM is tight at 7B, drop `per_device_train_batch_size` to 1 and raise `gradi
 ```bash
 rm -rf ./qlora-output
 deactivate
-rm -rf .training.mlt/labs/qlora-finetuning/.venv
+rm -rf .work.mlt/labs/qlora-finetuning/.venv
 ```

@@ -57,4 +57,4 @@ Learners comfortable with PyTorch ready to specialize in language models. Common
 | Architecture | Explain encoder-only vs decoder-only with use cases |
 
 ## Exit Criteria
-All exit checks met. Artifacts in `.training.mlt/`: text classifier, NER model, summarization pipeline.
+All exit checks met. Artifacts in `.work.mlt/`: text classifier, NER model, summarization pipeline.

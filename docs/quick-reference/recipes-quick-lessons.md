@@ -1,6 +1,6 @@
 # Recipe pack — Quick lessons (labs, drills, sessions)
 
-30-60 minute instruments for a training day. Each leaves an artifact in `.training.mlt/`.
+30-60 minute instruments for a training day. Each leaves an artifact in `.work.mlt/`.
 
 ---
 
@@ -33,23 +33,23 @@ Scored 1–4 on Correctness, Understanding, Efficiency, Best practices. A model 
 ## Mentoring session (30-90 min, with retrieval opening)
 
 ```text
-@session-mlt start
+@mlt-session start
 @mlt-mentor run --topic attention-scores
-@session-mlt close
+@mlt-session close
 
 @mlt-director - start a mentoring session on loss functions
 @mlt-mentor prepare --session 3
 ```
 
-A session has a fixed structure: Retrieve (closed-book, 5 min) → Orient (60s) → Diagnose → Teach (code-first) → Practice → Commit (one action) → Log. The session log (`YYYY-MM-DD_<topic>.md`) records everything; `@session-mlt close` refreshes HANDOFF + NEXT. Log into your target project, run `@session-mlt status`, and you're oriented in under a minute.
+A session has a fixed structure: Retrieve (closed-book, 5 min) → Orient (60s) → Diagnose → Teach (code-first) → Practice → Commit (one action) → Log. The session log (`YYYY-MM-DD_<topic>.md`) records everything; `@mlt-session close` refreshes HANDOFF + NEXT. Log into your target project, run `@mlt-session status`, and you're oriented in under a minute.
 
 ## Combo — a full training hour
 
 ```text
-@session-mlt start
+@mlt-session start
 @mlt-mentor run --topic gradient-descent  (retrieve + teach, ~20 min)
 @mlt-lab setup - grad-descent             (hands-on, ~30 min)
-@session-mlt close                        (log + commit + NEXT, ~5 min)
+@mlt-session close                        (log + commit + NEXT, ~5 min)
 ```
 
 ## Progress check (any time)

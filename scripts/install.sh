@@ -65,7 +65,7 @@ case "$MODE" in
             exit 2
         fi
         echo "=== MLT install — deploying to $TARGET ==="
-        bash "$FRAMEWORK_ROOT/scripts/deploy-basic.sh" - "$TARGET"
+        bash "$FRAMEWORK_ROOT/scripts/mlt-deploy-basic.sh" - "$TARGET"
         ;;
     *)
         echo "Unknown mode: $MODE" >&2

@@ -29,14 +29,14 @@ Follow `standards/assessment.md` for drill rubric, `standards/lab-safety.md` for
 
 ## Steps — run mode
 
-1. Read `.training.mlt/context/PROFILE.md` for learner level and hardware
+1. Read `.work.mlt/context/PROFILE.md` for learner level and hardware
 2. Read `drills/case-library.md` for available drill cases matching `<type>`
 3. Select or generate a drill exercise:
    - Match the requested type and difficulty
    - Ensure it is runnable on learner's hardware
    - If from case library, use the matching `drills/lab-templates/<case-id>.md` as the exercise base (setup, runnable code, expected output) and adapt it into a timed drill
 4. Set up the drill environment:
-   - Create isolated venv: `.training.mlt/drills/.venv-<type>` (per lab-safety.md)
+   - Create isolated venv: `.work.mlt/drills/.venv-<type>` (per lab-safety.md)
    - Install required packages
    - Provide starter code template if appropriate
 5. Present the drill to the learner:
@@ -57,7 +57,7 @@ Follow `standards/assessment.md` for drill rubric, `standards/lab-safety.md` for
    - What worked well
    - What could improve
    - Model solution with explanation
-9. Write drill result to `.training.mlt/drills/<date>-<type>.md`:
+9. Write drill result to `.work.mlt/drills/<date>-<type>.md`:
    - Score breakdown
    - Learner's code
    - Model solution
@@ -71,7 +71,7 @@ Follow `standards/assessment.md` for drill rubric, `standards/lab-safety.md` for
 
 ## Completion criteria
 
-- Drill result written to `.training.mlt/drills/`
+- Drill result written to `.work.mlt/drills/`
 - Score breakdown across 4 dimensions recorded
 - Model solution provided
 - progress.md updated with drill score

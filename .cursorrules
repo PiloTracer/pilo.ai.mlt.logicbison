@@ -8,18 +8,18 @@ You are not a yes-machine. Push back on flawed assumptions, cargo-cult ML practi
 
 # AI Agent Rules — pilo.trainer.mlt
 
-> **Bootstrap (fat-client):** Run `@deploy-files copy - <path>` — vendors the framework as `.ai.mlt/` and copies this full `.cursorrules`, rewritten to resolve framework paths from `.ai.mlt/`.
-> **Bootstrap (thin-client):** Run `@deploy-basic - <path>` from the source pilo.trainer.mlt — copies the abridged `.cursorrules` (with `TRAINER_MLT_SOURCE` pointer) + `.training.mlt/` skeleton. Skills stay in the source and load at runtime; the full ruleset lives at `$TRAINER_MLT_SOURCE/.cursorrules`.
+> **Bootstrap (fat-client):** Run `@mlt-deploy-files copy - <path>` — vendors the framework as `.ai.mlt/` and copies this full `.cursorrules`, rewritten to resolve framework paths from `.ai.mlt/`.
+> **Bootstrap (thin-client):** Run `@mlt-deploy-basic - <path>` from the source pilo.trainer.mlt — copies the abridged `.cursorrules` (with `TRAINER_MLT_SOURCE` pointer) + `.work.mlt/` skeleton. Skills stay in the source and load at runtime; the full ruleset lives at `$TRAINER_MLT_SOURCE/.cursorrules`.
 
 ## Core Principles (ALWAYS APPLY — override all else, non-negotiable)
 
 1. **Correct the learner.** Truth over comfort. Never agree to be agreeable. If an approach is flawed, say so and offer a better path.
 2. **Never claim mastery / PASS without evidence.** Progress requires assessments, lab outcomes, code artifacts, or written evaluations — not vibes. Report failed checks explicitly with output.
-3. **Verify before "done".** Programs, tutorials, and sessions must leave artifacts under `.training.mlt/` and list residual unknowns. If you can't verify, state what you checked and what's unverified.
+3. **Verify before "done".** Programs, tutorials, and sessions must leave artifacts under `.work.mlt/` and list residual unknowns. If you can't verify, state what you checked and what's unverified.
 4. **Local-first, practical.** All labs, tutorials, and training exercises must be runnable on a local workstation. Prefer small models (<3B params), quantized models, and efficient frameworks. No dependency on massive cloud GPUs or expensive APIs unless explicitly requested.
 5. **Evidence-first, never memory-first.** Back non-trivial claims with learner docs, public sources (title + author/URL), or labeled **Unverified**. Never invent citations. Banned without evidence: "you're ready", "this is fixed", "already covered".
 6. **Assumption ledger** on substantial work: Confirmed facts / Inferences / Unknowns — never collapse inference into fact.
-7. **Completion gate** (cannot skip): deliverable written under `.training.mlt/`, assumptions checked, risks listed, concrete next step set in `{NEXT}`.
+7. **Completion gate** (cannot skip): deliverable written under `.work.mlt/`, assumptions checked, risks listed, concrete next step set in `{NEXT}`.
 
 ---
 
@@ -33,23 +33,23 @@ You are not a yes-machine. Push back on flawed assumptions, cargo-cult ML practi
 |------|---------|
 | `START_HERE.md` | Decision tree |
 | `PROCESS_ROUTER.md` | How-to → skill |
-| `.training.mlt/context/PROFILE.md` | Learner profile |
-| `.training.mlt/context/HANDOFF.md` | Session handoff |
-| `.training.mlt/plans/NEXT.md` | Next action |
-| `.training.mlt/plans/UNKNOWNS.md` | Open unknowns |
+| `.work.mlt/context/PROFILE.md` | Learner profile |
+| `.work.mlt/context/HANDOFF.md` | Session handoff |
+| `.work.mlt/plans/NEXT.md` | Next action |
+| `.work.mlt/plans/UNKNOWNS.md` | Open unknowns |
 
 ### Placeholder map
 
 | Placeholder | Resolves to |
 |-------------|-------------|
-| `{TRAINING_ROOT}` | `.training.mlt/` |
-| `{HANDOFF}` | `.training.mlt/context/HANDOFF.md` |
-| `{PROFILE}` | `.training.mlt/context/PROFILE.md` |
-| `{NEXT}` | `.training.mlt/plans/NEXT.md` |
-| `{UNKNOWNS}` | `.training.mlt/plans/UNKNOWNS.md` |
-| `{PROGRAMS}` | `.training.mlt/programs/` |
-| `{SESSIONS}` | `.training.mlt/sessions/` |
-| `{SOURCES}` | `.training.mlt/sources/` |
+| `{WORK_ROOT}` | `.work.mlt/` |
+| `{HANDOFF}` | `.work.mlt/context/HANDOFF.md` |
+| `{PROFILE}` | `.work.mlt/context/PROFILE.md` |
+| `{NEXT}` | `.work.mlt/plans/NEXT.md` |
+| `{UNKNOWNS}` | `.work.mlt/plans/UNKNOWNS.md` |
+| `{PROGRAMS}` | `.work.mlt/programs/` |
+| `{SESSIONS}` | `.work.mlt/sessions/` |
+| `{SOURCES}` | `.work.mlt/sources/` |
 | `{SKILLS_ROOT}` | `skills/` (or `$TRAINER_MLT_SOURCE/skills/`) |
 | `REPLACE:PROJECT_NAME` | Project or learner label |
 | `REPLACE:LEARNER_LEVEL` | e.g. beginner / intermediate / advanced / practitioner |
@@ -68,11 +68,11 @@ Default to **minimal diffs**. Prefer append/merge over overwrite.
 
 | Gate | Rule | Fail when |
 |------|------|-----------|
-| Memory boundary | Write learner artifacts only under `.training.mlt/` | Writes outside `.training.mlt/` for training/consultancy |
-| Framework integrity | Do not edit `curricula/`, `standards/`, `references/`, or `drills/` for learner-specific content | Mutating catalog instead of copying into `.training.mlt/programs/` |
+| Memory boundary | Write learner artifacts only under `.work.mlt/` | Writes outside `.work.mlt/` for training/consultancy |
+| Framework integrity | Do not edit `curricula/`, `standards/`, `references/`, or `drills/` for learner-specific content | Mutating catalog instead of copying into `.work.mlt/programs/` |
 | Citation honesty | Public sources need title + author or URL | Invented citations |
 | No collateral edits | Touch only files required by the task | Drive-by refactors, dependency bumps, "while I'm here" changes |
-| No-overwrite deploy | `@deploy-basic` / bootstrap skip existing files unless `--force` + explicit user intent | Silent clobber of target `.cursorrules` or learner memory |
+| No-overwrite deploy | `@mlt-deploy-basic` / bootstrap skip existing files unless `--force` + explicit user intent | Silent clobber of target `.cursorrules` or learner memory |
 | High-blast | Protected paths (§ Protected Files) need owner approval | Editing protected surfaces without permission |
 | Learner-pipeline intent | Never auto-propose or chain into `@mlt-bootstrap init` / `@mlt-assess run` / program / mentor skills just because `{PROFILE}` looks empty or incomplete; requires explicit training-project intent | Session is framework-dev (editing `skills/`, `curricula/`, `standards/`, `templates/`, `scripts/`, `.cursorrules`) but the agent still routes into the learner pipeline |
 
@@ -82,7 +82,7 @@ Default to **minimal diffs**. Prefer append/merge over overwrite.
 
 ## Source resolution — fat-client vs thin-client (MANDATORY)
 
-**pilo.trainer.mlt framework source (thin-client only — set by `@deploy-basic`):**
+**pilo.trainer.mlt framework source (thin-client only — set by `@mlt-deploy-basic`):**
 
 TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 
@@ -90,13 +90,13 @@ TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 
 | Mode | Bootstrapped via | Framework assets | `TRAINER_MLT_SOURCE` |
 |------|------------------|------------------|----------------------|
-| **Fat-client** | `@deploy-files` / local `.ai.mlt/` | this repo's `.ai.mlt/` | unset token |
-| **Thin-client** | `@deploy-basic` | source pilo.trainer.mlt; local surface = `.cursorrules` + `.training.mlt/` | absolute path |
+| **Fat-client** | `@mlt-deploy-files` / local `.ai.mlt/` | this repo's `.ai.mlt/` | unset token |
+| **Thin-client** | `@mlt-deploy-basic` | source pilo.trainer.mlt; local surface = `.cursorrules` + `.work.mlt/` | absolute path |
 | **Self-hosted** | this git root *is* the framework | repo root | often unset; read paths locally |
 
 **Resolution rule:**
 
-1. `.cursorrules` + `.training.mlt/**` — always local.
+1. `.cursorrules` + `.work.mlt/**` — always local.
 2. **Thin-client** (pointer set + readable): read every other framework path from `$TRAINER_MLT_SOURCE/<path>`.
 3. **Fat-client:** read `skills/`, `curricula/`, `standards/`, `scripts/`, `templates/` from `.ai.mlt/<path>`. **Self-hosted:** read them locally at the repo root.
 4. **Thin-client + unreachable source:** stop — report `pilo.trainer.mlt source unreachable: $TRAINER_MLT_SOURCE`.
@@ -107,11 +107,11 @@ TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 
 | Skill | Folder | Purpose |
 |-------|--------|---------|
-| deploy-basic | `skills/deploy-basic/` | Thin-client bootstrap |
-| deploy-files | `skills/deploy-files/` | Fat-client vendor as `.ai.mlt/` |
-| deploy-repo | `skills/deploy-repo/` | Full repo deploy |
-| mlt-bootstrap | `skills/mlt-bootstrap/` | Scaffold `.training.mlt/`, PROFILE |
-| session-mlt | `skills/session-mlt/` | Session start/status/close |
+| mlt-deploy-basic | `skills/mlt-deploy-basic/` | Thin-client bootstrap |
+| mlt-deploy-files | `skills/mlt-deploy-files/` | Fat-client vendor as `.ai.mlt/` |
+| mlt-deploy-repo | `skills/mlt-deploy-repo/` | Full repo deploy |
+| mlt-bootstrap | `skills/mlt-bootstrap/` | Scaffold `.work.mlt/`, PROFILE |
+| mlt-session | `skills/mlt-session/` | Session start/status/close |
 | mlt-director | `skills/mlt-director/` | Free-text orchestrator |
 | mlt-process-router | `skills/mlt-process-router/` | Read-only signpost |
 | mlt-assess | `skills/mlt-assess/` | Diagnostic assessment |
@@ -137,7 +137,7 @@ TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
   - `package.json`, `requirements.txt`, `pyproject.toml` (dependencies, engines)
   - `docker-compose*.yml`, `Dockerfile.*`
   - `.env*` (except `.env.example`)
-  - Framework `curricula/**`, `standards/**`, `references/**`, and `drills/**` for learner-specific content (copy into `.training.mlt/programs/` instead)
+  - Framework `curricula/**`, `standards/**`, `references/**`, and `drills/**` for learner-specific content (copy into `.work.mlt/programs/` instead)
   - `.cursorrules` wholesale replace when merging into a target that already has Agent OS / sibling rules — **merge**, do not clobber
   - Git history, hooks, and remote configuration
 - **If a protected file needs a change:** stop, explain WHY, ask for explicit permission.
@@ -159,13 +159,13 @@ TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 ## Workflow Rules (anti-destructive)
 
 ### Planning
-- Programs and session plans live under `.training.mlt/`.
+- Programs and session plans live under `.work.mlt/`.
 - Wait for approval before large custom programs when the user asked for analysis only (unless `-y`).
 - Confirm before editing when scope is unclear.
 
 ### Deletion
 - **NEVER delete files** without explicit user permission in the same message.
-- Never `rm -rf` project trees, wipe `.training.mlt/`, or truncate learner history "to clean up."
+- Never `rm -rf` project trees, wipe `.work.mlt/`, or truncate learner history "to clean up."
 - Temp cleanup is limited to files **this session created** under `tmp/` / `.tmp/` — still prefer asking if unsure.
 
 ### Overwrite & merge
@@ -174,6 +174,7 @@ TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 
 ### Git
 - NEVER `git commit` or `git push` unless the user explicitly requests it in the same message.
+- **Exception — `@mlt-session`:** an invocation that includes `commit` / `push` (e.g. `@mlt-session close commit push`) IS an explicit request; follow `skills/mlt-session/skill.md` — stage **only** `.work.mlt/` paths (including new untracked files/dirs), never app code; push only after commit.
 - Never modify history (**rebase, amend of others' commits, force-push**) without explicit request.
 - Never update git config.
 - When the user requests commit: stage safe paths, commit, show `git log -1 --oneline` + `git status -sb`; no "committed" claim without a SHA.
@@ -185,15 +186,15 @@ TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 
 ### Target-repo coexistence
 - When scaffolding into a repo that already has Agent OS / app code: do not rewrite app source, dependencies, or CI unless asked.
-- MLT content in a target `.cursorrules` is **additive**: integrate as a subsection matching the target's existing structure; never clobber the target's identity or other frameworks' rules (full checklist: `skills/deploy-basic/skill.md` → Merge procedure).
+- MLT content in a target `.cursorrules` is **additive**: integrate as a subsection matching the target's existing structure; never clobber the target's identity or other frameworks' rules (full checklist: `skills/mlt-deploy-basic/skill.md` → Merge procedure).
 - **Alias collisions:** if the target already binds `{HANDOFF}`, `{NEXT}`, or other MLT placeholders to another framework, do not rebind them — namespace the MLT aliases (`{MLT_HANDOFF}`, `{MLT_NEXT}`, …) in the merged section.
-- If the target has a skill-routing table, register `mlt-*` and `session-mlt` → MLT Training OS.
+- If the target has a skill-routing table, register `mlt-*` skills → MLT Training OS.
 
 ---
 
 ## Verification & Communication
 
-- **Before "complete":** confirm artifacts exist under `.training.mlt/` (or framework paths if the task was framework work); report actual paths/output, not assumed success.
+- **Before "complete":** confirm artifacts exist under `.work.mlt/` (or framework paths if the task was framework work); report actual paths/output, not assumed success.
 - **On failure:** report exact error, diagnose, fix if in scope, re-run checks.
 - **Scope:** declare scope first; only deliver what the question asked.
 - **Communication:** be concise; surface blockers early; label uncertainty; distinguish confirmed facts / inferences / proposals.
@@ -214,7 +215,7 @@ TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 | Path | Layer |
 |------|-------|
 | `skills/`, `curricula/`, `standards/`, `references/`, `drills/`, `templates/`, `scripts/` | Framework (shared) |
-| `.training.mlt/` | **All learner-specific memory** — context (profile, handoff, scorecard), plans, programs, sessions, sources, labs, tutorials, drills, exports |
+| `.work.mlt/` | **All learner-specific memory** — context (profile, handoff, scorecard), plans, programs, sessions, sources, labs, tutorials, drills, exports |
 | `.cursorrules` | Agent contract (local) |
 | `.quick/` | Operator cheat sheets |
 

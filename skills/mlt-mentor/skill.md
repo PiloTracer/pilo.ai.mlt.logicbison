@@ -29,11 +29,11 @@ Follow `standards/mentoring.md` for session structure, retrieval opening, and qu
 
 ## Steps — run mode
 
-1. Confirm session is open (check `.training.mlt/sessions/` for an active session log)
-   - If no session open, emit a BLOCKED report (per `skills/SKILL_DEPENDENCIES.md`) with `unlock: @session-mlt start` and stop
-2. Confirm an active program exists under `.training.mlt/programs/`
+1. Confirm session is open (check `.work.mlt/sessions/` for an active session log)
+   - If no session open, emit a BLOCKED report (per `skills/SKILL_DEPENDENCIES.md`) with `unlock: @mlt-session start` and stop
+2. Confirm an active program exists under `.work.mlt/programs/`
    - If none, emit a BLOCKED report with `unlock: @mlt-program-standard install - <slug>` or `@mlt-program-custom - <request>` and stop
-3. Read `.training.mlt/context/PROFILE.md` for learner context
+3. Read `.work.mlt/context/PROFILE.md` for learner context
 4. Read active program's `progress.md` for current module
 5. Read active program's `notes.md` for retrieval queue
 6. **Retrieve** (5 min, binding):
@@ -51,7 +51,7 @@ Follow `standards/mentoring.md` for session structure, retrieval opening, and qu
 10. **Practice**: run a lab, drill, or coding exercise
     - Use `@mlt-lab setup - <topic>` or `@mlt-drill run - <type>` as appropriate
 11. **Commit**: state one concrete action the learner will take before next session
-12. **Log**: write into the session log opened by `@session-mlt start` (same file; never create a second log) — naming convention in `skills/session-mlt/skill.md`. Contents:
+12. **Log**: write into the session log opened by `@mlt-session start` (same file; never create a second log) — naming convention in `skills/mlt-session/skill.md`. Contents:
     - Date, module, topic
     - Retrieval results
     - What was taught and practiced
@@ -59,7 +59,7 @@ Follow `standards/mentoring.md` for session structure, retrieval opening, and qu
     - Commitment for next session
 13. Tick the task ledger in `progress.md`
 14. Update retrieval queue in `notes.md`
-15. Update `.training.mlt/plans/NEXT.md`
+15. Update `.work.mlt/plans/NEXT.md`
 
 ## Steps — prepare mode
 
@@ -70,7 +70,7 @@ Follow `standards/mentoring.md` for session structure, retrieval opening, and qu
 
 ## Completion criteria
 
-- Session log written under `.training.mlt/sessions/`
+- Session log written under `.work.mlt/sessions/`
 - Task ledger ticked for the covered module
 - Retrieval queue updated
 - NEXT.md updated with commitment

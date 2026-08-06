@@ -2,7 +2,7 @@
 set -euo pipefail
 
 usage() {
-    echo "Usage: bash scripts/deploy-basic.sh [-] <target-path> [--update|update] [--force|force]"
+    echo "Usage: bash scripts/mlt-deploy-basic.sh [-] <target-path> [--update|update] [--force|force]"
     echo "  <target-path>  Target project root (created if missing); a leading '-' separator is optional"
     echo "  --update       Merge MLT into existing .cursorrules, re-sync skeleton, preserve memory"
     echo "  --force        Overwrite an existing target .cursorrules"
@@ -79,7 +79,7 @@ if [ -f "$CURSORRULES" ]; then
             echo "  [OK] MLT thin-client section appended to existing .cursorrules (additive merge)"
             echo "  [NOTE] If the target contract binds {HANDOFF}/{NEXT} to another framework or has"
             echo "         a skill-routing table, review the merge: namespace MLT aliases and register"
-            echo "         mlt-* routing — see skills/deploy-basic/skill.md (Merge procedure)."
+            echo "         mlt-* routing — see skills/mlt-deploy-basic/skill.md (Merge procedure)."
         fi
     else
         echo "  [SKIP] .cursorrules already exists (use --force to overwrite, --update to merge)"

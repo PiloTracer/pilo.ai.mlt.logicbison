@@ -5,7 +5,7 @@
 **Level:** Beginner
 **Prerequisites:** none
 
-> **Example install.** This directory shows what `@mlt-program-standard install - ml-foundations` produces in a target project's `.training.mlt/programs/`. Study the three-file shape (`PROGRAM.md` + `progress.md` + `notes.md`), then delete or replace it with your own install.
+> **Example install.** This directory shows what `@mlt-program-standard install - ml-foundations` produces in a target project's `.work.mlt/programs/`. Study the three-file shape (`PROGRAM.md` + `progress.md` + `notes.md`), then delete or replace it with your own install.
 
 ---
 
@@ -60,4 +60,4 @@ Career switchers and students entering ML. Assumes basic Python and high-school 
 | Concepts | Explain bias-variance tradeoff with concrete example |
 
 ## Exit Criteria
-All exit checks met. Artifacts in `.training.mlt/`: linear regression impl, scikit-learn pipeline, EDA notebook.
+All exit checks met. Artifacts in `.work.mlt/`: linear regression impl, scikit-learn pipeline, EDA notebook.

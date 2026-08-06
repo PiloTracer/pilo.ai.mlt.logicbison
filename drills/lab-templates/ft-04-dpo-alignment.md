@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/dpo-alignment/.venv
-source .training.mlt/labs/dpo-alignment/.venv/bin/activate
+python -m venv .work.mlt/labs/dpo-alignment/.venv
+source .work.mlt/labs/dpo-alignment/.venv/bin/activate
 pip install torch transformers trl datasets accelerate peft
 ```
 
@@ -132,5 +132,5 @@ generate(trainer.model, "AFTER DPO")
 ```bash
 rm -rf ./dpo-output
 deactivate
-rm -rf .training.mlt/labs/dpo-alignment/.venv
+rm -rf .work.mlt/labs/dpo-alignment/.venv
 ```

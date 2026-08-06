@@ -37,8 +37,8 @@ Follow `standards/assessment.md` for scoring anchors, dimensions, and rubric.
 
 ## Steps
 
-1. Read `.training.mlt/context/PROFILE.md` for existing self-reported background
-2. Read any prior scorecard from `.training.mlt/context/` (if re-assessment)
+1. Read `.work.mlt/context/PROFILE.md` for existing self-reported background
+2. Read any prior scorecard from `.work.mlt/context/` (if re-assessment)
 3. For each dimension (or the focused dimension if `--focus`):
    - Ask 3-5 diagnostic questions mixing conceptual and practical
    - Include at least one code-reading or code-writing question for dimensions 2-7
@@ -55,7 +55,7 @@ Follow `standards/assessment.md` for scoring anchors, dimensions, and rubric.
    - Score 3-4 average → `llm-finetuning`, `llm-engineering`, or `ai-agents-and-apps`
    - Score 4-5 average → `llm-training` or `mlops-and-deployment`
 6. Challenge any anti-patterns found (per `standards/assessment.md`)
-7. Write the scorecard to `.training.mlt/context/SCORECARD.md`
+7. Write the scorecard to `.work.mlt/context/SCORECARD.md`
 
 ## Scorecard format
 
@@ -82,7 +82,7 @@ Follow `standards/assessment.md` for scoring anchors, dimensions, and rubric.
 
 ## Completion criteria
 
-- Scorecard written to `.training.mlt/context/SCORECARD.md`
+- Scorecard written to `.work.mlt/context/SCORECARD.md`
 - All 7 dimensions scored with evidence
 - Program recommendation included
 - NEXT.md updated with recommended next step

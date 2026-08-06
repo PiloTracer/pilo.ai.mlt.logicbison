@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/dataset-curation/.venv
-source .training.mlt/labs/dataset-curation/.venv/bin/activate
+python -m venv .work.mlt/labs/dataset-curation/.venv
+source .work.mlt/labs/dataset-curation/.venv/bin/activate
 pip install datasets
 ```
 
@@ -45,7 +45,7 @@ NUM_PERM = 64
 BANDS = 16             # LSH: ROWS = NUM_PERM // BANDS
 JACCARD_THRESH = 0.8
 PRIME = (1 << 61) - 1  # Mersenne prime for hashing
-OUT_PATH = ".training.mlt/labs/dataset-curation/curated.jsonl"
+OUT_PATH = ".work.mlt/labs/dataset-curation/curated.jsonl"
 
 EN_STOPWORDS = set(
     "the of and a in to is was for on with as at by an be this that it from "
@@ -172,18 +172,18 @@ print(f"wrote {len(curated)} docs to {OUT_PATH}")
 - Length/language filter drops a large share of docs (section headings, short fragments); expect roughly 30-60% retention
 - Exact dedup removes few to no docs; MinHash near-dedup removes a small number of near-duplicates
 - Curated report shows higher mean/median word counts than raw
-- `curated.jsonl` written under `.training.mlt/labs/dataset-curation/`
+- `curated.jsonl` written under `.work.mlt/labs/dataset-curation/`
 
 ## Troubleshooting
 - `load_dataset` hangs or is slow: streaming still downloads chunks on demand; check your connection. The slice read is a few tens of MB. Lower `N_DOCS` if needed.
 - `DatasetNotFoundError` or config error: ensure a recent `datasets` version (`pip install -U datasets`); the config name is `wikitext-103-v1` under `Salesforce/wikitext`.
 - MinHash step is slow: pure-Python MinHash on thousands of docs takes tens of seconds; reduce `N_DOCS` or `NUM_PERM`, or install `datasketch` and swap in its `MinHash`/`MinHashLSH`.
 - Zero docs pass the filter: check that `MIN_STOPWORD` is not too strict for the corpus, and print a few filtered-out samples to tune `MIN_WORDS`.
-- `FileNotFoundError` on write: create the directory first with `mkdir -p .training.mlt/labs/dataset-curation` or run the script from the repo root.
+- `FileNotFoundError` on write: create the directory first with `mkdir -p .work.mlt/labs/dataset-curation` or run the script from the repo root.
 
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/dataset-curation/.venv
-rm -f .training.mlt/labs/dataset-curation/curated.jsonl
+rm -rf .work.mlt/labs/dataset-curation/.venv
+rm -f .work.mlt/labs/dataset-curation/curated.jsonl
 ```

@@ -10,8 +10,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/knn/.venv
-source .training.mlt/labs/knn/.venv/bin/activate
+python -m venv .work.mlt/labs/knn/.venv
+source .work.mlt/labs/knn/.venv/bin/activate
 pip install numpy scikit-learn matplotlib
 ```
 
@@ -90,6 +90,6 @@ plt.show()
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/knn/.venv
+rm -rf .work.mlt/labs/knn/.venv
 rm -f knn_k_selection.png
 ```

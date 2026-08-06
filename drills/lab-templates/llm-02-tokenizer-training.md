@@ -8,8 +8,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/tokenizer-training/.venv
-source .training.mlt/labs/tokenizer-training/.venv/bin/activate
+python -m venv .work.mlt/labs/tokenizer-training/.venv
+source .work.mlt/labs/tokenizer-training/.venv/bin/activate
 pip install tokenizers datasets transformers
 ```
 
@@ -115,5 +115,5 @@ print(f"Domain text fertility: custom {f_custom:.2f} vs gpt2 {f_gpt2:.2f} tokens
 ```bash
 rm -f custom-tokenizer.json
 deactivate
-rm -rf .training.mlt/labs/tokenizer-training/.venv
+rm -rf .work.mlt/labs/tokenizer-training/.venv
 ```

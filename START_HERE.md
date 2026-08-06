@@ -6,7 +6,7 @@
 
 **Rule:** If something below contradicts a `skill.md` or binding standard, the **skill / standard wins**.
 
-**Paths:** Fat-client nested → prefix with `.ai.mlt/`. Self-hosted / thin-client source → no prefix. Learner memory is always **`.training.mlt/`** at the project root.
+**Paths:** Fat-client nested → prefix with `.ai.mlt/`. Self-hosted / thin-client source → no prefix. Learner memory is always **`.work.mlt/`** at the project root.
 
 ---
 
@@ -14,22 +14,22 @@
 
 1. **Truth before comfort.** The professor corrects flawed assumptions. Labs beat lectures.
 2. **Skills orchestrate. Standards bind. Memory persists.** Almost never read everything at once.
-3. **Framework vs `.training.mlt/`:** skills/curricula/standards (framework) vs profile, plans, programs, sessions, labs, tutorials, drills, sources, exports (learner memory).
+3. **Framework vs `.work.mlt/`:** skills/curricula/standards (framework) vs profile, plans, programs, sessions, labs, tutorials, drills, sources, exports (learner memory).
 
 ---
 
 ## 1. Decision tree
 
-**First fork — which repo/session is this?** If you are editing `skills/`, `curricula/`, `standards/`, `templates/`, `scripts/`, or `.cursorrules` themselves (framework-dev work on this OS), **stop here** — everything below is for a *training project* (a learner using the pipeline). Do not run `@mlt-bootstrap init` or chain into the learner pipeline just because a self-hosted `.training.mlt/` looks empty; that only applies when you (or the user) explicitly want to create/initialize a training project.
+**First fork — which repo/session is this?** If you are editing `skills/`, `curricula/`, `standards/`, `templates/`, `scripts/`, or `.cursorrules` themselves (framework-dev work on this OS), **stop here** — everything below is for a *training project* (a learner using the pipeline). Do not run `@mlt-bootstrap init` or chain into the learner pipeline just because a self-hosted `.work.mlt/` looks empty; that only applies when you (or the user) explicitly want to create/initialize a training project.
 
 ```text
 ┌──────────────────────────────────────────┐
 │  Where am I right now?                   │
 └──────────────────────────────────────────┘
        │
-       ├── "Setting up a NEW training project" ──► `@deploy-basic - <path>` (from source) or `@mlt-bootstrap init`
+       ├── "Setting up a NEW training project" ──► `@mlt-deploy-basic - <path>` (from source) or `@mlt-bootstrap init`
        │
-       ├── "Empty / no .training.mlt" AND explicit training intent ──► `@mlt-bootstrap init`
+       ├── "Empty / no .work.mlt" AND explicit training intent ──► `@mlt-bootstrap init`
        │
        ├── "Just opened / lost"           ──► §2 Resume
        │
@@ -39,7 +39,7 @@
        │
        ├── "Want a custom program"        ──► `@mlt-program-custom - <request>`
        │
-       ├── "Ready to train today"         ──► `@session-mlt start` → `@mlt-mentor run`
+       ├── "Ready to train today"         ──► `@mlt-session start` → `@mlt-mentor run`
        │
        ├── "Need a tutorial"              ──► `@mlt-tutorial generate - <topic>`
        │
@@ -53,7 +53,7 @@
        │
        ├── "Don't know which skill"       ──► `@mlt-director - <describe>`
        │
-       └── "Closing for the day"          ──► `@session-mlt close`
+       └── "Closing for the day"          ──► `@mlt-session close`
 ```
 
 ---
@@ -62,7 +62,7 @@
 
 | Need | Command |
 |------|---------|
-| Where am I / what's next? | `@session-mlt status` + `.training.mlt/context/HANDOFF.md` + `.training.mlt/plans/NEXT.md` |
+| Where am I / what's next? | `@mlt-session status` + `.work.mlt/context/HANDOFF.md` + `.work.mlt/plans/NEXT.md` |
 | Free-text / unknown skill | `@mlt-director - <what you want>` |
 | Gate / readiness state | `@mlt-review status` |
 
@@ -70,15 +70,15 @@
 
 ## 3. First-time setup
 
-**Brand-new target project, thin-client (recommended):** create the repo (`mkdir` + `git init`) → from **this source** repo/chat run `@deploy-basic - /path/to/new-repo` (only the source session knows its own path) → open the target and continue below.
+**Brand-new target project, thin-client (recommended):** create the repo (`mkdir` + `git init`) → from **this source** repo/chat run `@mlt-deploy-basic - /path/to/new-repo` (only the source session knows its own path) → open the target and continue below.
 
 | Step | Run |
 |------|-----|
-| 1. Scaffold memory (if not already done by `@deploy-basic`) | `@mlt-bootstrap init` |
-| 2. Fill profile | Edit `.training.mlt/context/PROFILE.md` (or let bootstrap interview) |
+| 1. Scaffold memory (if not already done by `@mlt-deploy-basic`) | `@mlt-bootstrap init` |
+| 2. Fill profile | Edit `.work.mlt/context/PROFILE.md` (or let bootstrap interview) |
 | 3. Assess | `@mlt-assess run` |
 | 4. Install or design program | `@mlt-program-standard install - <slug>` **or** `@mlt-program-custom - <request>` |
-| 5. First session | `@session-mlt start` → `@mlt-mentor run` |
+| 5. First session | `@mlt-session start` → `@mlt-mentor run` |
 
 ---
 
@@ -99,8 +99,8 @@
 
 ## 5. Closing the day
 
-1. `@session-mlt close` — refreshes HANDOFF + NEXT
-2. Optionally draft a commit of `.training.mlt/` changes (you committed; agent does not unless asked)
+1. `@mlt-session close` — refreshes HANDOFF + NEXT
+2. Optionally draft a commit of `.work.mlt/` changes (you committed; agent does not unless asked)
 
 ---
 
@@ -110,7 +110,7 @@
 2. [`README.md`](README.md) — bird's-eye
 3. [`PROCESS_ROUTER.md`](PROCESS_ROUTER.md) — how-to → skill, plus the binding-standards table
 4. [`skills/README.md`](skills/README.md) — registry and canonical verbs
-5. Active program under `.training.mlt/programs/` — `PROGRAM.md`, then `progress.md` (the task ledger)
+5. Active program under `.work.mlt/programs/` — `PROGRAM.md`, then `progress.md` (the task ledger)
 
 Then, as needed rather than up front:
 

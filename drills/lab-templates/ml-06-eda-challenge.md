@@ -9,8 +9,8 @@
 ## Setup
 
 ```bash
-python -m venv .training.mlt/labs/eda-challenge/.venv
-source .training.mlt/labs/eda-challenge/.venv/bin/activate
+python -m venv .work.mlt/labs/eda-challenge/.venv
+source .work.mlt/labs/eda-challenge/.venv/bin/activate
 pip install pandas matplotlib seaborn
 ```
 
@@ -118,6 +118,6 @@ print("4. Strongest numeric correlate of survival:",
 ## Cleanup
 ```bash
 deactivate
-rm -rf .training.mlt/labs/eda-challenge/.venv
+rm -rf .work.mlt/labs/eda-challenge/.venv
 rm -f eda_titanic.png
 ```

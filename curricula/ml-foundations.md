@@ -50,4 +50,4 @@ Career switchers and students entering ML. Assumes basic Python and high-school 
 | Concepts | Explain bias-variance tradeoff with concrete example |
 
 ## Exit Criteria
-All exit checks met. Artifacts in `.training.mlt/`: linear regression impl, scikit-learn pipeline, EDA notebook.
+All exit checks met. Artifacts in `.work.mlt/`: linear regression impl, scikit-learn pipeline, EDA notebook.
