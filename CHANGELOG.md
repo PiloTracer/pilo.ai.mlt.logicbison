@@ -1,5 +1,10 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+- `session-mlt`: explicit binding file-boundary section — in a target (client) repo, `start` / `status` / `close` touch only files under `.training.mlt/`; exception: outside files may be read/referenced when the session context (log, HANDOFF, NEXT, ledger) is already aware of related changes — never written; `.quick/` views remain owned by `mlt-review`
+
 ## [0.1.0] - 2026-08-05
 
 First public release.

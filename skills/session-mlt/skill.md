@@ -5,6 +5,17 @@ description: "Session lifecycle management — opens and closes training session
 
 # session-mlt — session open and close
 
+## File boundary (binding)
+
+In a target (client) repo, every `session-mlt` action — `start`, `status`, `close` — touches **only** files under `.training.mlt/`:
+
+- **Reads:** `context/PROFILE.md`, `context/HANDOFF.md`, `plans/NEXT.md`, `programs/<slug>/progress.md`, `sessions/`
+- **Writes:** `sessions/<log>.md`, `context/HANDOFF.md`, `plans/NEXT.md`, `programs/<slug>/progress.md`
+
+That directory is the domain of this framework in the client repo. The `.quick/` views are owned by `mlt-review`, not `session-mlt`.
+
+**Exception — context-aware related changes:** files outside `.training.mlt/` (e.g. the learner's own project code) may be **read and referenced** only when the session context is already aware of related changes — i.e. the session log, HANDOFF, NEXT, or the program ledger names them. In that case `session-mlt` may read them to write an accurate handoff/summary and must record their paths in the session log or HANDOFF. It still never **writes** outside `.training.mlt/`, and never pulls in unrelated files.
+
 ## Modes
 
 | Mode | Invocation | Effect |
