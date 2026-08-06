@@ -46,19 +46,22 @@ Follow `standards/program-spec.md` for program structure requirements.
 2. Read `.training.mlt/context/SCORECARD.md` if it exists
 3. Validate `<slug>` exists in `curricula/<slug>.md`
    - If not found, list available slugs and stop
-4. Check if `.training.mlt/programs/<slug>/` already exists
+4. Check prerequisites declared in `curricula/<slug>.md` metadata:
+   - For each prerequisite program, check whether it is installed under `.training.mlt/programs/` and whether it is complete (`CERTIFICATE.md` present or all exit criteria met)
+   - If any prerequisite is missing or incomplete, warn the learner, name the gap, and ask for explicit confirmation before installing (or recommend the prerequisite program first). Install anyway only with `--force` or explicit confirmation
+5. Check if `.training.mlt/programs/<slug>/` already exists
    - If yes and `--force` not set, stop and report
-5. Create `.training.mlt/programs/<slug>/`
-6. Copy `curricula/<slug>.md` to `.training.mlt/programs/<slug>/PROGRAM.md`
-7. Annotate PROGRAM.md with learner-specific notes from PROFILE
-8. Create `progress.md` with task ledger:
+6. Create `.training.mlt/programs/<slug>/`
+7. Copy `curricula/<slug>.md` to `.training.mlt/programs/<slug>/PROGRAM.md`
+8. Annotate PROGRAM.md with learner-specific notes from PROFILE
+9. Create `progress.md` with task ledger:
    - One row per module with columns: Module, Status, Lab, Score, Notes
    - All statuses initialized to `[ ]` (pending)
-9. Create `notes.md` with:
-   - Empty retrieval queue section
-   - Concepts-to-revisit section (populated during mentoring)
-10. Update `.training.mlt/plans/NEXT.md` with the first module of the installed program
-11. Report: program installed, module count, first module name
+10. Create `notes.md` with:
+    - Empty retrieval queue section
+    - Concepts-to-revisit section (populated during mentoring)
+11. Update `.training.mlt/plans/NEXT.md` with the first module of the installed program
+12. Report: program installed, module count, first module name
 
 ## Completion criteria
 

@@ -15,8 +15,8 @@ Reusable templates for bootstrapping and deployment.
 
 Templates are consumed by skills:
 
-- `@deploy-basic` copies `cursorrules.template` + runs `bootstrap.sh`
-- `@mlt-bootstrap init` runs `bootstrap.sh` + PROFILE interview
+- `@deploy-basic` copies `cursorrules.template` + runs `bootstrap.sh` (via `scripts/deploy-basic.sh`)
+- `@mlt-bootstrap init` scaffolds the same layout (mechanically via `bootstrap.sh` when available) + drives the PROFILE interview
 - `@deploy-files` copies the entire framework tree
 
 ## Adding templates

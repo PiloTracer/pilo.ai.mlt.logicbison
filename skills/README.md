@@ -30,7 +30,7 @@ All MLT-specific skills use the `mlt-` prefix. Deployment skills and the session
 
 | Skill | Folder | Verbs | Purpose |
 |-------|--------|-------|---------|
-| deploy-basic | `skills/deploy-basic/` | `- <path>`, `--update` | Thin-client bootstrap |
+| deploy-basic | `skills/deploy-basic/` | `- <path>`, `--update`, `--force` | Thin-client bootstrap |
 | deploy-files | `skills/deploy-files/` | `copy - <path>` | Fat-client vendor |
 | deploy-repo | `skills/deploy-repo/` | `clone`, `archive` | Full repo deploy |
 | mlt-bootstrap | `skills/mlt-bootstrap/` | `init`, `status` | Scaffold `.training.mlt/`, PROFILE |

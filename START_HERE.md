@@ -14,7 +14,7 @@
 
 1. **Truth before comfort.** The professor corrects flawed assumptions. Labs beat lectures.
 2. **Skills orchestrate. Standards bind. Memory persists.** Almost never read everything at once.
-3. **Framework vs `.training.mlt/`:** skills/curricula/standards (framework) vs profile, programs, sessions, labs (learner memory).
+3. **Framework vs `.training.mlt/`:** skills/curricula/standards (framework) vs profile, plans, programs, sessions, labs, tutorials, drills, sources, exports (learner memory).
 
 ---
 

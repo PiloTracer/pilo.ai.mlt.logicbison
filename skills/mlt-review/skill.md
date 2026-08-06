@@ -34,12 +34,13 @@ Follow `standards/assessment.md` for gate criteria and scoring.
 4. Read `.training.mlt/drills/` for drill scores
 5. Read `.training.mlt/context/SCORECARD.md` for assessment scores
 6. Read `.training.mlt/plans/NEXT.md` for the planned next action
-7. Compute progress:
+7. Cross-verify lab claims against artifacts: for every module whose Lab cell is ticked in `progress.md`, confirm a matching artifact directory exists under `.training.mlt/labs/<topic>/` (with code/output files). Report any ledger entry with no artifact as unverified — never count it as complete.
+8. Compute progress:
    - Modules completed / total modules
-   - Labs completed / total labs
+   - Labs completed / total labs (artifact-verified per step 7)
    - Average drill score
    - Exit criteria met / total criteria
-8. For short status, render:
+9. For short status, render:
 
 ```text
 Program: <name>
@@ -51,23 +52,21 @@ Gate: <OPEN|CLOSED> — <reason if closed>
 Next: <next action from NEXT.md>
 ```
 
-9. For `--full`, add per-module detail:
+10. For `--full`, add per-module detail:
    - Each module: status, lab result, drill score, exit check pass/fail
    - Strongest and weakest areas
    - Time spent (if session logs available)
-10. Refresh the operator views so they never go stale:
-   - Rewrite `.quick/progress.md` from the computed data (active programs, completed sessions from `.training.mlt/sessions/`, drill scores, totals)
-   - Update the "Current Gate Status" table in `.quick/gates.md` from the current gate states (keep the gate definitions and BLOCKED format sections intact)
+11. Refresh the operator views so they never go stale:
+    - Rewrite `.quick/progress.md` from the computed data (active programs, completed sessions from `.training.mlt/sessions/`, drill scores, totals)
+    - Update the "Current Gate Status" table in `.quick/gates.md` from the current gate states — one row per defined gate, all 7 (keep the gate definitions and BLOCKED format sections intact)
 
 ## Steps — certify mode
 
 1. Read all progress data (same as status)
-2. Evaluate against gate criteria from `standards/assessment.md`:
-   - All module exit checks met
-   - Average drill score >= 3
-   - No dimension scored at 1
-   - All labs completed with passing output
-3. For each gate criterion, report PASS or FAIL with evidence
+2. Evaluate against gate criteria from `standards/assessment.md` (two distinct gates):
+   - **program-complete**: all module exit checks met + all labs completed with artifact-verified passing output
+   - **certified**: average drill score >= 3 and no drill dimension scored at 1
+3. For each gate criterion, report PASS or FAIL with evidence (artifact paths, drill files)
 4. If all gates pass:
    - Issue certification in `.training.mlt/programs/<slug>/CERTIFICATE.md`
    - Include: program name, date, scores, artifacts produced

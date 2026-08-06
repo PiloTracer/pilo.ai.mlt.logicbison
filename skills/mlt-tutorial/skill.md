@@ -33,7 +33,10 @@ Follow `standards/citation.md` for all references and `standards/code-quality.md
    - What prior knowledge is needed
    - What code will be demonstrated
    - What the learner will build by the end
-4. Generate the tutorial as a single markdown file under `.training.mlt/tutorials/<topic>.md`:
+4. Choose the output layout:
+   - Single tutorial → `.training.mlt/tutorials/<topic-slug>.md`
+   - Multi-part bundle (e.g. written + video companion, or a "learn today" set) → `.training.mlt/tutorials/<YYYYMMDD>-<slug>/` with one file per part, named `<part-topic>.md` (e.g. `20260804-learn-today/gradient-descent-linear-regression.md` + `gradient-descent-video-entry.md`)
+5. Generate each tutorial file with this structure:
 
 ### Tutorial structure
 
@@ -45,6 +48,7 @@ Follow `standards/citation.md` for all references and `standards/code-quality.md
   - Each step has a clear instruction
   - Code is copy-pasteable and produces visible output
   - Expected output is shown after each step
+  - Detailed explanatory comments on every non-trivial block (per `standards/code-quality.md` § Learner-facing code)
 - **Putting it together**: a complete working example combining all steps
 - **Expected output**: what the final result looks like
 - **Troubleshooting**: at least 5 common errors with fixes
@@ -52,15 +56,18 @@ Follow `standards/citation.md` for all references and `standards/code-quality.md
 - **Next steps**: what to learn after this tutorial, with source links
 - **References**: all cited sources per `standards/citation.md`
 
-5. Verify all code is runnable, no hardcoded secrets, no invented packages
-6. Verify all cited sources are real with title, author, and URL
-7. Adapt code for learner's hardware (prefer small models, quantized if needed)
-8. Report: tutorial path, estimated time, difficulty level
+Video-entry variant: when the learner's PROFILE prefers video (or `--format video` is implied), produce a video-entry tutorial instead — an ordered watch list of durable, reputable videos (per citation.md), each with "what to extract" cues, followed by a synthesis-recall section. Pair it with the written tutorial in a bundle directory when both formats are requested.
+
+6. Verify all code is runnable, no hardcoded secrets, no invented packages
+7. Verify all cited sources are real with title, author, and URL
+8. Adapt code for learner's hardware (prefer small models, quantized if needed)
+9. Report: tutorial path, estimated time, difficulty level
 
 ## Completion criteria
 
-- Tutorial written to `.training.mlt/tutorials/<topic>.md`
+- Tutorial written to `.training.mlt/tutorials/<topic-slug>.md` (or a `<YYYYMMDD>-<slug>/` bundle for multi-part sets)
 - All code runs and produces documented output
+- All code carries detailed explanatory comments per code-quality.md § Learner-facing code
 - All sources cited are real and verifiable
 - Troubleshooting section covers at least 5 errors
 - No hardcoded API keys, paths, or credentials

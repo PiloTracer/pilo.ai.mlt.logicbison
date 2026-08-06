@@ -59,6 +59,8 @@ MLT content is always **additive** — never overwrite or restructure the target
     - `.training.mlt/labs/`
     - `.training.mlt/tutorials/`
     - `.training.mlt/drills/`
+    - `.training.mlt/exports/`
+    - `.quick/` (operator cheat sheets at the target root)
 11. Skip existing files in `.training.mlt/` unless `--force`
 12. Verify `TRAINER_MLT_SOURCE` in target `.cursorrules` points to a readable path
 13. Report what was created and what was skipped

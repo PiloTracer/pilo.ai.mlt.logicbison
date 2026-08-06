@@ -38,7 +38,14 @@ description: "Session lifecycle management — opens and closes training session
    - Use `--agenda` if provided
    - Otherwise derive from NEXT.md and progress.md
 7. Announce session open with: learner name, program, module, agenda
-8. Create session log file under `.training.mlt/sessions/` with timestamp
+8. Create the session log file under `.training.mlt/sessions/`
+
+### Session log naming convention (binding)
+
+- Format: `YYYY-MM-DD_<topic-slug>.md` (local date, kebab-case topic), e.g. `2026-08-05_grad-descent-walkthrough.md`
+- If the topic is not yet known at `start`, use the agenda or module name; rename once at `close` if the topic sharpened during the session
+- Exactly **one log file per session**: `session-mlt` creates it at `start`, and every other skill that logs the session (`mlt-mentor`, `mlt-lab`, `mlt-drill`) writes into this same file — never a second one
+- The log records: date, agenda, modules/topics covered, retrieval results, artifacts produced (paths under `.training.mlt/`), commitments
 
 ## Steps — status mode
 
@@ -49,7 +56,7 @@ description: "Session lifecycle management — opens and closes training session
 ## Steps — close mode
 
 1. Summarize what was accomplished this session
-2. Write session summary to the session log file
+2. Write session summary to the session log file (rename it to the final `YYYY-MM-DD_<topic-slug>.md` if the placeholder topic changed)
 3. Update `.training.mlt/context/HANDOFF.md` with:
    - What was done
    - What was learned

@@ -114,6 +114,17 @@ for pair in \
 done
 echo ""
 
+echo "--- Memory layout (.training.mlt skeleton) ---"
+for d in context plans programs sessions sources labs tutorials drills exports; do
+    if [ -d ".training.mlt/$d" ]; then
+        echo "  [OK] .training.mlt/$d/"
+    else
+        echo "  [MISSING] .training.mlt/$d/ (fresh clones lose empty dirs — add a .gitkeep)"
+        ERRORS=$((ERRORS + 1))
+    fi
+done
+echo ""
+
 echo "--- Scripts ---"
 for script in scripts/*.sh templates/*.sh; do
     if bash -n "$script" 2>/dev/null; then

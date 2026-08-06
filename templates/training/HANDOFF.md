@@ -13,6 +13,8 @@
 
 ## Retrieval queue
 
+> The queue of record lives in the active program's `notes.md` (per `standards/mentoring.md`). This table is a convenience mirror for session-to-session continuity; if they disagree, `notes.md` wins.
+
 | Concept | Last recalled | Times recalled | Next review |
 |---------|---------------|----------------|-------------|
 | (concept) | (date) | (count) | (date) |

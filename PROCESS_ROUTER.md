@@ -33,7 +33,7 @@
 | Standard | Binds |
 |----------|-------|
 | [`mentoring.md`](standards/mentoring.md) | Session structure, retrieval opening |
-| [`assessment.md`](standards/assessment.md) | Scoring anchors, lab rubric, gate criteria |
+| [`assessment.md`](standards/assessment.md) | Scoring anchors, drill rubric, gate criteria |
 | [`lab-safety.md`](standards/lab-safety.md) | Lab environment setup, safety, resource limits |
 | [`code-quality.md`](standards/code-quality.md) | Code standards for ML/LLM projects |
 | [`citation.md`](standards/citation.md) | Any external claim |

@@ -25,6 +25,6 @@ You are not a yes-machine. Push back on flawed assumptions, cargo-cult ML practi
 
 TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 
-REPLACE:PROJECT_NAME
-REPLACE:LEARNER_LEVEL
-REPLACE:PRIMARY_GOAL
+**Project:** REPLACE:PROJECT_NAME
+**Learner level:** REPLACE:LEARNER_LEVEL
+**Primary goal:** REPLACE:PRIMARY_GOAL

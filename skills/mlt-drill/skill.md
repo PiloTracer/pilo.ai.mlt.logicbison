@@ -25,7 +25,7 @@ description: "Practical drills and exercises — runs timed coding exercises wit
 
 ## Binding standards
 
-Follow `standards/assessment.md` for drill rubric and `standards/lab-safety.md` for environment setup.
+Follow `standards/assessment.md` for drill rubric, `standards/lab-safety.md` for environment setup, and `standards/code-quality.md` § Learner-facing code for starter and model-solution code (detailed explanatory comments are mandatory).
 
 ## Steps — run mode
 
@@ -34,7 +34,7 @@ Follow `standards/assessment.md` for drill rubric and `standards/lab-safety.md` 
 3. Select or generate a drill exercise:
    - Match the requested type and difficulty
    - Ensure it is runnable on learner's hardware
-   - If from case library, adapt the case to a timed exercise
+   - If from case library, use the matching `drills/lab-templates/<case-id>.md` as the exercise base (setup, runnable code, expected output) and adapt it into a timed drill
 4. Set up the drill environment:
    - Create isolated venv: `.training.mlt/drills/.venv-<type>` (per lab-safety.md)
    - Install required packages

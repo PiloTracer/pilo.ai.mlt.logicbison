@@ -214,7 +214,7 @@ TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 | Path | Layer |
 |------|-------|
 | `skills/`, `curricula/`, `standards/`, `references/`, `drills/`, `templates/`, `scripts/` | Framework (shared) |
-| `.training.mlt/` | **All learner-specific memory** — profile, programs, sessions, labs, sources, assessments, progress |
+| `.training.mlt/` | **All learner-specific memory** — context (profile, handoff, scorecard), plans, programs, sessions, sources, labs, tutorials, drills, exports |
 | `.cursorrules` | Agent contract (local) |
 | `.quick/` | Operator cheat sheets |
 

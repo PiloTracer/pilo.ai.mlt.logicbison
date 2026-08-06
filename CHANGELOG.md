@@ -1,6 +1,19 @@
 # Changelog
 
-## [Unreleased]
+## [0.1.0] - 2026-08-05
+
+First public release.
+
+### Added (release hardening)
+- `scripts/install.sh` — one-command Linux setup: environment check, framework verification, optional deploy to a target project
+- Canonical session & lab tracking contract: session logs named `YYYY-MM-DD_<topic-slug>.md` (one log per session, shared by session-mlt/mlt-mentor/mlt-lab/mlt-drill); lab artifacts under `.training.mlt/labs/<topic>/`; `mlt-review` now cross-verifies lab ledger entries against actual artifact directories
+- `mlt-lab` and `mlt-drill` now consume `drills/lab-templates/` (33 ready-made labs) before generating from scratch
+- Learner-facing code standard (`standards/code-quality.md`): all educational programs, labs, tutorials, drills, and model solutions must carry detailed explanatory comments
+- Gate unification: named gates in `skills/SKILL_DEPENDENCIES.md`, single canonical BLOCKED format, `mlt-mentor` enforces the program-active gate, `mlt-program-standard install` validates prerequisites
+- Memory scaffold completed everywhere: `.training.mlt/exports/` + `.quick/` added to bootstrap.sh, mlt-bootstrap, deploy-basic
+- Full tutorial (`docs/tutorial-getting-started.md`) and quick-reference recipe pack (`docs/quick-reference/`) for programs, tutorials, and quick lessons
+- Example learner content under `.training.mlt/` (marked as examples): installed `ml-foundations` program, gradient-descent tutorial bundle (written + video entry), `grad-descent` lab with commented code, sample session log
+- README quick start: root → deploy → target workflow, AI-agent usage note, Windows compatibility section
 
 ### Fixed
 - `deploy-basic.sh`: thin-client deploy was functionally broken — now substitutes `REPLACE_BASICSOURCE`/`REPLACE:*` tokens, implements working `--force` and `--update` modes
@@ -27,10 +40,10 @@
 - Merge procedure in `skills/deploy-basic/skill.md`: subsection integration, alias namespacing (`{MLT_HANDOFF}`/`{MLT_NEXT}`) on placeholder collision, skill-routing registration, separation note
 - Target-repo coexistence rules in `.cursorrules` and multi-framework guidance in `cursorrules.template`
 
-## [0.1.0] - 2026-08-03
+## [0.0.1] - 2026-08-03
 
 ### Added
-- Initial framework structure (pilo.trainer.mlt v0.1.0)
+- Initial framework structure (pilo.trainer.mlt v0.0.1)
 - Core agent contract (.cursorrules)
 - 8 training programs in curricula catalog
 - 6 binding standards (mentoring, assessment, lab-safety, code-quality, citation, program-spec)

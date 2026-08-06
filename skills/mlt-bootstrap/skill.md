@@ -25,7 +25,7 @@ description: "Scaffold .training.mlt/ directories and drive PROFILE intake inter
 
 1. Check if `.training.mlt/` already exists
    - If present and populated, report status and ask user before re-initializing
-2. Create directory tree:
+2. Create directory tree (the mechanical scaffold is `templates/bootstrap.sh` — prefer running it from the source framework over recreating directories by hand, so the layout stays single-sourced):
    - `.training.mlt/context/`
    - `.training.mlt/plans/`
    - `.training.mlt/programs/`
@@ -34,6 +34,8 @@ description: "Scaffold .training.mlt/ directories and drive PROFILE intake inter
    - `.training.mlt/labs/`
    - `.training.mlt/tutorials/`
    - `.training.mlt/drills/`
+   - `.training.mlt/exports/`
+   - `.quick/` (operator cheat sheets at the project root)
 3. Create `PROFILE.md` in `.training.mlt/context/` from `templates/training/PROFILE.md` if not present
 4. Create `HANDOFF.md` in `.training.mlt/context/` from `templates/training/HANDOFF.md`
 5. Create `NEXT.md` in `.training.mlt/plans/` from `templates/training/NEXT.md`

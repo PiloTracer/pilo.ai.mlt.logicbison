@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Skills may require prior state before they can execute. The gate graph below defines which skills block others. It mirrors the gate table exactly — the table is authoritative.
+Skills may require prior state before they can execute. The gate graph below defines which skills block others. Gate names (`profile-ready`, `assessed`, `program-active`, `session-open`, `module-complete`, `program-complete`, `certified`) are defined in `.quick/gates.md` and used identically there and in `@mlt-review` reports.
 
 ```text
 deploy-basic / deploy-files / deploy-repo
@@ -27,21 +27,23 @@ deploy-basic / deploy-files / deploy-repo
 
 ## Gate table
 
-| Skill | Requires | Unlock condition |
-|-------|----------|-----------------|
-| mlt-bootstrap | deploy-basic OR deploy-files OR deploy-repo | Framework assets accessible |
-| mlt-assess | mlt-bootstrap (PROFILE exists) | `.training.mlt/context/PROFILE.md` present |
-| mlt-program-standard | mlt-bootstrap | `.training.mlt/programs/` directory exists |
-| mlt-program-custom | mlt-bootstrap, mlt-assess | PROFILE and scorecard exist |
-| mlt-curriculum | mlt-program-standard OR mlt-program-custom | Active program in `.training.mlt/programs/` |
-| session-mlt | mlt-bootstrap | PROFILE present |
-| mlt-mentor | session-mlt (active), active program | Session open, program installed |
-| mlt-lab | mlt-bootstrap | `.training.mlt/` scaffolded |
-| mlt-drill | mlt-bootstrap | `.training.mlt/` scaffolded |
-| mlt-tutorial | mlt-bootstrap | `.training.mlt/` scaffolded |
-| mlt-sources | mlt-bootstrap | `.training.mlt/sources/` directory exists |
-| mlt-review | mlt-assess (scorecard exists) | Assessment completed at least once |
-| mlt-update | mlt-sources | Source list exists in `.training.mlt/sources/` |
+| Skill | Gate | Requires | Unlock condition |
+|-------|------|----------|-----------------|
+| mlt-bootstrap | — | deploy-basic OR deploy-files OR deploy-repo | Framework assets accessible |
+| mlt-assess | profile-ready | mlt-bootstrap (PROFILE exists) | `.training.mlt/context/PROFILE.md` present |
+| mlt-program-standard | profile-ready | mlt-bootstrap | `.training.mlt/programs/` directory exists |
+| mlt-program-custom | assessed | mlt-bootstrap, mlt-assess | PROFILE and scorecard exist |
+| mlt-curriculum | program-active | mlt-program-standard OR mlt-program-custom | Active program in `.training.mlt/programs/` |
+| session-mlt | profile-ready | mlt-bootstrap | PROFILE present |
+| mlt-mentor | session-open + program-active | session-mlt (active), active program | Session open AND program installed |
+| mlt-lab | profile-ready | mlt-bootstrap | `.training.mlt/` scaffolded |
+| mlt-drill | profile-ready | mlt-bootstrap | `.training.mlt/` scaffolded |
+| mlt-tutorial | profile-ready | mlt-bootstrap | `.training.mlt/` scaffolded |
+| mlt-sources | profile-ready | mlt-bootstrap | `.training.mlt/sources/` directory exists |
+| mlt-review | assessed | mlt-assess (scorecard exists) | Assessment completed at least once |
+| mlt-update | — | mlt-sources | Source list exists in `.training.mlt/sources/` |
+
+`module-complete`, `program-complete`, and `certified` are progress gates evaluated by `@mlt-review status` / `certify`, not entry gates — see `.quick/gates.md` for their criteria.
 
 ## BLOCKED report format
 
