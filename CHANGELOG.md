@@ -1,5 +1,16 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+- `scripts/mlt-cursorrules-verify.sh` — verifies (and with `--fix` repairs) a deployed target's `.cursorrules` against the current framework source: `TRAINER_MLT_SOURCE` filled/reachable/valid root, fat-client `.ai.mlt/` asset completeness, self-hosted clone integrity, `.work.mlt/` skeleton, duplicate-section and alias-collision detection, remaining `REPLACE:` tokens; exit non-zero on FAIL
+- `mlt-deploy-basic`: `status` mode (read-only verification report) and mandatory post-deploy verification — every deploy/update ends with `mlt-cursorrules-verify.sh`; `update` re-syncs a stale `TRAINER_MLT_SOURCE` via `--fix`
+- `mlt-deploy-files` / `mlt-deploy-repo`: mandatory verification step (`--fat` / self-hosted layouts) in the skill contract
+
+### Changed
+- `scripts/mlt-deploy-basic.sh`: full argument normalization — verbs accept the `--` prefix or bare form (`update` ≡ `--update`, `status` ≡ `--status`, `force` ≡ `--force`), `-` / `--` separators ignored, target path accepted in any position; `MLT_SOURCE` env override for the source root
+- Deploy skill docs (`mlt-deploy-basic`, `mlt-deploy-files`, `mlt-deploy-repo`): explicit argument-equivalence contracts so `@mlt-deploy-basic "/path" update` is identical to `@mlt-deploy-basic /path --update`
+
 ## [0.2.0] - 2026-08-06
 
 ### Changed

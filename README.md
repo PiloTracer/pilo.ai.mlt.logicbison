@@ -120,7 +120,7 @@ pilo.trainer.mlt/
 ├── skills/                   # 18 agent skills (orchestration)
 ├── templates/                # Bootstrap and deployment templates
 ├── docs/                     # Tutorial + quick-reference recipes
-├── scripts/                  # install.sh, mlt-deploy-basic.sh, framework-verify.sh
+├── scripts/                  # install.sh, mlt-deploy-basic.sh, mlt-cursorrules-verify.sh, framework-verify.sh
 ├── .quick/                   # Operator cheat sheets (generated views)
 ├── START_HERE.md             # Decision tree
 ├── PROCESS_ROUTER.md         # How-to → skill mapping

@@ -15,7 +15,10 @@ description: "Fat-client vendor — copies the entire framework as .ai.mlt/ into
 
 ```text
 @mlt-deploy-files copy - <target-path> [--force]
+@mlt-deploy-files copy <target-path> [force]
 ```
+
+**Argument equivalence:** both forms are identical — the `-` / `--` separators are dropped, and flags accept the `--` prefix or bare form (`force` ≡ `--force`); the target path may appear in any position relative to the flags.
 
 - `<target-path>`: absolute or relative path to the target project root
 - `--force`: overwrite existing `.ai.mlt/` contents (requires user confirmation)
@@ -42,7 +45,8 @@ description: "Fat-client vendor — copies the entire framework as .ai.mlt/ into
 9. Scaffold `.work.mlt/` in target root if not present
 10. Update target `.cursorrules` to resolve framework paths from `.ai.mlt/`
 11. Leave `TRAINER_MLT_SOURCE` unset (fat-client resolves locally)
-12. Report file count, total size, and any skipped files
+12. **Verify (mandatory):** run `bash scripts/mlt-cursorrules-verify.sh <target-path> --fat` — confirms the vendored `.ai.mlt/` assets are complete, the skeleton exists, and no mixed state (pointer set + local copy) remains. On FAIL: fix and re-verify before reporting success.
+13. Report file count, total size, and any skipped files
 
 ## Completion criteria
 
@@ -50,4 +54,5 @@ description: "Fat-client vendor — copies the entire framework as .ai.mlt/ into
 - Target `.cursorrules` resolves skills, curricula, standards from `.ai.mlt/`
 - Target `.work.mlt/` skeleton exists
 - `TRAINER_MLT_SOURCE` is unset in target
+- `scripts/mlt-cursorrules-verify.sh <target> --fat` exits 0
 - Summary lists: directories copied, total file count, any conflicts

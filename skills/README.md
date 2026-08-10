@@ -30,7 +30,7 @@ All MLT skills use the `mlt-` prefix. Deployment skills are `mlt-deploy-basic`, 
 
 | Skill | Folder | Verbs | Purpose |
 |-------|--------|-------|---------|
-| mlt-deploy-basic | `skills/mlt-deploy-basic/` | `- <path>`, `--update`, `--force` | Thin-client bootstrap |
+| mlt-deploy-basic | `skills/mlt-deploy-basic/` | `- <path>`, `--update`, `--force`, `status` | Thin-client bootstrap + target `.cursorrules` verification |
 | mlt-deploy-files | `skills/mlt-deploy-files/` | `copy - <path>` | Fat-client vendor |
 | mlt-deploy-repo | `skills/mlt-deploy-repo/` | `clone`, `archive` | Full repo deploy |
 | mlt-bootstrap | `skills/mlt-bootstrap/` | `init`, `status` | Scaffold `.work.mlt/`, PROFILE |

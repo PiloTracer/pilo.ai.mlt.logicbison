@@ -9,21 +9,30 @@ description: "Thin-client bootstrap — copies .cursorrules and .work.mlt/ skele
 
 | Mode | Invocation | Effect |
 |------|-----------|--------|
-| deploy | `@mlt-deploy-basic - /path/to/target` | Copy skeleton to target |
-| update | `@mlt-deploy-basic - /path/to/target --update` | Re-sync skeleton, preserve learner memory |
+| deploy | `@mlt-deploy-basic - /path/to/target` | Copy skeleton to target, then verify |
+| update | `@mlt-deploy-basic - /path/to/target --update` | Re-sync skeleton + pointer, preserve learner memory, then verify |
+| status | `@mlt-deploy-basic status [/path/to/target]` | Read-only verification report (no writes) |
 
 ## Parse
 
 ```text
 @mlt-deploy-basic - <target-path> [--update] [--force]
 @mlt-deploy-basic <target-path> [update] [force]
+@mlt-deploy-basic [status] [<target-path>]
 ```
 
-Both forms are identical: the `-` separator before the path is optional, and the flags may be written with or without dashes (`update` = `--update`, `force` = `--force`).
+**Argument equivalence (skill + shell script):** all forms are identical — the `-` / `--` separators are dropped, verbs accept the `--` prefix or bare form (`update` ≡ `--update`, `force` ≡ `--force`, `status` ≡ `--status`), and the target path may appear in any position relative to the verb:
+
+```text
+@mlt-deploy-basic "/mnt/work/Projects/system-erp" update   ≡   @mlt-deploy-basic /mnt/work/Projects/system-erp --update
+```
 
 - `<target-path>`: absolute or relative path to the target project root
-- `--update`: merge MLT into an existing `.cursorrules` (see Merge procedure), re-sync skeleton, do not overwrite learner memory
+- `--update`: merge MLT into an existing `.cursorrules` (see Merge procedure), re-sync `TRAINER_MLT_SOURCE` to the current source, re-sync skeleton, do not overwrite learner memory
 - `--force`: overwrite existing `.cursorrules` (requires explicit user confirmation)
+- `status`: read-only — runs `scripts/mlt-cursorrules-verify.sh` against the target and reports; exit non-zero on FAIL findings
+
+**Shell:** `bash $TRAINER_MLT_SOURCE/scripts/mlt-deploy-basic.sh [status] <target-path> [update|force]` — same argument equivalence as above.
 
 ## Merge procedure (target already has a `.cursorrules`)
 
@@ -62,7 +71,12 @@ MLT content is always **additive** — never overwrite or restructure the target
     - `.work.mlt/exports/`
     - `.quick/` (operator cheat sheets at the target root)
 11. Skip existing files in `.work.mlt/` unless `--force`
-12. Verify `TRAINER_MLT_SOURCE` in target `.cursorrules` points to a readable path
+12. **Verify (mandatory, every deploy/update):** run `bash scripts/mlt-cursorrules-verify.sh <target-path>` (the shell script does this automatically). It checks, against the *current* source location:
+    - `.cursorrules` present; `TRAINER_MLT_SOURCE` filled, reachable, and a valid framework root
+    - no duplicate MLT sections; alias collisions surfaced (`{MLT_HANDOFF}` / `{MLT_NEXT}` required when another framework binds `{HANDOFF}` / `{NEXT}`)
+    - `.work.mlt/` skeleton complete (dirs + PROFILE/HANDOFF/NEXT/UNKNOWNS)
+    - remaining `REPLACE:` tokens reported for the operator to fill
+    On FAIL: fix (or re-run with `update`, which re-syncs the pointer via `--fix`) and re-verify — do not report success with a red verification.
 13. Report what was created and what was skipped
 
 ## Completion criteria
@@ -70,6 +84,7 @@ MLT content is always **additive** — never overwrite or restructure the target
 - Target has a `.cursorrules` with `TRAINER_MLT_SOURCE` set (fresh file, or merged section per the Merge procedure)
 - Merged sections: aliases namespaced on collision, routing registered, no duplicated MLT content
 - Target has `.work.mlt/` skeleton with all subdirectories
-- Target `.cursorrules` references resolve to readable paths
+- `scripts/mlt-cursorrules-verify.sh <target>` exits 0 (all pointer/skeleton checks PASS)
+- Target `.cursorrules` references resolve to readable paths — once deployed, "read .cursorrules" in the target surfaces the pointer, the full-ruleset location (`$TRAINER_MLT_SOURCE/.cursorrules`), entry points, and the local `.work.mlt/` memory layout
 - No learner memory overwritten unless `--force` confirmed
 - Summary lists: files created, files skipped, any conflicts

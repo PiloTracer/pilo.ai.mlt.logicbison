@@ -19,6 +19,8 @@ description: "Full repository deploy — git clone or archive the entire pilo.tr
 @mlt-deploy-repo archive - <output-dir> [--format zip|tar.gz]
 ```
 
+**Argument equivalence:** the `-` / `--` separators are dropped, and flags accept the `--` prefix or bare form where unambiguous (`--format zip` ≡ `format zip`); paths may appear in any position relative to the flags.
+
 - `<url>`: git remote URL of the framework repository
 - `<target-path>`: destination directory for the clone
 - `<output-dir>`: directory where the archive file will be written
@@ -34,7 +36,8 @@ description: "Full repository deploy — git clone or archive the entire pilo.tr
 4. Run `git clone <url> <target-path>` (with `--branch` if specified)
 5. Verify clone succeeded by checking `README.md` exists in target
 6. Scaffold `.work.mlt/` skeleton in target if not present
-7. Report: commit SHA, branch, files present, any missing expected paths
+7. **Verify (mandatory):** run `bash scripts/mlt-cursorrules-verify.sh <target-path>` — a fresh clone is detected as self-hosted (target IS the framework checkout); the check confirms all framework assets and the `.work.mlt/` skeleton are intact and `TRAINER_MLT_SOURCE` is correctly unset. On FAIL: re-clone or repair before reporting success.
+8. Report: commit SHA, branch, files present, any missing expected paths
 
 ## Steps — archive mode
 
@@ -48,5 +51,5 @@ description: "Full repository deploy — git clone or archive the entire pilo.tr
 
 ## Completion criteria
 
-- clone: target directory contains full framework, `.work.mlt/` scaffolded, commit SHA reported
+- clone: target directory contains full framework, `.work.mlt/` scaffolded, `mlt-cursorrules-verify.sh` exits 0 (self-hosted layout), commit SHA reported
 - archive: archive file exists at output path, size and count reported, no learner memory included
