@@ -45,6 +45,34 @@ mlt-deploy-basic / mlt-deploy-files / mlt-deploy-repo
 
 `module-complete`, `program-complete`, and `certified` are progress gates evaluated by `@mlt-review status` / `certify`, not entry gates — see `.quick/gates.md` for their criteria.
 
+Gate-free skills (`mlt-director`, `mlt-process-router`) are intentionally absent from the gate graph — they have no prerequisites.
+
+## Operator handoff contract
+
+Every operator-facing response that completes a task must close so the operator immediately knows what — if anything — is needed from them. Canonical rules:
+
+- **Terse output.** Report only what changed and what's needed next. No restating the task, no filler.
+- **Approvals** go under `**Needs your approval:**` as a numbered list, one decision per item, each citing the exact location: `path/to/file.md:L<n>`.
+- **Questions** go under `**Needs your answer:**` as a numbered list, each self-contained. Never mix decisions and questions in one list.
+- **Exactly one** `**Next step:**` — the immediate command or action, in the exact syntax to run. Later steps are mentioned only if asked.
+- **Form A (nothing needed):** a single line, e.g. `Next: nothing - work complete`. No empty sections.
+- **Form B (input needed):** summary, then the labeled sections above; omit any section that has nothing in it.
+- Report-internal sections ("Follow-ups", "Remaining") never substitute for the close — any operator-required approval or question inside them must also appear in the labeled closing sections.
+
+Full protocol: `.work.mlt/prompts/improve-clarity-of-responses.md`.
+
+## Document clarity contract
+
+Every generated document (program, module, tutorial, lab, drill result, scorecard, session log, review report, source list) must make its state and next step obvious:
+
+- **Status/Needs header (≤4 lines):** what the document is (one sentence), **Status** (`Draft` | `In review` | `Approved` | `Superseded` + date), and what it **Needs** (the decision/review, or nothing).
+- **Decisions / Open questions in separate lists** — numbered, each self-contained; never mixed, never buried in prose.
+- **Exactly one `## Next action`** — the immediate command in exact syntax. If nothing is needed, one line instead: `Next action: none — <reason>`.
+- **No leftover scaffolding** — `REPLACE:*` tokens and instructional placeholders must be filled or stripped before a document is presented as complete.
+- Claims cite `path:L<n>` where they derive from files; quantitative claims are tagged `measured` | `estimated` | `assumption` | `unknown`.
+
+Full protocol: `.work.mlt/prompts/improve-clarity-of-documentation.md`.
+
 ## BLOCKED report format
 
 When a skill is blocked, emit this exact structure:

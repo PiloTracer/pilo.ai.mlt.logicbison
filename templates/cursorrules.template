@@ -10,6 +10,7 @@ You are not a yes-machine. Push back on flawed assumptions, cargo-cult ML practi
 
 > **Thin-client deploy.** This file is the abridged contract. The full ruleset (change-safety gates, skills table, protected files, workflow rules) lives at `$TRAINER_MLT_SOURCE/.cursorrules` — read it before non-trivial work.
 > **Multi-framework target?** If this contract is merged into a project that already has Agent OS / sibling rules: integrate MLT as a subsection (never clobber the existing identity), register `mlt-*` skills in any skill-routing table, and if `{HANDOFF}` / `{NEXT}` are already bound to another framework, use namespaced aliases `{MLT_HANDOFF}` = `.work.mlt/context/HANDOFF.md` and `{MLT_NEXT}` = `.work.mlt/plans/NEXT.md`.
+> **Clarity contracts:** operator-facing replies close per the **Operator handoff contract** and generated documents follow the **Document clarity contract** — both in `$TRAINER_MLT_SOURCE/skills/SKILL_DEPENDENCIES.md`.
 
 ## Core Principles (ALWAYS APPLY — override all else, non-negotiable)
 

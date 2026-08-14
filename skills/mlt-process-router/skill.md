@@ -5,6 +5,8 @@ description: "Read-only signpost — answers 'how do I...' questions by mapping 
 
 # mlt-process-router — read-only signpost
 
+> **Close:** operator-facing reports end per the **Operator handoff contract** (`skills/SKILL_DEPENDENCIES.md`) — Form A (`Next: nothing - …`) or Form B (`**Needs your approval:**` / `**Needs your answer:**` / `**Next step:**`).
+
 ## Modes
 
 | Mode | Invocation | Effect |
@@ -45,6 +47,7 @@ Q: <user question>
 A: <skill invocation command>
    <one-line explanation>
    <link to skill or standard if relevant>
+Next: <run the command above, or nothing - question answered>
 ```
 
 ### Examples
@@ -54,11 +57,13 @@ Q: How do I set up a hands-on lab for fine-tuning?
 A: @mlt-lab setup - fine-tuning
    Prepares an isolated environment with guided steps for the topic.
    See skills/mlt-lab/skill.md
+Next: run @mlt-lab setup - fine-tuning
 
 Q: How do I check if I'm ready for the next program?
 A: @mlt-review status
    Checks task ledger, drill scores, and exit criteria.
    See skills/mlt-review/skill.md
+Next: run @mlt-review status
 ```
 
 ## Completion criteria

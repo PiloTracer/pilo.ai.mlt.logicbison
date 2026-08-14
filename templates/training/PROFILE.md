@@ -1,5 +1,9 @@
 # Learner Profile
 
+**What:** Learner profile — background, environment, preferences, current focus.
+**Status:** Draft — filled by `@mlt-bootstrap init`, updated as we learn.
+**Needs:** learner answers for the REPLACE/parenthesized fields.
+
 **Name:** REPLACE:LEARNER_NAME
 **Role:** REPLACE:LEARNER_ROLE
 **Level:** REPLACE:LEARNER_LEVEL
@@ -32,3 +36,7 @@
 - **Active program:** (slug or "none")
 - **Last session:** (date)
 - **Blockers:** (none / describe)
+
+## Next action
+
+`@mlt-bootstrap init`

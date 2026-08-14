@@ -5,6 +5,9 @@ description: "Continuous learning refresh — scan for new tools, papers, and te
 
 # mlt-update — continuous learning refresh
 
+> **Close:** operator-facing reports end per the **Operator handoff contract** (`skills/SKILL_DEPENDENCIES.md`) — Form A (`Next: nothing - …`) or Form B (`**Needs your approval:**` / `**Needs your answer:**` / `**Next step:**`).
+> **Docs:** generated documents follow the **Document clarity contract** (`skills/SKILL_DEPENDENCIES.md`) — Status/Needs header, separate Decisions / Open questions lists, exactly one `## Next action`, no leftover scaffolding.
+
 ## Modes
 
 | Mode | Invocation | Effect |

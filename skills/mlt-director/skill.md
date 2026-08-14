@@ -5,6 +5,8 @@ description: "Free-text orchestrator — takes a natural language description, p
 
 # mlt-director — free-text orchestrator
 
+> **Close:** operator-facing reports end per the **Operator handoff contract** (`skills/SKILL_DEPENDENCIES.md`) — Form A (`Next: nothing - …`) or Form B (`**Needs your approval:**` / `**Needs your answer:**` / `**Next step:**`).
+
 ## Modes
 
 | Mode | Invocation | Effect |

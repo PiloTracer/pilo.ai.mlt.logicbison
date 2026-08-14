@@ -5,6 +5,8 @@ description: "Fat-client vendor — copies the entire framework as .ai.mlt/ into
 
 # mlt-deploy-files — fat-client vendor
 
+> **Close:** operator-facing reports end per the **Operator handoff contract** (`skills/SKILL_DEPENDENCIES.md`) — Form A (`Next: nothing - …`) or Form B (`**Needs your approval:**` / `**Needs your answer:**` / `**Next step:**`).
+
 ## Modes
 
 | Mode | Invocation | Effect |

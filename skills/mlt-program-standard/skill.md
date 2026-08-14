@@ -5,6 +5,9 @@ description: "Install catalog program — lists available programs in curricula/
 
 # mlt-program-standard — install catalog program
 
+> **Close:** operator-facing reports end per the **Operator handoff contract** (`skills/SKILL_DEPENDENCIES.md`) — Form A (`Next: nothing - …`) or Form B (`**Needs your approval:**` / `**Needs your answer:**` / `**Next step:**`).
+> **Docs:** generated documents follow the **Document clarity contract** (`skills/SKILL_DEPENDENCIES.md`) — Status/Needs header, separate Decisions / Open questions lists, exactly one `## Next action`, no leftover scaffolding.
+
 ## Modes
 
 | Mode | Invocation | Effect |
@@ -38,6 +41,8 @@ Follow `standards/program-spec.md` for program structure requirements.
 |------|------|-------|----------|-----------|
 | ml-foundations | ML Foundations | Beginner | 4 weeks | yes |
 | llm-finetuning | LLM Fine-tuning | Adv | 6 weeks | no |
+
+Next: <e.g. `@mlt-program-standard install - <slug>` to install one, or nothing - list only>
 ```
 
 ## Steps — install mode

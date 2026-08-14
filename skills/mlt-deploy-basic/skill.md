@@ -5,6 +5,8 @@ description: "Thin-client bootstrap — copies .cursorrules and .work.mlt/ skele
 
 # mlt-deploy-basic — thin-client bootstrap
 
+> **Close:** operator-facing reports end per the **Operator handoff contract** (`skills/SKILL_DEPENDENCIES.md`) — Form A (`Next: nothing - …`) or Form B (`**Needs your approval:**` / `**Needs your answer:**` / `**Next step:**`).
+
 ## Modes
 
 | Mode | Invocation | Effect |

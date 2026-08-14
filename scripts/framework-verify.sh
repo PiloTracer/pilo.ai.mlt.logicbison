@@ -55,6 +55,15 @@ echo ""
 
 echo "--- Skills ---"
 SKILL_COUNT=0
+if ! grep -q "## Operator handoff contract" skills/SKILL_DEPENDENCIES.md; then
+    echo "  [ERROR] skills/SKILL_DEPENDENCIES.md missing Operator handoff contract section"
+    ERRORS=$((ERRORS + 1))
+fi
+if ! grep -q "## Document clarity contract" skills/SKILL_DEPENDENCIES.md; then
+    echo "  [ERROR] skills/SKILL_DEPENDENCIES.md missing Document clarity contract section"
+    ERRORS=$((ERRORS + 1))
+fi
+DOC_SKILLS="mlt-assess mlt-bootstrap mlt-curriculum mlt-drill mlt-lab mlt-mentor mlt-program-custom mlt-program-standard mlt-review mlt-session mlt-sources mlt-tutorial mlt-update"
 for skill_dir in skills/*/; do
     skill_name="$(basename "$skill_dir")"
     if [ ! -f "${skill_dir}skill.md" ]; then
@@ -63,6 +72,18 @@ for skill_dir in skills/*/; do
         continue
     fi
     SKILL_COUNT=$((SKILL_COUNT + 1))
+    if ! grep -q "Operator handoff contract" "${skill_dir}skill.md"; then
+        echo "  [ERROR] $skill_name missing Operator handoff contract reference"
+        ERRORS=$((ERRORS + 1))
+    fi
+    case " $DOC_SKILLS " in
+        *" $skill_name "*)
+            if ! grep -q "Document clarity contract" "${skill_dir}skill.md"; then
+                echo "  [ERROR] $skill_name (doc-generating) missing Document clarity contract reference"
+                ERRORS=$((ERRORS + 1))
+            fi
+            ;;
+    esac
     if ! grep -q "skills/${skill_name}/" skills/README.md; then
         echo "  [ERROR] $skill_name not in skills/README.md registry"
         ERRORS=$((ERRORS + 1))

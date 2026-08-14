@@ -198,6 +198,7 @@ TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 - **On failure:** report exact error, diagnose, fix if in scope, re-run checks.
 - **Scope:** declare scope first; only deliver what the question asked.
 - **Communication:** be concise; surface blockers early; label uncertainty; distinguish confirmed facts / inferences / proposals.
+- **Closing requirement:** every operator-facing response that completes a task closes per the **Operator handoff contract** (`skills/SKILL_DEPENDENCIES.md`) — Form A (`Next: nothing - …`) when no input is needed, or Form B (`**Needs your approval:**` citing `path:L<n>` / `**Needs your answer:**` / exactly one `**Next step:**`) when it is; decisions and questions never mixed; empty sections omitted.
 
 ---
 

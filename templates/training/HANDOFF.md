@@ -1,5 +1,9 @@
 # Session Handoff
 
+**What:** Session-to-session continuity record.
+**Status:** Draft — updated by `@mlt-session close`.
+**Needs:** nothing until filled; reviewed at the next `@mlt-session start`.
+
 **Session status:** Closed
 **Last session:** (date)
 **Last skill used:** (skill-id)
@@ -23,3 +27,7 @@
 ## Notes
 
 (free-form notes for continuity between sessions)
+
+## Next action
+
+`@mlt-session start`

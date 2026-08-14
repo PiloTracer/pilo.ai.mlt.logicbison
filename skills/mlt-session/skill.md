@@ -17,6 +17,9 @@ description: >-
 
 # mlt-session — session open, context, close, and scoped commit/push
 
+> **Close:** operator-facing reports end per the **Operator handoff contract** (`skills/SKILL_DEPENDENCIES.md`) — Form A (`Next: nothing - …`) or Form B (`**Needs your approval:**` / `**Needs your answer:**` / `**Next step:**`).
+> **Docs:** generated documents follow the **Document clarity contract** (`skills/SKILL_DEPENDENCIES.md`) — Status/Needs header, separate Decisions / Open questions lists, exactly one `## Next action`, no leftover scaffolding.
+
 Bookend MLT training sessions so the next session (or human) resumes without guessing, and optionally persist session state to git — with **repo-context-aware scope** (see [Commit scope resolution](#commit-scope-resolution-binding)).
 
 **Canonical path:** `skills/mlt-session/skill.md` · **Pairs with:** `.cursorrules`, `mlt-mentor`, `mlt-review`, `mlt-bootstrap`.
@@ -167,6 +170,8 @@ If prior HANDOFF says `Closed`, treat as a new session; do not assume prior chat
 - [pass|fail] S1 baseline reads (PROFILE, HANDOFF, NEXT, UNKNOWNS, progress)
 - [pass|fail] S5 session marked Open in HANDOFF
 - [pass|fail] S6 session log created at <path>
+
+**Next step:** <the first action on the agenda, in exact syntax — e.g. `@mlt-mentor run`>
 ```
 
 ---
@@ -187,6 +192,8 @@ Read-only snapshot. **No** writes, **no** completion checklist.
 **Branch:** <branch> · **Tree:** clean | dirty
 **Pick up:** <one line from NEXT.md>
 **Blockers:** <short list or none>
+
+Next: <the pick-up action, or nothing - status only>
 ```
 
 Optional: one line on dirty files (no full diff), session duration and items covered/remaining if a session log exists. For full context load without writes, use **context**; to open a session, use **start**.
@@ -244,6 +251,8 @@ Use when: an operator (or agent) wants full session context for ad-hoc reasoning
 
 ### No files written
 This mode is read-only: HANDOFF, NEXT, and the session log are **not** modified. To open a session bookend, run `@mlt-session start`.
+
+Next: <the pick-up action from NEXT.md, or nothing - context load only>
 ```
 
 ### Anti-patterns (context)
@@ -294,6 +303,8 @@ If the invocation also includes `commit` / `push`, run the [Commit protocol](#co
 - [pass|fail|skip] ledger ticked
 - [pass|fail|skip] commit ran in shell, SHA shown, scope resolved and fully staged
 - [pass|fail|skip] push ran after commit, branch/remote reported
+
+**Next step:** <the next action from the updated NEXT.md, in exact syntax>
 ```
 
 ---
@@ -373,6 +384,8 @@ If the resolved scope is already clean, state `none - working tree clean` and sk
 - [pass|fail] all changed + untracked files in the resolved scope included
 - [pass|fail] nothing outside a learner scope staged (n/a on framework scope)
 - [pass|fail] no Co-authored-by trailers
+
+Next: nothing - commit complete (session stays open on standalone commit; on close, see the close report's Next step)
 ```
 
 ---
