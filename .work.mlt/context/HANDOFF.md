@@ -1,15 +1,15 @@
 # Session Handoff
 
-**Session status:** Closed - 2026-08-13 - mlt-session aligned with session-control contract
+**Session status:** Closed - 2026-08-13 - mlt-session repo-context commit scope landed; framework changes committed full-scope
 **Last session:** 2026-08-13
-**Last skill used:** mlt-session (close)
+**Last skill used:** mlt-session (close commit push)
 **Active program:** none (framework-dev session)
 
 ## Context for next session
 
-- **What we covered:** Rewrote `skills/mlt-session/skill.md` for parity with the Agent OS `session-control` skill — added `context` mode, `scoped` commit modifier, verb aliases, goal text on start, structured per-mode report templates, mode-comparison matrix, edge-case/wrong-prompt tables, and HANDOFF `Session status` Open/Closed marking. Synced registries (`.cursorrules`, `skills/README.md`, `PROCESS_ROUTER.md`, `START_HERE.md`, `mlt-director`) and CHANGELOG.
-- **Key decisions made:** Skipped session-control's GitHub task-registry/ref extraction (Agent OS-specific; MLT has no ref concept). `add` stays inside the commit protocol, not a verb. Session commits remain strictly scoped to `.work.mlt/`.
-- **Open questions:** Framework changes from this session are intentionally **not** in the session commit (outside `.work.mlt/` scope) — commit them separately.
+- **What we covered:** (1) Aligned `skills/mlt-session/skill.md` with the Agent OS `session-control` contract — `context` mode, `scoped` modifier, aliases, goal text, per-mode report templates, HANDOFF `Session status` marking. (2) Added repo-context-aware commit scope per user directive — framework source repo commits stage all modified/added/new files; target-project invocations stay scoped to `.work.mlt/`.
+- **Key decisions made:** Scope detection: self-hosted = `.cursorrules` pilo.trainer.mlt identity + local `skills/` + `TRAINER_MLT_SOURCE` unset; ambiguous repos default to `.work.mlt/`-only. Skipped session-control's GitHub task-registry/ref extraction (Agent OS-specific). `add` stays inside the commit protocol, not a verb.
+- **Open questions:** none
 - **Blockers:** none
 
 ## Retrieval queue
@@ -22,4 +22,4 @@
 
 ## Notes
 
-Framework verification passed twice (`scripts/framework-verify.sh`, 0 errors). Session log: `.work.mlt/sessions/2026-08-13_mlt-session-parity.md`.
+Framework verification passed (`scripts/framework-verify.sh`, 0 errors). Session logs: `.work.mlt/sessions/2026-08-13_mlt-session-parity.md`, `.work.mlt/sessions/2026-08-13_mlt-session-commit-scope.md`.

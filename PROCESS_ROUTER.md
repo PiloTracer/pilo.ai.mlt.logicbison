@@ -6,7 +6,8 @@
 |--------------|-----|
 | Scaffold learner memory | `@mlt-bootstrap init` |
 | Open / close a training day | `@mlt-session start` / `close` |
-| Checkpoint / commit / push session work | `@mlt-session commit` / `commit push` / `close commit push` (scoped to `.work.mlt/`) |
+| Load full session context (read-only, no writes) | `@mlt-session context` |
+| Checkpoint / commit / push session work | `@mlt-session commit` / `commit push` / `close commit push` (target repo: `.work.mlt/` only; framework source repo: all changed/new files; `commit scoped` = bookend files only) |
 | Describe a goal in plain language | `@mlt-director - <text>` |
 | Diagnose level and gaps | `@mlt-assess run` |
 | List catalog programs | `@mlt-program-standard list` |

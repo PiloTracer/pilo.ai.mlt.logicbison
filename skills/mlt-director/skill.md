@@ -30,6 +30,7 @@ Accepts any free-text description of what the learner wants to do. No strict syn
    - "module order", "reorder modules", "refine the curriculum" → mlt-curriculum
    - "which skill", "how do I", "what should I run" → mlt-process-router
    - "start session", "begin training" → mlt-session start
+   - "context", "orient me", "where am I" → mlt-session context / status
    - "checkpoint", "commit session work", "push" → mlt-session commit / commit push
    - "teach me", "mentor", "learn about" → mlt-mentor
    - "tutorial", "explain how to" → mlt-tutorial

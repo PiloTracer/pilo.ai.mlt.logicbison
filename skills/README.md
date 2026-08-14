@@ -34,7 +34,7 @@ All MLT skills use the `mlt-` prefix. Deployment skills are `mlt-deploy-basic`, 
 | mlt-deploy-files | `skills/mlt-deploy-files/` | `copy - <path>` | Fat-client vendor |
 | mlt-deploy-repo | `skills/mlt-deploy-repo/` | `clone`, `archive` | Full repo deploy |
 | mlt-bootstrap | `skills/mlt-bootstrap/` | `init`, `status` | Scaffold `.work.mlt/`, PROFILE |
-| mlt-session | `skills/mlt-session/` | `start`, `status`, `close`, `commit`, `push` | Session lifecycle + scoped commit/push |
+| mlt-session | `skills/mlt-session/` | `start`, `status`, `context`, `close`, `commit`, `push`, `scoped` | Session lifecycle + repo-context-aware commit/push |
 | mlt-director | `skills/mlt-director/` | `- <text>` | Free-text orchestrator |
 | mlt-process-router | `skills/mlt-process-router/` | `- <question>` | Read-only signpost |
 | mlt-assess | `skills/mlt-assess/` | `run` | Diagnostic assessment |

@@ -111,7 +111,7 @@ TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 | mlt-deploy-files | `skills/mlt-deploy-files/` | Fat-client vendor as `.ai.mlt/` |
 | mlt-deploy-repo | `skills/mlt-deploy-repo/` | Full repo deploy |
 | mlt-bootstrap | `skills/mlt-bootstrap/` | Scaffold `.work.mlt/`, PROFILE |
-| mlt-session | `skills/mlt-session/` | Session start/status/close |
+| mlt-session | `skills/mlt-session/` | Session start/status/context/close + repo-context-aware commit/push |
 | mlt-director | `skills/mlt-director/` | Free-text orchestrator |
 | mlt-process-router | `skills/mlt-process-router/` | Read-only signpost |
 | mlt-assess | `skills/mlt-assess/` | Diagnostic assessment |
@@ -174,7 +174,7 @@ TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 
 ### Git
 - NEVER `git commit` or `git push` unless the user explicitly requests it in the same message.
-- **Exception — `@mlt-session`:** an invocation that includes `commit` / `push` (e.g. `@mlt-session close commit push`) IS an explicit request; follow `skills/mlt-session/skill.md` — stage **only** `.work.mlt/` paths (including new untracked files/dirs), never app code; push only after commit.
+- **Exception — `@mlt-session`:** an invocation that includes `commit` / `push` (e.g. `@mlt-session close commit push`) IS an explicit request; follow `skills/mlt-session/skill.md` — scope is repo-context-aware: in a target repo stage **only** `.work.mlt/` paths (including new untracked files/dirs), never app code; in this self-hosted framework source repo stage **all** modified/added/new files (`git add -A`); push only after commit.
 - Never modify history (**rebase, amend of others' commits, force-push**) without explicit request.
 - Never update git config.
 - When the user requests commit: stage safe paths, commit, show `git log -1 --oneline` + `git status -sb`; no "committed" claim without a SHA.

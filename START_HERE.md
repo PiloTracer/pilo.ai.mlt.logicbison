@@ -63,6 +63,7 @@
 | Need | Command |
 |------|---------|
 | Where am I / what's next? | `@mlt-session status` + `.work.mlt/context/HANDOFF.md` + `.work.mlt/plans/NEXT.md` |
+| Full context load (no writes) | `@mlt-session context` |
 | Free-text / unknown skill | `@mlt-director - <what you want>` |
 | Gate / readiness state | `@mlt-review status` |
 

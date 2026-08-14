@@ -1,5 +1,6 @@
 # Session Handoff
 
+**Session status:** Closed
 **Last session:** (date)
 **Last skill used:** (skill-id)
 **Active program:** (slug or "none")
