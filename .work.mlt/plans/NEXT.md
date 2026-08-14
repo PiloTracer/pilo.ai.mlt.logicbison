@@ -1,11 +1,10 @@
 # Next Action
 
-**Recommended next:** `@mlt-bootstrap init`
-**Reason:** No active program or session in progress.
+**Recommended next:** Commit the framework changes from the mlt-session parity work (outside `.work.mlt/` scope, intentionally left uncommitted by the session commit).
+**Reason:** Session close only stages `.work.mlt/`; the skill rewrite and registry syncs are framework files awaiting a separate, user-driven commit.
 
 ## Queue
 
-1. Complete bootstrap and fill PROFILE
-2. Run `@mlt-assess run` to diagnose level
-3. Install a program with `@mlt-program-standard install - <slug>`
-4. Start first session with `@mlt-session start`
+1. Commit framework files (`.cursorrules`, `CHANGELOG.md`, `PROCESS_ROUTER.md`, `START_HERE.md`, `skills/`, `templates/`) with a `feat:` message
+2. Optional: smoke-test the new verbs — `@mlt-session context` (read-only) and `@mlt-session status`
+3. To resume the training pipeline: `@mlt-bootstrap init` → fill PROFILE → `@mlt-assess run`
