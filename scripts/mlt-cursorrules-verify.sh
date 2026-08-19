@@ -6,6 +6,9 @@
 # preserves target customizations and filled REPLACE: tokens):
 #   thin-client: re-sync TRAINER_MLT_SOURCE to the current source (in place,
 #                all other lines untouched)
+#   both:        fill open sister cells (REPLACE:AI_*_PATH) when the sister is
+#                installed on disk; rewrite stale baked sister absolute paths
+#                when the sister moved together with the source
 #
 # Checks (both layouts):
 #   - .cursorrules present
@@ -57,6 +60,9 @@ else
   MLT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 fi
 
+# Shared sister-framework discovery (family naming `pilo.ai.<fw>.logicbison` + legacy `.ai.<fw>`).
+source "$MLT_ROOT/scripts/sister-discovery.sh"
+
 if [[ "$RAW_TARGET" == "." || "$RAW_TARGET" == "$PWD" ]]; then
   DEST_ROOT="$(pwd)"
 else
@@ -79,6 +85,30 @@ get_source() {
     s="$(grep -oE 'TRAINER_MLT_SOURCE=[^[:space:]`]+' "$CURS_DEST" 2>/dev/null | head -1 | cut -d= -f2- || true)"
   fi
   printf '%s' "$s"
+}
+
+# The self framework slot (source basename without the `.ai.` prefix, e.g.
+# `.ai.mlt` → `mlt`): the registry's self row (`*this directory*`) and the
+# target's own source pointer are not sister cells — skip them in fill/check loops.
+SELF_SLOT="$(basename "$MLT_ROOT" | sed 's/^\.ai\.//')"
+
+# Sister lookup: candidate names = family (<prefix>.<fw>) then legacy (.ai.<fw>);
+# candidate parents = canonical source parent first, then the consumer's own
+# parent / root (fat-client / co-located layouts).
+find_sister() {
+  local fw="$1"
+  find_sister_dir "$MLT_ROOT" "$fw" "$MLT_ROOT/.." "$(dirname "$DEST_ROOT")" "$DEST_ROOT" || true
+}
+
+# Extract baked sister paths from the target .cursorrules (any candidate dir
+# name — family or legacy; custom manual cells are left untouched).
+baked_sister_paths() {
+  local fw="$1" names_re
+  # Escape every ERE metachar (not just dots) — source basenames may contain
+  # any character; an unescaped `(` or `|` would corrupt the pattern.
+  names_re="$(sister_names "$fw" "$MLT_ROOT" | sed 's/[.[\*^$()+?{|]/\\&/g' | paste -sd'|' -)"
+  grep -oE '/[^ |]+/[^ |]+' "$CURS_DEST" 2>/dev/null \
+    | grep -E "/(${names_re})$" | sort -u || true
 }
 
 # ── Layout detection (unless forced) ──────────────────────────────────
@@ -118,6 +148,29 @@ if [[ "$FIX" -eq 1 && -f "$CURS_DEST" ]]; then
       rm -f "$before"
     fi
   fi
+  # Sister framework cells (both layouts): fill open REPLACE:AI_*_PATH tokens
+  # when the sister is installed on disk; re-point stale baked absolute paths.
+  for fw in $FRAMEWORK_SLOTS; do
+    [[ "$fw" == "$SELF_SLOT" ]] && continue
+    FWU="$(echo "$fw" | tr '[:lower:]' '[:upper:]')"
+    token="REPLACE:AI_${FWU}_PATH"
+    sister_dir="$(find_sister "$fw" || true)"
+    if grep -q "$token" "$CURS_DEST"; then
+      if [[ -n "$sister_dir" ]]; then
+        fw_esc="${sister_dir//\//\\/}"
+        perl -i -pe "s{${token} \\(default:? \\\`[^)]*\\)}{${fw_esc} (discovered at deploy time)}" "$CURS_DEST"
+        echo "  [fix] sister .ai.${fw}: filled ${token} → ${sister_dir}"
+      fi
+      continue
+    fi
+    while IFS= read -r old; do
+      [[ -z "$old" ]] && continue
+      if [[ ! -d "$old" && -n "$sister_dir" && "$old" != "$sister_dir" ]]; then
+        perl -i -pe "s{\Q${old}\E}{${sister_dir}}g" "$CURS_DEST"
+        echo "  [fix] sister .ai.${fw}: re-pointed ${old} → ${sister_dir}"
+      fi
+    done < <(baked_sister_paths "$fw")
+  done
 fi
 
 # ── Checks ─────────────────────────────────────────────────────────────
@@ -211,6 +264,39 @@ for f in context/PROFILE.md context/HANDOFF.md plans/NEXT.md plans/UNKNOWNS.md; 
   fi
 done
 [[ "$SKEL_OK" -eq 1 ]] && ok ".work.mlt/ skeleton: complete"
+
+# Sister framework cells (both layouts) — every non-self slot must resolve.
+for fw in $FRAMEWORK_SLOTS; do
+  if [[ "$fw" == "$SELF_SLOT" ]]; then
+    note ".ai.${fw}: self (this framework) — no sister cell to verify"
+    continue
+  fi
+  FWU="$(echo "$fw" | tr '[:lower:]' '[:upper:]')"
+  token="REPLACE:AI_${FWU}_PATH"
+  if grep -q "$token" "$CURS_DEST"; then
+    sister_dir="$(find_sister "$fw" || true)"
+    if [[ -n "$sister_dir" ]]; then
+      warn ".ai.${fw}: installed at ${sister_dir} but cell unfilled (${token}) — run deploy update"
+    else
+      checked="$(sister_names "$fw" "$MLT_ROOT" | paste -sd' ' -)"
+      note ".ai.${fw}: not installed (checked ${checked} next to source + target; runtime auto-discover reports degraded — for other dir names, fill the cell manually)"
+    fi
+    continue
+  fi
+  baked="$(baked_sister_paths "$fw")"
+  if [[ -z "$baked" ]]; then
+    note ".ai.${fw}: custom cell value (non-standard — verify manually)"
+    continue
+  fi
+  while IFS= read -r b; do
+    [[ -z "$b" ]] && continue
+    if [[ -d "$b" && -f "${b}/skills/README.md" ]]; then
+      ok ".ai.${fw} → ${b} (reachable)"
+    else
+      fail ".ai.${fw} → ${b} STALE (not a valid framework dir — run deploy update)"
+    fi
+  done <<< "$baked"
+done
 
 replace_count="$(grep -c 'REPLACE:' "$CURS_DEST" 2>/dev/null || true)"
 note "REPLACE: tokens remaining: ${replace_count:-0} (operator fills project/learner tokens; TRAINER_MLT_SOURCE excluded)"

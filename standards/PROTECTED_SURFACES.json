@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "description": "Machine-readable high-blast paths for pilo.trainer.mlt (MLT Agent OS). framework-verify and blast-radius-check.sh read this file. Extend per consumer repo; framework defaults below.",
+  "rule": "fail_verify_without_owner_approval",
+  "paths": [
+    "agent.os.framework.md",
+    "templates/cursorrules.template",
+    "templates/bootstrap.sh",
+    "skills/SKILL_DEPENDENCIES.md",
+    "scripts/mlt-deploy-basic.sh",
+    "scripts/mlt-cursorrules-verify.sh",
+    "scripts/sister-discovery.sh",
+    "scripts/framework-verify.sh",
+    "scripts/install.sh"
+  ],
+  "patterns": [
+    "scripts/deploy-*.sh",
+    "templates/training/**",
+    ".github/workflows/*.yml"
+  ],
+  "consumer_examples": [
+    "package.json",
+    "docker-compose*.yml",
+    "Dockerfile.*",
+    ".env*"
+  ],
+  "thresholds": {
+    "max_lines_warn": 150,
+    "max_lines_fail": 400,
+    "max_areas_warn": 2,
+    "max_areas_fail": 3
+  }
+}

@@ -1,14 +1,14 @@
 # Session Handoff
 
-**Session status:** Closed - 2026-08-13 - mlt-session repo-context commit scope landed; framework changes committed full-scope
-**Last session:** 2026-08-13
+**Session status:** Closed - 2026-08-19 - sister-discovery homogenization finalized (no parent row); released v0.6.1
+**Last session:** 2026-08-19
 **Last skill used:** mlt-session (close commit push)
 **Active program:** none (framework-dev session)
 
 ## Context for next session
 
-- **What we covered:** (1) Aligned `skills/mlt-session/skill.md` with the Agent OS `session-control` contract — `context` mode, `scoped` modifier, aliases, goal text, per-mode report templates, HANDOFF `Session status` marking. (2) Added repo-context-aware commit scope per user directive — framework source repo commits stage all modified/added/new files; target-project invocations stay scoped to `.work.mlt/`.
-- **Key decisions made:** Scope detection: self-hosted = `.cursorrules` pilo.trainer.mlt identity + local `skills/` + `TRAINER_MLT_SOURCE` unset; ambiguous repos default to `.work.mlt/`-only. Skipped session-control's GitHub task-registry/ref extraction (Agent OS-specific). `add` stays inside the commit protocol, not a verb.
+- **What we covered:** (1) `@mlt-session context` smoke test — read-only report OK. (2) Verified the homogenization change set (sister discovery for deploy/verify) against the doc — all present. (3) Owner decision: the child framework never routes to the parent `.ai` orchestrator — removed the `.ai` registry row from `.cursorrules` + template, reverted the drafted Agent OS root machinery (`sister-discovery.sh` stays byte-identical to the family lib). (4) Full verification suite green. (5) Released v0.6.1 (CHANGELOG cut, commit, push, tag, GitHub release).
+- **Key decisions made:** No parent row in the registry — the Agent OS orchestrator (`pilo.ai.logicbison`, confirmed on disk; `../.ai` absent) routes INTO this framework, never the reverse; documented in both registry intros. `mlt-deploy-files`/`mlt-deploy-repo` stay skill-only (prior decision stands).
 - **Open questions:** none
 - **Blockers:** none
 
@@ -22,4 +22,4 @@
 
 ## Notes
 
-Framework verification passed (`scripts/framework-verify.sh`, 0 errors). Session logs: `.work.mlt/sessions/2026-08-13_mlt-session-parity.md`, `.work.mlt/sessions/2026-08-13_mlt-session-commit-scope.md`.
+Framework verification passed post-release (`scripts/framework-verify.sh`, 0 errors, 2 expected warnings; thin-deploy/update/stale-fix smokes PASS). Session logs: `.work.mlt/sessions/2026-08-13_mlt-session-parity.md`, `2026-08-13_mlt-session-commit-scope.md`, `2026-08-19_sister-discovery-homogenization.md`.

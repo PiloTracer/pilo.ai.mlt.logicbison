@@ -161,6 +161,32 @@ for script in scripts/*.sh templates/*.sh; do
 done
 echo ""
 
+echo "--- Sister framework discovery ---"
+check_file "scripts/sister-discovery.sh"
+if [ -f scripts/sister-discovery.sh ] && bash -n scripts/sister-discovery.sh; then
+    # shellcheck disable=SC1091
+    source scripts/sister-discovery.sh
+    DISCOVERED="$(sister_names ui "$PWD" | head -1)"
+    if [ "$DISCOVERED" = ".ai.ui" ]; then
+        echo "  [OK] sister discovery: sister_names ui → $DISCOVERED"
+    else
+        echo "  [ERROR] sister discovery: sister_names ui → '$DISCOVERED' (expected .ai.ui)"
+        ERRORS=$((ERRORS + 1))
+    fi
+    for script in scripts/mlt-deploy-basic.sh scripts/mlt-cursorrules-verify.sh; do
+        if [ -f "$script" ] && grep -q "sister-discovery.sh" "$script"; then
+            echo "  [OK] $script sources sister-discovery.sh (deploy/verify parity)"
+        else
+            echo "  [ERROR] $script does not source sister-discovery.sh (deploy/verify parity broken)"
+            ERRORS=$((ERRORS + 1))
+        fi
+    done
+else
+    echo "  [ERROR] scripts/sister-discovery.sh missing or fails bash -n"
+    ERRORS=$((ERRORS + 1))
+fi
+echo ""
+
 echo "--- Relative markdown links ---"
 LINK_ERRORS=0
 while IFS= read -r md; do

@@ -1,8 +1,9 @@
 # Changelog
 
-## [Unreleased]
+## [0.6.1] - 2026-08-19
 
 ### Added
+- Sister-framework discovery for deploy/verify (homogenization with the Agent OS family): `scripts/sister-discovery.sh` — shared discovery lib, byte-identical to `pilo.ai.logicbison` (family naming `pilo.ai.<fw>.logicbison` + legacy `.ai.<fw>`, slot-replace rule); Frameworks registry in `.cursorrules` + `templates/cursorrules.template` (self + 5 sisters; `REPLACE:AI_*_PATH` cells filled at deploy time by `mlt-deploy-basic.sh`, unfilled tokens left for manual fill / runtime auto-discover); `mlt-cursorrules-verify.sh` six-slot checks — `--fix` fills open tokens and re-points stale baked paths, checks report reachable / STALE / not installed; `framework-verify.sh` sister section (lib presence + syntax, `sister_names` smoke, deploy/verify parity); `standards/PROTECTED_SURFACES.json` — machine-readable high-blast paths (resolves the dangling `agent.os.framework.md` citation)
 - `mlt-session`: repo-context-aware commit scope — in the self-hosted framework source repo (detected via `.cursorrules` pilo.trainer.mlt identity + local `skills/` + unset `TRAINER_MLT_SOURCE`) `commit` / `close commit [push]` stage **all** modified/added/new files (`git add -A`); target repos (thin/fat-client) keep the strict `.work.mlt/`-only scope; ambiguous repos default to `.work.mlt/`-only. `scoped` still narrows to bookend files; framework-scope messages follow the `.cursorrules` `type: description` format. Synced: `.cursorrules` git exception, `PROCESS_ROUTER.md`, `skills/README.md`
 - `mlt-session`: `context` mode — read-only full context load (PROFILE, HANDOFF, NEXT, UNKNOWNS, program progress) with uncommitted-aware git snapshot and secrets-flag pass; writes nothing. `scoped` commit modifier — `close commit scoped` / `commit scoped` stage bookend files only (HANDOFF + NEXT + session log + program ledger) instead of the full `.work.mlt/` default scope. Verb aliases (`begin`/`open` → start, `end`/`handoff` → close), goal text after `-` on `start` (equivalent to `--agenda`), natural-language trigger table, structured start/status/context/close/commit report templates, mode-comparison matrix, edge-case and wrong-prompt tables — aligned with the `session-control` skill contract
 - HANDOFF templates (`templates/training/HANDOFF.md`, `.work.mlt/context/HANDOFF.md`): `**Session status:**` line — `mlt-session start` marks `Open - <date> - <agenda>`, `close` marks `Closed - <date> - <outcome>`
@@ -11,8 +12,12 @@
 - `mlt-deploy-files` / `mlt-deploy-repo`: mandatory verification step (`--fat` / self-hosted layouts) in the skill contract
 
 ### Changed
+- Frameworks registry carries **no parent row**: the Agent OS orchestrator (`pilo.ai.logicbison` / `.ai`) routes INTO this framework; this framework never routes back, so no `.ai` contact path is kept (owner decision)
 - `scripts/mlt-deploy-basic.sh`: full argument normalization — verbs accept the `--` prefix or bare form (`update` ≡ `--update`, `status` ≡ `--status`, `force` ≡ `--force`), `-` / `--` separators ignored, target path accepted in any position; `MLT_SOURCE` env override for the source root
 - Deploy skill docs (`mlt-deploy-basic`, `mlt-deploy-files`, `mlt-deploy-repo`): explicit argument-equivalence contracts so `@mlt-deploy-basic "/path" update` is identical to `@mlt-deploy-basic /path --update`
+
+### Fixed
+- `agent.os.framework.md`: detection line now cites `mlt-session` (was the Agent OS `session-control` name, copied verbatim from the family text)
 
 ## [0.2.0] - 2026-08-06
 

@@ -83,6 +83,9 @@ fi
 TEMPLATE="$FRAMEWORK_ROOT/templates/cursorrules.template"
 VERIFY="$FRAMEWORK_ROOT/scripts/mlt-cursorrules-verify.sh"
 
+# Shared sister-framework discovery (family naming `pilo.ai.<fw>.logicbison` + legacy `.ai.<fw>`).
+source "$FRAMEWORK_ROOT/scripts/sister-discovery.sh"
+
 if [ ! -f "$TEMPLATE" ]; then
     echo "ERROR: template not found: $TEMPLATE" >&2
     echo "       Source is not a valid pilo.trainer.mlt framework root." >&2
@@ -119,6 +122,31 @@ substitute_tokens() {
         -e "s|REPLACE:PRIMARY_GOAL|(set the learner's primary training goal)|g" \
         "$file"
     echo "  [OK] tokens substituted (TRAINER_MLT_SOURCE=$FRAMEWORK_ROOT)"
+    # Sister-framework cells: fill REPLACE:AI_*_PATH tokens at deploy time when
+    # the sister is installed as a sibling (family naming `pilo.ai.<fw>.logicbison`
+    # or legacy `.ai.<fw>` — see scripts/sister-discovery.sh). Tokens absent from
+    # the template are skipped; tokens left unfilled stay for manual cell fill /
+    # runtime auto-discover (see .cursorrules § Frameworks registry path resolution).
+    local SIBLING_PARENT fw token_upper token fw_dir fw_esc checked
+    SIBLING_PARENT="$(cd "$FRAMEWORK_ROOT/.." && pwd)"
+    for fw in $FRAMEWORK_SLOTS; do
+        token_upper="$(echo "$fw" | tr '[:lower:]' '[:upper:]')"
+        token="REPLACE:AI_${token_upper}_PATH"
+        grep -q "$token" "$file" || continue   # no cell in this template → skip
+        fw_dir="$(find_sister_dir "$FRAMEWORK_ROOT" "$fw" "$SIBLING_PARENT" || true)"
+        if [[ -n "$fw_dir" ]]; then
+            fw_esc="${fw_dir//\//\\/}"
+            perl -i -pe "s{${token} \\(default:? \\\`[^)]*\\)}{${fw_esc} (discovered at deploy time)}" "$file"
+            if grep -q "$token" "$file"; then
+                echo "  frameworks: WARN ${token} cell did not match expected template shape — left for runtime auto-discover" >&2
+            else
+                echo "  frameworks: resolved ${token} → ${fw_dir}" >&2
+            fi
+        else
+            checked="$(sister_names "$fw" "$FRAMEWORK_ROOT" | paste -sd' ' -)"
+            echo "  frameworks: ${token} not found (checked ${checked} in $SIBLING_PARENT) — fill manually if the sister exists under another dir name" >&2
+        fi
+    done
 }
 
 CURSORRULES="$TARGET_ABS/.cursorrules"

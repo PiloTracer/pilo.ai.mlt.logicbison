@@ -29,6 +29,21 @@ You are not a yes-machine. Push back on flawed assumptions, cargo-cult ML practi
 
 **Free-text:** `@mlt-director - <what you want>`.
 
+### Frameworks registry (cross-framework discovery)
+
+Sister frameworks are siblings on disk; `.ai.<fw>` (legacy) / `pilo.ai.<fw>.logicbison` (family) naming — see path resolution below. `.ai.mlt` is this framework (self-hosted). The parent Agent OS orchestrator (`pilo.ai.logicbison` / `.ai`) routes INTO this framework — this framework never routes back, so the registry carries no parent row.
+
+| Framework | Director | Path | Bootstrap artifact |
+|-----------|----------|------|--------------------|
+| `.ai.mlt` (MLT Agent OS) | `@mlt-director` | *this directory* | `skills/README.md` |
+| `.ai.biz` (Business OS) | `@biz-director` | `../.ai.biz` | `../.ai.biz/skills/README.md` |
+| `.ai.cto` (CTO Professor OS) | `@cto-director` | `../.ai.cto` | `../.ai.cto/skills/README.md` |
+| `.ai.flutter` (Flutter Agent OS) | `@flutter-director` | `../.ai.flutter` | `../.ai.flutter/skills/README.md` |
+| `.ai.soc` (Social OS) | `@soc-director` | `../.ai.soc` | `../.ai.soc/skills/README.md` |
+| `.ai.ui` (UI Design OS) | `@ui-director` | `../.ai.ui` | `../.ai.ui/skills/README.md` |
+
+**Path resolution:** (1) use a filled path cell; empty → fall through. (2) Auto-discover: parent = `S/..` with S = this repo (self-hosted) or `$TRAINER_MLT_SOURCE` (thin); sister = `<S basename with <fw> inserted before its last .segment>` (e.g. `pilo.ai.ui.logicbison` for a `pilo.ai.logicbison` source; `.ai`-prefixed sources resolve `.ai.<fw>` directly), else legacy `.ai.<fw>`; missing = "not installed". (3) Before routing, verify the framework dir + its `skills/README.md` exist; if absent, route with `[degraded: <framework> not installed]` — never route into the void. If your source dir name breaks discovery, fill the path cells manually.
+
 | File | Purpose |
 |------|---------|
 | `START_HERE.md` | Decision tree |
