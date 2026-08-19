@@ -5,7 +5,7 @@
 Skills may require prior state before they can execute. The gate graph below defines which skills block others. Gate names (`profile-ready`, `assessed`, `program-active`, `session-open`, `module-complete`, `program-complete`, `certified`) are defined in `.quick/gates.md` and used identically there and in `@mlt-review` reports.
 
 ```text
-mlt-deploy-basic / mlt-deploy-files / mlt-deploy-repo
+mlt-deploy-basic / mlt-deploy-files
                 │
                 ▼
           mlt-bootstrap
@@ -29,7 +29,7 @@ mlt-deploy-basic / mlt-deploy-files / mlt-deploy-repo
 
 | Skill | Gate | Requires | Unlock condition |
 |-------|------|----------|-----------------|
-| mlt-bootstrap | — | mlt-deploy-basic OR mlt-deploy-files OR mlt-deploy-repo | Framework assets accessible |
+| mlt-bootstrap | — | mlt-deploy-basic OR mlt-deploy-files | Framework assets accessible |
 | mlt-assess | profile-ready | mlt-bootstrap (PROFILE exists) | `.work.mlt/context/PROFILE.md` present |
 | mlt-program-standard | profile-ready | mlt-bootstrap | `.work.mlt/programs/` directory exists |
 | mlt-program-custom | assessed | mlt-bootstrap, mlt-assess | PROFILE and scorecard exist |

@@ -119,7 +119,7 @@ if [[ -z "$LAYOUT" ]]; then
   elif [[ -d "${DEST_ROOT}/.ai.mlt/skills" ]]; then
     LAYOUT="fat"
   elif [[ -f "${DEST_ROOT}/skills/README.md" && -f "${DEST_ROOT}/templates/cursorrules.template" && -d "${DEST_ROOT}/curricula" ]]; then
-    LAYOUT="self"   # the target IS the framework checkout (mlt-deploy-repo clone)
+    LAYOUT="self"   # the target IS the framework checkout (git clone)
   else
     LAYOUT="thin"   # no local skills → thin-client (or not yet configured)
   fi
@@ -199,11 +199,11 @@ if [[ "$LAYOUT" == "thin" ]]; then
     [[ "$SRC_NOW" == "$MLT_ROOT" ]] || note "TRAINER_MLT_SOURCE differs from this source ($MLT_ROOT) — target tracks another source"
   fi
 elif [[ "$LAYOUT" == "self" ]]; then
-  # Self-hosted: the target IS the framework checkout (mlt-deploy-repo clone).
+  # Self-hosted: the target IS the framework checkout (git clone).
   SELF_OK=1
   for p in skills/README.md curricula standards references drills templates scripts START_HERE.md PROCESS_ROUTER.md .cursorrules; do
     if [[ ! -e "${DEST_ROOT}/$p" ]]; then
-      fail "framework asset missing: $p (incomplete clone — re-run @mlt-deploy-repo)"
+      fail "framework asset missing: $p (incomplete clone — re-clone the framework repo)"
       SELF_OK=0
     fi
   done

@@ -1,14 +1,14 @@
 # Session Handoff
 
-**Session status:** Closed - 2026-08-19 - sister-discovery homogenization finalized (no parent row); released v0.6.1
+**Session status:** Closed - 2026-08-19 - mlt-deploy-repo removed (unused) + framework verified green; v0.6.2 changelog cut
 **Last session:** 2026-08-19
 **Last skill used:** mlt-session (close commit push)
 **Active program:** none (framework-dev session)
 
 ## Context for next session
 
-- **What we covered:** (1) `@mlt-session context` smoke test — read-only report OK. (2) Verified the homogenization change set (sister discovery for deploy/verify) against the doc — all present. (3) Owner decision: the child framework never routes to the parent `.ai` orchestrator — removed the `.ai` registry row from `.cursorrules` + template, reverted the drafted Agent OS root machinery (`sister-discovery.sh` stays byte-identical to the family lib). (4) Full verification suite green. (5) Released v0.6.1 (CHANGELOG cut, commit, push, tag, GitHub release).
-- **Key decisions made:** No parent row in the registry — the Agent OS orchestrator (`pilo.ai.logicbison`, confirmed on disk; `../.ai` absent) routes INTO this framework, never the reverse; documented in both registry intros. `mlt-deploy-files`/`mlt-deploy-repo` stay skill-only (prior decision stands).
+- **What we covered:** (1) Owner directed removal of `mlt-deploy-repo` (no longer used) — skill folder deleted, all live references stripped (`.cursorrules`, `skills/README.md`, `skills/SKILL_DEPENDENCIES.md`, `skills/mlt-director`, `PROCESS_ROUTER.md`, `scripts/mlt-cursorrules-verify.sh`); clone/archive is plain `git clone`. (2) CHANGELOG `[0.6.2]` Removed entry cut (no tag/release — not requested). (3) Verification green: `framework-verify.sh` PASSED (0 errors, 2 expected warnings), `mlt-cursorrules-verify.sh` PASS (self layout), links resolve. (4) No pending tasks (NEXT/UNKNOWNS/quick progress empty). (5) Committed + pushed.
+- **Key decisions made:** No parent row in the registry — the Agent OS orchestrator (`pilo.ai.logicbison`, confirmed on disk; `../.ai` absent) routes INTO this framework, never the reverse; documented in both registry intros. `mlt-deploy-repo` removed 2026-08-19 (owner decision — no longer used; references stripped repo-wide); `mlt-deploy-files` stays skill-only (prior decision stands).
 - **Open questions:** none
 - **Blockers:** none
 

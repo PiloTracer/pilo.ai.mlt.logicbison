@@ -26,7 +26,6 @@
 | Deploy into another project | `@mlt-deploy-basic - /path` |
 | Re-sync an existing deploy | `@mlt-deploy-basic - /path --update` |
 | Vendor framework into project | `@mlt-deploy-files copy - /path` |
-| Standalone copy or backup of the framework | `@mlt-deploy-repo clone - <url> <target>` / `archive - <dir>` |
 
 **Blocked on a gate?** Read [`skills/SKILL_DEPENDENCIES.md`](skills/SKILL_DEPENDENCIES.md) and run the unlock command shown in the BLOCKED report.
 

@@ -43,7 +43,6 @@ Accepts any free-text description of what the learner wants to do. No strict syn
    - "update", "new tools", "trends" → mlt-update
    - "close session", "wrap up" → mlt-session close
    - "deploy", "copy to project" → mlt-deploy-basic / mlt-deploy-files
-   - "clone the framework", "backup", "archive" → mlt-deploy-repo
 3. If intent is ambiguous, list the top 2-3 candidate skills and ask the user to clarify
 4. Check prerequisites using the gate graph in `skills/SKILL_DEPENDENCIES.md`
 5. If a prerequisite is missing, emit a BLOCKED report with the unlock command

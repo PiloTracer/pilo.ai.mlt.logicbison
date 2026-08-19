@@ -124,7 +124,6 @@ TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 |-------|--------|---------|
 | mlt-deploy-basic | `skills/mlt-deploy-basic/` | Thin-client bootstrap + target verify (`status`) |
 | mlt-deploy-files | `skills/mlt-deploy-files/` | Fat-client vendor as `.ai.mlt/` |
-| mlt-deploy-repo | `skills/mlt-deploy-repo/` | Full repo deploy |
 | mlt-bootstrap | `skills/mlt-bootstrap/` | Scaffold `.work.mlt/`, PROFILE |
 | mlt-session | `skills/mlt-session/` | Session start/status/context/close + repo-context-aware commit/push |
 | mlt-director | `skills/mlt-director/` | Free-text orchestrator |

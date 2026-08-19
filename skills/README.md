@@ -2,7 +2,7 @@
 
 ## Naming protocol
 
-All MLT skills use the `mlt-` prefix. Deployment skills are `mlt-deploy-basic`, `mlt-deploy-files`, `mlt-deploy-repo`; the session lifecycle skill is `mlt-session`.
+All MLT skills use the `mlt-` prefix. Deployment skills are `mlt-deploy-basic`, `mlt-deploy-files`; the session lifecycle skill is `mlt-session`.
 
 ## Canonical verbs
 
@@ -22,7 +22,7 @@ All MLT skills use the `mlt-` prefix. Deployment skills are `mlt-deploy-basic`, 
 | `design` | Create or refine structure |
 | `refine` | Iterate on existing content |
 | `certify` | Evaluate against gate criteria |
-| `copy` / `clone` / `archive` | Deploy framework assets |
+| `copy` | Deploy framework assets |
 | `prepare` | Pre-session planning |
 | `update` | Re-sync or refresh |
 
@@ -32,7 +32,6 @@ All MLT skills use the `mlt-` prefix. Deployment skills are `mlt-deploy-basic`, 
 |-------|--------|-------|---------|
 | mlt-deploy-basic | `skills/mlt-deploy-basic/` | `- <path>`, `--update`, `--force`, `status` | Thin-client bootstrap + target `.cursorrules` verification |
 | mlt-deploy-files | `skills/mlt-deploy-files/` | `copy - <path>` | Fat-client vendor |
-| mlt-deploy-repo | `skills/mlt-deploy-repo/` | `clone`, `archive` | Full repo deploy |
 | mlt-bootstrap | `skills/mlt-bootstrap/` | `init`, `status` | Scaffold `.work.mlt/`, PROFILE |
 | mlt-session | `skills/mlt-session/` | `start`, `status`, `context`, `close`, `commit`, `push`, `scoped` | Session lifecycle + repo-context-aware commit/push |
 | mlt-director | `skills/mlt-director/` | `- <text>` | Free-text orchestrator |

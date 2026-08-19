@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.6.2] - 2026-08-19
+
+### Removed
+- `mlt-deploy-repo` skill (`skills/mlt-deploy-repo/`) — no longer used; clone/archive of the framework is plain `git clone` / filesystem archive. All references stripped: `.cursorrules` skills table, `skills/README.md` registry + naming protocol + canonical verbs, `skills/SKILL_DEPENDENCIES.md` gate graph, `skills/mlt-director` routing, `PROCESS_ROUTER.md`, `scripts/mlt-cursorrules-verify.sh` self-hosted layout notes. Registry congruence preserved (verified by `scripts/framework-verify.sh`).
+
 ## [0.6.1] - 2026-08-19
 
 ### Added
