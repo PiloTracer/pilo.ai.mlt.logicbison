@@ -67,4 +67,4 @@ python3 -c "import json; json.load(open('standards/PROTECTED_SURFACES.json'))"  
 
 ## Next action
 
-`@mlt-session status` — framework work released; resume the training pipeline (`@mlt-bootstrap init`) only on explicit training-project intent.
+None — smoke-test queue complete (`context` + `status` verified live 2026-08-19). Resume the training pipeline (`@mlt-bootstrap init`) only on explicit training-project intent.
