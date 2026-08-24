@@ -167,10 +167,10 @@ if [ -f scripts/sister-discovery.sh ] && bash -n scripts/sister-discovery.sh; th
     # shellcheck disable=SC1091
     source scripts/sister-discovery.sh
     DISCOVERED="$(sister_names ui "$PWD" | head -1)"
-    if [ "$DISCOVERED" = ".ai.ui" ]; then
+    if [ "$DISCOVERED" = ".ai.ui" ] || [ "$DISCOVERED" = "pilo.ai.ui.logicbison" ]; then
         echo "  [OK] sister discovery: sister_names ui → $DISCOVERED"
     else
-        echo "  [ERROR] sister discovery: sister_names ui → '$DISCOVERED' (expected .ai.ui)"
+        echo "  [ERROR] sister discovery: sister_names ui → '$DISCOVERED' (expected .ai.ui or pilo.ai.ui.logicbison)"
         ERRORS=$((ERRORS + 1))
     fi
     for script in scripts/mlt-deploy-basic.sh scripts/mlt-cursorrules-verify.sh; do

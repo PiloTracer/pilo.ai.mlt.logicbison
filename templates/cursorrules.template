@@ -18,12 +18,12 @@ Sister frameworks are siblings on disk; `.ai.<fw>` (legacy) / `pilo.ai.<fw>.logi
 
 | Framework | Director | Path | Bootstrap artifact |
 |-----------|----------|------|--------------------|
-| `.ai.mlt` (MLT Agent OS) | `@mlt-director` | *this directory* | `.ai.mlt/skills/README.md` |
-| `.ai.ui` (UI Design OS) | `@ui-director` | REPLACE:AI_UI_PATH (default `../.ai.ui`) | `.ai.ui/skills/README.md` |
-| `.ai.biz` (Business OS) | `@biz-director` | REPLACE:AI_BIZ_PATH (default `../.ai.biz`) | `.ai.biz/skills/README.md` |
-| `.ai.soc` (Social OS) | `@soc-director` | REPLACE:AI_SOC_PATH (default `../.ai.soc`) | `.ai.soc/skills/README.md` |
-| `.ai.cto` (CTO Professor OS) | `@cto-director` | REPLACE:AI_CTO_PATH (default `../.ai.cto`) | `.ai.cto/skills/README.md` |
-| `.ai.flutter` (Flutter Agent OS) | `@flutter-director` | REPLACE:AI_FLUTTER_PATH (default `../.ai.flutter`) | `.ai.flutter/skills/README.md` |
+| `.ai.mlt` (MLT Agent OS) | `@mlt-director` | *this directory* | `skills/README.md` |
+| `.ai.ui` (UI Design OS) | `@ui-director` | REPLACE:AI_UI_PATH (default `../.ai.ui`) | `skills/README.md` |
+| `.ai.biz` (Business OS) | `@biz-director` | REPLACE:AI_BIZ_PATH (default `../.ai.biz`) | `skills/README.md` |
+| `.ai.soc` (Social OS) | `@soc-director` | REPLACE:AI_SOC_PATH (default `../.ai.soc`) | `skills/README.md` |
+| `.ai.cto` (CTO Professor OS) | `@cto-director` | REPLACE:AI_CTO_PATH (default `../.ai.cto`) | `skills/README.md` |
+| `.ai.flutter` (Flutter Agent OS) | `@flutter-director` | REPLACE:AI_FLUTTER_PATH (default `../.ai.flutter`) | `skills/README.md` |
 
 **Path resolution:** (1) use a filled path cell; `REPLACE:*`/empty → fall through. (2) Auto-discover: source dir S = `$TRAINER_MLT_SOURCE` (thin), `$REPO_ROOT/.ai.mlt` (fat), `$REPO_ROOT` (self-hosted); parent = `S/..`; sister = `<S basename with <fw> inserted before its last .segment>` (e.g. `pilo.ai.ui.logicbison` for source `pilo.ai.logicbison`; `.ai`-prefixed sources resolve `.ai.<fw>` directly), else legacy `.ai.<fw>`; missing = "not installed". (3) Before routing, verify the framework dir + its `skills/README.md` exist; if absent, route with `[degraded: <framework> not installed]` — never route into the void. If your source dir name breaks discovery (e.g. `my-framework`), fill the path cells manually — deploy output lists what it checked.
 
