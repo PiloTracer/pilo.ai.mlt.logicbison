@@ -24,8 +24,8 @@
 #
 # Source resolution: FRAMEWORK_ROOT is derived from this script's location, so
 # the script can be invoked from a TARGET using an external source:
-#   bash /mnt/work/Projects/.ai.mlt/scripts/mlt-deploy-basic.sh /path/to/target update
-# Override the source with MLT_SOURCE=/abs/path if needed.
+#   bash /mnt/work/Projects/pilo.ai.mlt.logicbison/scripts/mlt-deploy-basic.sh /path/to/target update
+# Override the source with MLT_SOURCE=/abs/path/to/source-root if needed.
 #
 # Usage:
 #   bash scripts/mlt-deploy-basic.sh <target-path>              # no-overwrite deploy

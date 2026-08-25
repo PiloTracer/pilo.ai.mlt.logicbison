@@ -20,8 +20,7 @@
 # name, fill the `REPLACE:AI_*_PATH` cell manually (deploy output lists what
 # it checked — see .cursorrules § Frameworks registry path resolution).
 #
-# Sourced by scripts/deploy-basic.sh and scripts/cursorrules-verify.sh.
-# scripts/install-opencode-config.sh mirrors this logic in python — keep in sync.
+# Sourced by scripts/mlt-deploy-basic.sh and scripts/mlt-cursorrules-verify.sh.
 #
 # Functions (pure; no side effects):
 #   sister_names <fw> <ai-root>   → candidate dir names, preferred first

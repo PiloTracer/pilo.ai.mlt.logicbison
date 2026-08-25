@@ -22,7 +22,7 @@
 #
 # Usage:
 #   bash scripts/mlt-cursorrules-verify.sh <target-root> [--fix] [--thin|--fat|--self]
-#   MLT_SOURCE=/abs/path/.ai.mlt bash scripts/mlt-cursorrules-verify.sh <target-root>
+#   MLT_SOURCE=/abs/path/to/source-root bash scripts/mlt-cursorrules-verify.sh <target-root>
 #
 # Flags accept the '--' prefix or bare form; '-' / '--' separators are ignored;
 # the target path may appear in any position:
