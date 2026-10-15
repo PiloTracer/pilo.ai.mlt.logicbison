@@ -31,7 +31,8 @@
 #   bash scripts/mlt-deploy-basic.sh <target-path>              # no-overwrite deploy
 #   bash scripts/mlt-deploy-basic.sh [status] [target-path]     # read-only verify report
 #   bash scripts/mlt-deploy-basic.sh <target-path> [--update]   # merge + re-sync + verify
-#   bash scripts/mlt-deploy-basic.sh <target-path> [--force]    # overwrite .cursorrules
+#   bash scripts/mlt-deploy-basic.sh <target-path> [--force confirm-overwrite-cursorrules]
+#                                                           # overwrite .cursorrules (blocked without the token)
 #
 # Argument forms are equivalent: verbs accept the '--' prefix or bare form
 # (`update` ≡ `--update`, `status` ≡ `--status`, `force` ≡ `--force`), '-' and
@@ -44,7 +45,9 @@ usage() {
     echo "  <target-path>  Target project root (created if missing); may appear in any position"
     echo "  status         Read-only verification of the target .cursorrules + .work.mlt skeleton"
     echo "  update         Merge MLT into existing .cursorrules, re-sync pointer + skeleton, verify"
-    echo "  force          Overwrite an existing target .cursorrules"
+    echo "  force          Overwrite an existing target .cursorrules (requires the explicit token"
+    echo "                 confirm-overwrite-cursorrules when the file exists — a wholesale replace"
+    echo "                 destroys every sister framework's block in the file)"
     echo "  Verbs accept the '--' prefix or bare form; '-' / '--' are ignored separators."
     exit 2
 }
@@ -52,6 +55,7 @@ usage() {
 # ── Argument normalization (bare verb ≡ --flag, path in any position) ──
 MODE=""
 RAW_TARGET=""
+CONFIRM_OVERWRITE=0
 for arg in "$@"; do
   [[ "$arg" == "-" || "$arg" == "--" ]] && continue
   tok="${arg#--}"
@@ -59,6 +63,7 @@ for arg in "$@"; do
     status|update|force)
       if [[ -z "$MODE" ]]; then MODE="$tok"
       else echo "ERROR: conflicting modes: '$MODE' and '$tok'" >&2; usage; fi ;;
+    confirm-overwrite-cursorrules) CONFIRM_OVERWRITE=1 ;;
     /*|./*|../*|~*|*/*|.)
       if [[ -z "$RAW_TARGET" ]]; then RAW_TARGET="$arg"
       else echo "ERROR: multiple target paths: '$RAW_TARGET' and '$arg'" >&2; exit 2; fi ;;
@@ -153,22 +158,37 @@ CURSORRULES="$TARGET_ABS/.cursorrules"
 SECTION_TEMPLATE="$FRAMEWORK_ROOT/templates/thin-client-section.md"
 if [ -f "$CURSORRULES" ]; then
     if [ "$MODE" = "force" ]; then
+        # Wholesale replace — only after the operator names the confirmation
+        # token (same guard as Agent OS / UI Design OS / Business OS / CTO).
+        if [ "$CONFIRM_OVERWRITE" -ne 1 ]; then
+            lost="$(grep -oE '(SOC_DESIGN_OS_BEGIN|UI_DESIGN_OS_BEGIN|FLUTTER_AGENT_OS_BEGIN|BIZ_DESIGN_OS_BEGIN|Core Principles|Source resolution)' "$CURSORRULES" 2>/dev/null | sort -u | paste -sd, - | sed 's/,/, /g' || true)"
+            echo "  BLOCKED: force would replace .cursorrules wholesale ($(wc -l < "$CURSORRULES") lines)"
+            [ -n "$lost" ] && echo "    content that would be LOST: ${lost}"
+            echo "    to proceed, name the confirmation token explicitly:"
+            echo "      bash $FRAMEWORK_ROOT/scripts/mlt-deploy-basic.sh $TARGET_ABS force confirm-overwrite-cursorrules"
+            echo "    otherwise use update (additive merge + pointer re-sync) — the normal, non-destructive path."
+            exit 1
+        fi
         cp "$TEMPLATE" "$CURSORRULES"
         substitute_tokens "$CURSORRULES"
         echo "  [OK] .cursorrules overwritten (force)"
     elif [ "$MODE" = "update" ]; then
-        if grep -q "TRAINER_MLT_SOURCE" "$CURSORRULES"; then
-            echo "  [OK] .cursorrules already contains TRAINER_MLT_SOURCE — re-syncing pointer (no duplicate section)"
+        if grep -q "MLT_DESIGN_OS_BEGIN" "$CURSORRULES"; then
+            echo "  [OK] MLT block markers present — section already merged (idempotent; pointer re-synced below)"
+        elif grep -q "TRAINER_MLT_SOURCE" "$CURSORRULES"; then
+            echo "  [WARN] MLT section present but UNMARKED (pre-marker deploy) — wrap it with"
+            echo "         <!-- MLT_DESIGN_OS_BEGIN --> / <!-- MLT_DESIGN_OS_END -->"
+            echo "         (see templates/thin-client-section.md); mlt-cursorrules-verify FAILs until marked"
         else
             printf '\n---\n\n' >> "$CURSORRULES"
             sed "s|REPLACE_BASICSOURCE|$FRAMEWORK_ROOT|g" "$SECTION_TEMPLATE" >> "$CURSORRULES"
-            echo "  [OK] MLT thin-client section appended to existing .cursorrules (additive merge)"
+            echo "  [OK] MLT thin-client section appended to existing .cursorrules (additive merge, marked)"
             echo "  [NOTE] If the target contract binds {HANDOFF}/{NEXT} to another framework or has"
             echo "         a skill-routing table, review the merge: namespace MLT aliases and register"
             echo "         mlt-* routing — see skills/mlt-deploy-basic/skill.md (Merge procedure)."
         fi
     else
-        echo "  [SKIP] .cursorrules already exists (use 'force' to overwrite, 'update' to merge)"
+        echo "  [SKIP] .cursorrules already exists (use 'force' + confirm-overwrite-cursorrules to overwrite, 'update' to merge)"
     fi
 else
     cp "$TEMPLATE" "$CURSORRULES"

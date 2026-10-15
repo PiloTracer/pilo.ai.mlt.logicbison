@@ -1,3 +1,4 @@
+<!-- MLT_DESIGN_OS_BEGIN -->
 # MLT Training OS (thin-client)
 
 MLT (Machine Learning and AI Training) skills are available from the source framework. Use them for ML/LLM training programs, tutorials, labs, drills, and mentoring.
@@ -11,3 +12,4 @@ TRAINER_MLT_SOURCE=REPLACE_BASICSOURCE
 - **Alias collisions:** if this contract already binds `{HANDOFF}` / `{NEXT}` to another framework, do not rebind them — use namespaced aliases instead: `{MLT_HANDOFF}` = `.work.mlt/context/HANDOFF.md` · `{MLT_NEXT}` = `.work.mlt/plans/NEXT.md`.
 - **Clarity contracts:** operator-facing replies close per the **Operator handoff contract** and generated documents follow the **Document clarity contract** — both in `$TRAINER_MLT_SOURCE/skills/SKILL_DEPENDENCIES.md`.
 - If `$TRAINER_MLT_SOURCE` is unreachable: stop and report `pilo.trainer.mlt source unreachable: $TRAINER_MLT_SOURCE`.
+<!-- MLT_DESIGN_OS_END -->

@@ -16,6 +16,7 @@
 #   - fat-client: local .ai.mlt/ assets complete; mixed-state warning
 #   - .work.mlt/ skeleton (dirs + PROFILE/HANDOFF/NEXT/UNKNOWNS)
 #   - duplicate MLT sections (merged targets)
+#   - thin layout: MLT_DESIGN_OS_BEGIN/END block markers present exactly once
 #   - alias collision: {HANDOFF}/{NEXT} bound to another framework without
 #     namespaced {MLT_*} aliases
 #   - REPLACE: tokens remaining (info)
@@ -238,6 +239,26 @@ if [[ -f "$CURS_DEST" ]]; then
     fail "duplicate MLT sections: TRAINER_MLT_SOURCE appears ${ptr_count}× (merge must be idempotent — remove duplicates)"
   else
     ok "MLT section: single (no duplication)"
+  fi
+fi
+
+# Thin-client block markers (same contract as UI Design OS): an MLT block in a
+# multi-framework .cursorrules must be delimited by MLT_DESIGN_OS_BEGIN/END so
+# merges and verifiers can gate on it (see templates/thin-client-section.md).
+# Gated only when MLT content is actually present — a non-MLT thin file is
+# reported by the pointer check above, not here. No auto-wrap in --fix: the
+# section bounds of a hand-merged file are not machine-safe to guess.
+if [[ -f "$CURS_DEST" && "$LAYOUT" == "thin" ]] && grep -q 'TRAINER_MLT_SOURCE' "$CURS_DEST"; then
+  begin_n="$(grep -c 'MLT_DESIGN_OS_BEGIN' "$CURS_DEST" 2>/dev/null || true)"
+  end_n="$(grep -c 'MLT_DESIGN_OS_END' "$CURS_DEST" 2>/dev/null || true)"
+  if [[ "${begin_n:-0}" -eq 1 && "${end_n:-0}" -eq 1 ]]; then
+    ok "MLT block markers: MLT_DESIGN_OS_BEGIN/END present (1/1)"
+  elif [[ "${begin_n:-0}" -gt 1 || "${end_n:-0}" -gt 1 ]]; then
+    fail "MLT block markers duplicated (BEGIN=${begin_n:-0} END=${end_n:-0}) — merge must be idempotent"
+  elif grep -q '# MLT Training OS' "$CURS_DEST"; then
+    fail "MLT section present but UNMARKED (no MLT_DESIGN_OS_BEGIN/END) — wrap the section with <!-- MLT_DESIGN_OS_BEGIN --> / <!-- MLT_DESIGN_OS_END --> (template: templates/thin-client-section.md)"
+  else
+    fail "MLT block markers missing (thin layout with TRAINER_MLT_SOURCE) — wrap the MLT block with MLT_DESIGN_OS_BEGIN/END, or re-append a marked section via @mlt-deploy-basic update after removing the unmarked content"
   fi
 fi
 

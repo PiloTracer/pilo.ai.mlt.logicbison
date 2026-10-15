@@ -31,7 +31,7 @@ description: "Thin-client bootstrap — copies .cursorrules and .work.mlt/ skele
 
 - `<target-path>`: absolute or relative path to the target project root
 - `--update`: merge MLT into an existing `.cursorrules` (see Merge procedure), re-sync `TRAINER_MLT_SOURCE` to the current source, re-sync skeleton, do not overwrite learner memory
-- `--force`: overwrite existing `.cursorrules` (requires explicit user confirmation)
+- `--force`: overwrite existing `.cursorrules` — **blocked without the explicit token** `confirm-overwrite-cursorrules` when the file exists (the script lists the content that would be lost and exits 1; a wholesale replace destroys every sister framework's block)
 - `status`: read-only — runs `scripts/mlt-cursorrules-verify.sh` against the target and reports; exit non-zero on FAIL findings
 
 **Shell:** `bash $TRAINER_MLT_SOURCE/scripts/mlt-deploy-basic.sh [status] <target-path> [update|force]` — same argument equivalence as above.
@@ -40,7 +40,7 @@ description: "Thin-client bootstrap — copies .cursorrules and .work.mlt/ skele
 
 MLT content is always **additive** — never overwrite or restructure the target's identity, core principles, or other frameworks' sections.
 
-1. If the target contract has structured per-framework sections (e.g. a Skills section with one subsection per framework), integrate MLT as a matching subsection there — not as a detached block at the end of the file. Otherwise appending `templates/thin-client-section.md` (with `REPLACE_BASICSOURCE` substituted) is acceptable.
+1. If the target contract has structured per-framework sections (e.g. a Skills section with one subsection per framework), integrate MLT as a matching subsection there — not as a detached block at the end of the file. Otherwise appending `templates/thin-client-section.md` (with `REPLACE_BASICSOURCE` substituted) is acceptable — the section template carries `<!-- MLT_DESIGN_OS_BEGIN -->` / `<!-- MLT_DESIGN_OS_END -->` markers; keep them (or add them when hand-merging) so `mlt-cursorrules-verify` can gate on the block. Pre-marker MLT sections FAIL verify until wrapped.
 2. Set `TRAINER_MLT_SOURCE` inline in the MLT section to the absolute path of this source repo.
 3. **Alias collisions:** if the target already binds `{HANDOFF}`, `{NEXT}`, or other MLT placeholders to another framework, do not rebind them — define namespaced aliases in the MLT section (`{MLT_HANDOFF}` = `.work.mlt/context/HANDOFF.md`, `{MLT_NEXT}` = `.work.mlt/plans/NEXT.md`).
 4. If the target has a skill-routing table, register `mlt-*` skills → MLT Training OS. If a heading counts frameworks, update the count.
@@ -55,7 +55,7 @@ MLT content is always **additive** — never overwrite or restructure the target
 3. If `<target-path>` does not exist, ask user before creating it
 4. Check if `<target-path>/.cursorrules` already exists
    - If yes and `--force` is not set, stop and report conflict
-   - If yes and `--force` is set, confirm with user before overwriting
+   - If yes and `--force` is set, the script still refuses without the token — name `confirm-overwrite-cursorrules` in the same command (`force confirm-overwrite-cursorrules`)
 5. Copy `templates/cursorrules.template` to `<target-path>/.cursorrules`
 6. Replace `REPLACE_BASICSOURCE` with the absolute path of this source pilo.trainer.mlt repo
 7. Replace `REPLACE:PROJECT_NAME` with the target directory name
